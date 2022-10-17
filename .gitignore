@@ -1,0 +1,26 @@
+.godot/
+.import/
+export.cfg
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
+# OSX shit
+.DS_Store
+
+# Builds
+builds/*
+!builds/.gdignore
+
+# VSCode
+.vscode/settings.json
+
+screenshots/*
+!screenshots/.gdignore
+
+*.blend1
