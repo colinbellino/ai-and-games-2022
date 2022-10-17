@@ -1,16 +1,12 @@
-extends Node
+class_name Game extends Node
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-    pass # Replace with function body.
+    Globals.title_ui.open()
 
+func _process(_delta: float):
+    if Input.is_action_just_released("ui_cancel"):
+        quit_game()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#    pass
+func quit_game() -> void:
+    print("[Game] Quitting...")
+    get_tree().quit()
