@@ -11,4 +11,4 @@ onready var sounds : Dictionary = {
 }
 
 # Nodes
-onready var title_ui : TitleUI = get_node("/root/Game/Title")
+onready var title_ui : TitleUI

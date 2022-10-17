@@ -38,12 +38,14 @@ margin_right = 1120.0
 margin_bottom = 778.0
 
 [node name="Start" type="Button" parent="Title/Menu"]
+unique_name_in_owner = true
 margin_right = 300.0
 margin_bottom = 69.0
 theme = ExtResource( 3 )
 text = "Start"
 
 [node name="Continue" type="Button" parent="Title/Menu"]
+unique_name_in_owner = true
 margin_top = 73.0
 margin_right = 300.0
 margin_bottom = 142.0
@@ -51,6 +53,7 @@ theme = ExtResource( 3 )
 text = "Continue"
 
 [node name="Quit" type="Button" parent="Title/Menu"]
+unique_name_in_owner = true
 margin_top = 146.0
 margin_right = 300.0
 margin_bottom = 215.0
