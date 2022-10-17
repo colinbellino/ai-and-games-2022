@@ -58,7 +58,5 @@ theme = ExtResource( 3 )
 text = "Quit"
 
 [node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
-bus = "Sounds"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-bus = "Music"

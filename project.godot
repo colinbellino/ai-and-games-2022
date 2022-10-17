@@ -27,6 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Ai & Games 2022"
+config/description="Hello!"
 run/main_scene="res://media/scenes/main.tscn"
 config/icon="res://media/art/icon.png"
 
