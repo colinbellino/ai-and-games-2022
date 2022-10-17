@@ -2,6 +2,8 @@ extends Node
 
 const font1_path : String = "res://media/fonts/silver.ttf"
 
+var version : String = "9999999"
+
 # Resources
 onready var sounds : Dictionary = {
     # 1: ResourceLoader.load("res://media/sounds/death_0.mp3"),

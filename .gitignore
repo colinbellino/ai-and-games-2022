@@ -24,3 +24,5 @@ screenshots/*
 !screenshots/.gdignore
 
 *.blend1
+
+version.txt
