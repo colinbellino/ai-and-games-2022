@@ -14,6 +14,7 @@ const resolutions : Array = [
 ]
 
 var version : String = "9999999"
+var can_fullscreen : bool
 var settings : GameSettings
 
 # Resources
@@ -29,6 +30,11 @@ onready var ui_title : TitleUI
 onready var ui_settings : SettingsUI
 
 # Utils
+
+# FIXME: looks like this doesn't work on MacOS
+func set_fullscreen(value: bool) -> void:
+    OS.window_fullscreen = value
+
 func set_resolution(resolution_index: float) -> void:
     OS.window_size = resolutions[resolution_index][1]
     get_viewport().set_size_override(true, resolutions[resolution_index][1])

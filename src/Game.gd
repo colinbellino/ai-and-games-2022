@@ -2,12 +2,14 @@ class_name Game extends Node
 
 func _ready():
     # Init stuff here
-    # TODO: (Colin) load the settings from file
-    Globals.settings = GameSettings.new()
+    Globals.settings = Save.read_settings()
     Globals.ui_title = get_node("%TitleUI")
     Globals.ui_settings = get_node("%SettingsUI")
     Globals.version = load_version()
+    Globals.can_fullscreen = OS.get_name() == "Windows"
 
+    if Globals.can_fullscreen:
+        Globals.set_fullscreen(Globals.settings.window_fullscreen)
     Globals.set_resolution(Globals.settings.resolution_index)
 
     # Connect the UI
@@ -42,7 +44,7 @@ func quit_game() -> void:
 func button_quit_pressed() -> void:
     quit_game()
 
-func load_version() -> String:
+static func load_version() -> String:
     var file := File.new()
     var result := file.open("res://version.txt", File.READ)
     if result != OK:
