@@ -14,6 +14,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Game.gd"
 }, {
+"base": "Reference",
+"class": "GameSettings",
+"language": "GDScript",
+"path": "res://src/GameSettings.gd"
+}, {
+"base": "CanvasLayer",
+"class": "SettingsUI",
+"language": "GDScript",
+"path": "res://src/SettingsUI.gd"
+}, {
 "base": "CanvasLayer",
 "class": "TitleUI",
 "language": "GDScript",
@@ -21,6 +31,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Game": "",
+"GameSettings": "",
+"SettingsUI": "",
 "TitleUI": ""
 }
 
@@ -37,8 +49,9 @@ Globals="*res://src/Globals.gd"
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
+window/size/width=960
+window/size/height=540
+window/size/resizable=false
 
 [global]
 

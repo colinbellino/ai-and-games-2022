@@ -2,16 +2,22 @@ class_name Game extends Node
 
 func _ready():
     # Init stuff here
-    Globals.title_ui = get_node("%Title")
+    # TODO: (Colin) load the settings from file
+    Globals.settings = GameSettings.new()
+    Globals.ui_title = get_node("%TitleUI")
+    Globals.ui_settings = get_node("%SettingsUI")
     Globals.version = load_version()
 
+    Globals.set_resolution(Globals.settings.resolution_index)
+
     # Connect the UI
-    var _result = Globals.title_ui.button_start.connect("pressed", self, "button_start_pressed")
-    _result = Globals.title_ui.button_continue.connect("pressed", self, "button_continue_pressed")
-    _result = Globals.title_ui.button_quit.connect("pressed", self, "button_quit_pressed")
+    var _result = Globals.ui_title.button_start.connect("pressed", self, "button_start_pressed")
+    _result = Globals.ui_title.button_continue.connect("pressed", self, "button_continue_pressed")
+    _result = Globals.ui_title.button_settings.connect("pressed", self, "button_settings_pressed")
+    _result = Globals.ui_title.button_quit.connect("pressed", self, "button_quit_pressed")
 
     # Start the title
-    Globals.title_ui.open(Globals.version)
+    Globals.ui_title.open(Globals.version)
 
 func _process(_delta: float):
     if Input.is_action_just_released("ui_cancel"):
@@ -19,11 +25,15 @@ func _process(_delta: float):
 
 func button_start_pressed() -> void:
     print("[GAME] button_start_pressed")
-    Globals.title_ui.close()
+    Globals.ui_title.close()
 
 func button_continue_pressed() -> void:
     print("[GAME] button_start_pressed")
-    Globals.title_ui.close()
+    Globals.ui_title.close()
+
+func button_settings_pressed() -> void:
+    print("[GAME] button_settings_pressed")
+    Globals.ui_settings.open()
 
 func quit_game() -> void:
     print("[GAME] Quitting...")
