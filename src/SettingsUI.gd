@@ -33,6 +33,7 @@ func open() -> void:
         button_fullscreen.visible = true
         button_fullscreen.pressed = Globals.settings.window_fullscreen
 
+    button_resolution.clear()
     for item in Globals.resolutions:
         button_resolution.add_item(item[0])
     button_resolution.selected = Globals.settings.resolution_index
@@ -42,6 +43,7 @@ func open() -> void:
     slider_volume_sound.value = Globals.settings.volume_sound
 
     var locales := TranslationServer.get_loaded_locales()
+    button_locale.clear()
     for locale in locales:
         button_locale.add_item("locale_" + locale)
     button_locale.selected = locales.find(Globals.settings.locale)
