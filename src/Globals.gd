@@ -19,6 +19,7 @@ var can_fullscreen : bool
 var bus_main : int
 var bus_music : int
 var bus_sound : int
+var state : int
 
 # Resources
 onready var sounds : Dictionary = {
@@ -29,8 +30,11 @@ onready var sounds : Dictionary = {
 }
 
 # Nodes
-onready var ui_title : TitleUI
-onready var ui_settings : SettingsUI
+var ui_title : TitleUI
+var ui_settings : SettingsUI
+var world : Node2D
+var current_level: Node2D
+var camera: Camera2D
 
 # Utils
 

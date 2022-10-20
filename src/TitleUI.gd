@@ -17,6 +17,7 @@ func _ready() -> void:
 
 func open(version: String) -> void:
     version_label.text = version
+    button_start.grab_focus()
     visible = true
 
 func close() -> void:

@@ -48,6 +48,8 @@ func open() -> void:
         button_locale.add_item("locale_" + locale)
     button_locale.selected = locales.find(Globals.settings.locale)
 
+    button_fullscreen.grab_focus()
+
     visible = true
 
 func close() -> void:
