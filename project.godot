@@ -118,6 +118,11 @@ action_4={
  ]
 }
 
+[locale]
+
+locale_filter=[ 0, [ "en", "fr" ] ]
+translations=PoolStringArray( "res://media/text.en.translation", "res://media/text.fr.translation" )
+
 [mono]
 
 project/assembly_name="Ai & Games 2022"

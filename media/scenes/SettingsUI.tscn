@@ -21,7 +21,7 @@ margin_top = 100.0
 margin_right = 109.5
 margin_bottom = 163.0
 theme = ExtResource( 2 )
-text = "Options"
+text = "Settings"
 align = 1
 valign = 1
 
