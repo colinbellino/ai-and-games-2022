@@ -5,3 +5,4 @@ export var resolution_index : int
 export var volume_main : float
 export var volume_music : float
 export var volume_sound : float
+export var locale : String = "en"

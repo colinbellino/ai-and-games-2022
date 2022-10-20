@@ -2,6 +2,7 @@ class_name SettingsUI extends CanvasLayer
 
 var button_fullscreen: CheckButton
 var button_resolution: OptionButton
+var button_locale: OptionButton
 var button_close: Button
 var slider_volume_main : Slider
 var slider_volume_music : Slider
@@ -10,6 +11,7 @@ var slider_volume_sound : Slider
 func _ready() -> void:
     button_fullscreen = get_node("%Fullscreen")
     button_resolution = get_node("%Resolution")
+    button_locale = get_node("%Locale")
     button_close = get_node("%Close")
     slider_volume_main = get_node("%VolumeMain")
     slider_volume_music = get_node("%VolumeMusic")
@@ -17,6 +19,7 @@ func _ready() -> void:
 
     var _result = button_fullscreen.connect("pressed", self, "button_fullscreen_pressed")
     _result = button_resolution.connect("item_selected", self, "button_resolution_item_selected")
+    _result = button_locale.connect("item_selected", self, "button_locale_item_selected")
     _result = button_close.connect("pressed", self, "button_close_pressed")
     _result = slider_volume_main.connect("value_changed", self, "slider_volume_main_changed")
     _result = slider_volume_music.connect("value_changed", self, "slider_volume_music_changed")
@@ -38,6 +41,11 @@ func open() -> void:
     slider_volume_music.value = Globals.settings.volume_music
     slider_volume_sound.value = Globals.settings.volume_sound
 
+    var locales := TranslationServer.get_loaded_locales()
+    for locale in locales:
+        button_locale.add_item("locale_" + locale)
+    button_locale.selected = locales.find(Globals.settings.locale)
+
     visible = true
 
 func close() -> void:
@@ -50,6 +58,11 @@ func button_fullscreen_pressed() -> void:
 func button_resolution_item_selected(resolution_index: int) -> void:
     Globals.settings.resolution_index = resolution_index
     Globals.set_resolution(Globals.settings.resolution_index)
+
+func button_locale_item_selected(locale_index: int) -> void:
+    var locales := TranslationServer.get_loaded_locales()
+    Globals.settings.locale = locales[locale_index]
+    TranslationServer.set_locale(Globals.settings.locale)
 
 func button_close_pressed() -> void:
     Save.write_settings(Globals.settings)

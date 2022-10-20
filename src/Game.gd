@@ -14,6 +14,10 @@ func _ready():
     if Globals.can_fullscreen:
         Globals.set_fullscreen(Globals.settings.window_fullscreen)
     Globals.set_resolution(Globals.settings.resolution_index)
+    Globals.set_linear_db(Globals.bus_main, Globals.settings.volume_main)
+    Globals.set_linear_db(Globals.bus_music, Globals.settings.volume_music)
+    Globals.set_linear_db(Globals.bus_sound, Globals.settings.volume_sound)
+    TranslationServer.set_locale(Globals.settings.locale)
 
     # Connect the UI
     var _result = Globals.ui_title.button_start.connect("pressed", self, "button_start_pressed")
