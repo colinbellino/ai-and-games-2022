@@ -49,6 +49,10 @@ config/description="Hello!"
 run/main_scene="res://media/scenes/main.tscn"
 config/icon="res://media/art/icon.png"
 
+[audio]
+
+default_bus_layout="res://media/default_bus_layout.tres"
+
 [autoload]
 
 Globals="*res://src/Globals.gd"

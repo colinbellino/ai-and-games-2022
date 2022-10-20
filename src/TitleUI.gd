@@ -13,9 +13,11 @@ func _ready() -> void:
     button_settings = get_node("%Settings")
     button_quit = get_node("%Quit")
 
+    close()
+
 func open(version: String) -> void:
-    visible = true
     version_label.text = version
+    visible = true
 
 func close() -> void:
     visible = false

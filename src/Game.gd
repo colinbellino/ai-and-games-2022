@@ -3,6 +3,9 @@ class_name Game extends Node
 func _ready():
     # Init stuff here
     Globals.settings = Save.read_settings()
+    Globals.bus_main = AudioServer.get_bus_index("Master")
+    Globals.bus_music = AudioServer.get_bus_index("Music")
+    Globals.bus_sound = AudioServer.get_bus_index("Sound")
     Globals.ui_title = get_node("%TitleUI")
     Globals.ui_settings = get_node("%SettingsUI")
     Globals.version = load_version()
@@ -19,6 +22,7 @@ func _ready():
     _result = Globals.ui_title.button_quit.connect("pressed", self, "button_quit_pressed")
 
     # Start the title
+    yield(get_tree(), "idle_frame") # Wait for next frame before initializing the UI
     Globals.ui_title.open(Globals.version)
 
 func _process(_delta: float):
@@ -26,15 +30,12 @@ func _process(_delta: float):
         quit_game()
 
 func button_start_pressed() -> void:
-    print("[GAME] button_start_pressed")
     Globals.ui_title.close()
 
 func button_continue_pressed() -> void:
-    print("[GAME] button_start_pressed")
     Globals.ui_title.close()
 
 func button_settings_pressed() -> void:
-    print("[GAME] button_settings_pressed")
     Globals.ui_settings.open()
 
 func quit_game() -> void:

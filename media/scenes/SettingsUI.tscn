@@ -1,11 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/SettingsUI.gd" type="Script" id=1]
-[ext_resource path="res://media/title.theme" type="Theme" id=2]
+[ext_resource path="res://media/main.theme" type="Theme" id=2]
 
 [node name="Settings" type="CanvasLayer"]
 unique_name_in_owner = true
-visible = false
 follow_viewport_enable = true
 script = ExtResource( 1 )
 
@@ -16,43 +15,97 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="Title" type="Label" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -301.0
-margin_top = -169.0
-margin_right = -82.0
-margin_bottom = -106.0
-rect_scale = Vector2( 3, 3 )
+margin_left = -109.5
+margin_top = 100.0
+margin_right = 109.5
+margin_bottom = 163.0
 theme = ExtResource( 2 )
 text = "Options"
 align = 1
 valign = 1
 
 [node name="Menu" type="VBoxContainer" parent="."]
-margin_left = 356.0
-margin_top = 260.0
-margin_right = 656.0
-margin_bottom = 477.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -150.0
+margin_top = 200.0
+margin_right = 150.0
+margin_bottom = 468.0
 
 [node name="Fullscreen" type="CheckButton" parent="Menu"]
 unique_name_in_owner = true
 margin_right = 300.0
-margin_bottom = 71.0
+margin_bottom = 50.0
 theme = ExtResource( 2 )
 text = "Fullscreen"
 
 [node name="Resolution" type="OptionButton" parent="Menu"]
 unique_name_in_owner = true
-margin_top = 75.0
+margin_top = 54.0
 margin_right = 300.0
-margin_bottom = 144.0
+margin_bottom = 102.0
 theme = ExtResource( 2 )
+text = "Resolution"
+
+[node name="Control" type="VBoxContainer" parent="Menu"]
+margin_top = 106.0
+margin_right = 300.0
+margin_bottom = 140.0
+
+[node name="Label" type="Label" parent="Menu/Control"]
+margin_right = 300.0
+margin_bottom = 14.0
+text = "Main"
+
+[node name="VolumeMain" type="HSlider" parent="Menu/Control"]
+unique_name_in_owner = true
+margin_top = 18.0
+margin_right = 300.0
+margin_bottom = 34.0
+max_value = 1.0
+step = 0.1
+
+[node name="Control2" type="VBoxContainer" parent="Menu"]
+margin_top = 144.0
+margin_right = 300.0
+margin_bottom = 178.0
+
+[node name="Label" type="Label" parent="Menu/Control2"]
+margin_right = 300.0
+margin_bottom = 14.0
+text = "Music"
+
+[node name="VolumeMusic" type="HSlider" parent="Menu/Control2"]
+unique_name_in_owner = true
+margin_top = 18.0
+margin_right = 300.0
+margin_bottom = 34.0
+max_value = 1.0
+step = 0.1
+
+[node name="Control3" type="VBoxContainer" parent="Menu"]
+margin_top = 182.0
+margin_right = 300.0
+margin_bottom = 216.0
+
+[node name="Label" type="Label" parent="Menu/Control3"]
+margin_right = 300.0
+margin_bottom = 14.0
+text = "Sound"
+
+[node name="VolumeSound" type="HSlider" parent="Menu/Control3"]
+unique_name_in_owner = true
+margin_top = 18.0
+margin_right = 300.0
+margin_bottom = 34.0
+max_value = 1.0
+step = 0.1
 
 [node name="Close" type="Button" parent="Menu"]
 unique_name_in_owner = true
-margin_top = 148.0
+margin_top = 220.0
 margin_right = 300.0
-margin_bottom = 217.0
+margin_bottom = 268.0
 theme = ExtResource( 2 )
 text = "Close"

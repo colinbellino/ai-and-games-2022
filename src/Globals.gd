@@ -13,9 +13,12 @@ const resolutions : Array = [
     ["7680 x 4320", Vector2(7680, 4320)],
 ]
 
-var version : String = "9999999"
-var can_fullscreen : bool
 var settings : GameSettings
+var version : String = "0000000"
+var can_fullscreen : bool
+var bus_main : int
+var bus_music : int
+var bus_sound : int
 
 # Resources
 onready var sounds : Dictionary = {
@@ -39,3 +42,10 @@ func set_resolution(resolution_index: float) -> void:
     OS.window_size = resolutions[resolution_index][1]
     get_viewport().set_size_override(true, resolutions[resolution_index][1])
     get_viewport().set_size_override_stretch(true)
+
+func get_linear_db(bus_index: int) -> float:
+    return db2linear(AudioServer.get_bus_volume_db(bus_index))
+
+func set_linear_db(bus_index: int, linear_db: float) -> void:
+    linear_db = clamp(linear_db, 0.0, 1.0)
+    AudioServer.set_bus_volume_db(bus_index, linear2db(linear_db))
