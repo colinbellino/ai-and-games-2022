@@ -74,16 +74,16 @@ func _process(delta: float):
 
         if Input.is_action_pressed("move_up"):
             Globals.camera.position.y -= 500.0 * delta
-            Globals.creature.position.y -= 120.0 * delta
+            # Globals.creature.position.y -= 120.0 * delta
         if Input.is_action_pressed("move_down"):
             Globals.camera.position.y += 500.0 * delta
-            Globals.creature.position.y += 120.0 * delta
+            # Globals.creature.position.y += 120.0 * delta
         if Input.is_action_pressed("move_right"):
             Globals.camera.position.x += 500.0 * delta
-            Globals.creature.position.x += 120.0 * delta
+            # Globals.creature.position.x += 120.0 * delta
         if Input.is_action_pressed("move_left"):
             Globals.camera.position.x -= 500.0 * delta
-            Globals.creature.position.x -= 120.0 * delta
+            # Globals.creature.position.x -= 120.0 * delta
 
 static func button_start_pressed() -> void:
     start_game(Globals.settings.level)
