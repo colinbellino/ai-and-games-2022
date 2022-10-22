@@ -11,16 +11,16 @@ export(Enums.Stimulus) var stimulus : int # Override on scene inspector
 var _entities : Array = []
 
 func _ready() -> void:
-    var _result = connect("area_entered", self, "_entity_entered")
-    _result = connect("area_exited", self, "_entity_exited")
+	var _result = connect("area_entered", self, "_entity_entered")
+	_result = connect("area_exited", self, "_entity_exited")
 
 func _entity_entered(area: Area2D) -> void:
-    if not _entities.has(area):
-        parent.stimulus_entered(area)
-        _entities.append(area)
+	if not _entities.has(area):
+		parent.area_entered(area)
+		_entities.append(area)
 
 func _entity_exited(area: Area2D) -> void:
-    var entity_found = _entities.find(area)
-    if entity_found != -1:
-        parent.stimulus_exited(area)
-        _entities.remove(entity_found)
+	var entity_found = _entities.find(area)
+	if entity_found != -1:
+		parent.area_exited(area)
+		_entities.remove(entity_found)
