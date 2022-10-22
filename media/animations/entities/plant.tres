@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=9 format=2]
+[gd_resource type="SpriteFrames" load_steps=8 format=2]
 
 [ext_resource path="res://media/art/entities/plant.png" type="Texture" id=1]
 
@@ -9,10 +9,6 @@ region = Rect2( 0, 48, 16, 16 )
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
 region = Rect2( 16, 48, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 48, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
@@ -32,7 +28,7 @@ region = Rect2( 0, 16, 16, 16 )
 
 [resource]
 animations = [ {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
 "name": "activating",
 "speed": 5.0

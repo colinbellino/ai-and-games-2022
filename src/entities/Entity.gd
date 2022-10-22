@@ -1,7 +1,8 @@
-class_name Entity extends Node
+class_name Entity extends Node2D
 
 onready var sprite_body : AnimatedSprite = find_node("SpriteBody")
 onready var area_sound : Area2D = find_node("SoundArea")
+var destination : Vector2
 
 # Note: don't change this without using change_state()
 var _state : int
@@ -36,6 +37,19 @@ func _process(_delta: float):
             sprite_body.play("activating")
             yield(sprite_body, "animation_finished")
             sprite_body.play("idle")
+
+    if _state == Enums.EntityStates.Attracted:
+        if _state_entered == false:
+            _state_entered = true
+            sprite_body.play("react")
+            yield(sprite_body, "animation_finished")
+            sprite_body.play("walk")
+
+            # print("MOVING TOWARD: ", destination)
+            var tween = create_tween()
+            tween.tween_property(self, "position", destination, 1.0)
+
+            change_state(Enums.EntityStates.Idle)
 
 func interact() -> void:
     # print("[Entity] %s interact" % [name])
