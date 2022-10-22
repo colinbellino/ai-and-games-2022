@@ -7,7 +7,6 @@ class_name EntityArea2D extends Area2D
 onready var entity : Node2D = get_parent()
 
 var source : int # Set to parent value for easier reference
-export(Enums.Stimulus) var stimulus : int # Override on scene inspector
 var _entities : Array = []
 
 func _ready() -> void:

@@ -114,3 +114,61 @@ static func get_level_layerInstances(LDtk, level, options):
         # i -= 1
 
     return layers
+
+# Extract metadata coming from LDTK file to do stuff specific to entities
+# **Always do this AFTER the entities_node is added to the tree**
+static func update_entities(entities_node) -> void:
+    for child in entities_node.get_children():
+        var entity : Entity = child
+        var identifier : String = entity.get_meta("__identifier")
+        var iid : String = entity.get_meta("iid")
+        entity.name = "%s (%s)" % [identifier, iid]
+        # print("[Game] entity: ", [entity, entity.get_meta_list()])
+
+        # TODO: (Colin) Automate this
+        if entity.has_meta("WakeUp"):
+            var data = entity.get_meta("WakeUp")
+            if data == true:
+                var behaviour := WakeUp.new()
+                behaviour.name = "WakeUp"
+                entity.add_child(behaviour)
+
+        if entity.has_meta("SendStimulus"):
+            var data = entity.get_meta("SendStimulus")
+            if data == true:
+                var behaviour := SendStimulus.new()
+                behaviour.name = "SendStimulus"
+                entity.add_child(behaviour)
+
+        if entity.has_meta("Attracted"):
+            var data = entity.get_meta("Attracted")
+            if data == true:
+                var behaviour := Attracted.new()
+                behaviour.name = "Attracted"
+                entity.add_child(behaviour)
+        if entity.has_meta("Attracted"):
+
+            var data = entity.get_meta("Sleepy")
+            if data == true:
+                var behaviour := Sleepy.new()
+                behaviour.name = "Sleepy"
+                entity.add_child(behaviour)
+
+        var sprite_string : String = entity.get_meta("Sprite")
+        var anim_path := "res://media/animations/entities/%s.tres" % [sprite_string]
+        if ResourceLoader.exists(anim_path) == false:
+            push_error("Failed to load sprite frames: %s" % [anim_path])
+            return
+
+        var sprite_frames : SpriteFrames = ResourceLoader.load(anim_path)
+        entity.sprite_body.frames = sprite_frames
+
+        if identifier == "Creature":
+            if Globals.creature != null:
+                push_error("Already on Creature in the world")
+                return
+
+            Globals.creature = child
+            # TODO: remove this
+            # Quick hack to make the creature always visible
+            Globals.creature.z_index = 99

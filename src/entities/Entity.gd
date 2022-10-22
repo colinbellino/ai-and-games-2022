@@ -14,8 +14,7 @@ signal area_entered(area)
 signal area_exited(area)
 signal state_entered(new_state)
 signal state_exited(previous_state)
-
-signal attracted(emiter)
+signal stimulus_received(type, emiter)
 
 func _process(_delta: float):
     if _state == Enums.EntityStates.Idle:

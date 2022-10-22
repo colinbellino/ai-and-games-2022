@@ -10,11 +10,6 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
-"class": "AttractEntities",
-"language": "GDScript",
-"path": "res://src/entities/AttractEntities.gd"
-}, {
-"base": "Node",
 "class": "Attracted",
 "language": "GDScript",
 "path": "res://src/entities/Attracted.gd"
@@ -59,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Save.gd"
 }, {
+"base": "Node",
+"class": "SendStimulus",
+"language": "GDScript",
+"path": "res://src/entities/SendStimulus.gd"
+}, {
 "base": "CanvasLayer",
 "class": "SettingsUI",
 "language": "GDScript",
@@ -80,7 +80,6 @@ _global_script_classes=[ {
 "path": "res://src/entities/WakeUp.gd"
 } ]
 _global_script_class_icons={
-"AttractEntities": "",
 "Attracted": "",
 "Entity": "",
 "EntityArea2D": "",
@@ -90,6 +89,7 @@ _global_script_class_icons={
 "LDTK": "",
 "MouseArea2D": "",
 "Save": "",
+"SendStimulus": "",
 "SettingsUI": "",
 "Sleepy": "",
 "TitleUI": "",
@@ -110,6 +110,10 @@ default_bus_layout="res://media/default_bus_layout.tres"
 [autoload]
 
 Globals="*res://src/Globals.gd"
+
+[debug]
+
+gdscript/warnings/unused_signal=false
 
 [display]
 

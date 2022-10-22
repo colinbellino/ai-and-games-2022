@@ -22,7 +22,6 @@ animation = "wake_up"
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 4 )
-stimulus = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SoundArea"]
 shape = SubResource( 1 )

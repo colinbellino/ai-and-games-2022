@@ -108,63 +108,7 @@ static func start_game(world_id: int) -> void:
 
     Globals.current_level = LDTK.load_ldtk(world_path)
     Globals.world.add_child(Globals.current_level)
-
-    # Extract metadata coming from LDTK file to do stuff specific to entities
-    var entities_node = Globals.current_level.find_node("Entities")
-    for child in entities_node.get_children():
-        var entity : Entity = child
-        var identifier : String = entity.get_meta("__identifier")
-        var iid : String = entity.get_meta("iid")
-        entity.name = "%s (%s)" % [identifier, iid]
-        # print("[Game] entity: ", [entity, entity.get_meta_list()])
-
-        var sprite_string : String = entity.get_meta("Sprite")
-        # match sprite_string:
-        #     "Creature": print("CREATURE!")
-        #     "Plant": print("PLANT!")
-
-        if entity.has_meta("WakeUp"):
-            var data = entity.get_meta("WakeUp")
-            if data == true:
-                var behaviour := WakeUp.new()
-                behaviour.name = "WakeUp"
-                entity.add_child(behaviour)
-
-        if entity.has_meta("AttractEntities"):
-            var data = entity.get_meta("AttractEntities")
-            if data == true:
-                var behaviour := AttractEntities.new()
-                behaviour.name = "AttractEntities"
-                entity.add_child(behaviour)
-
-        if entity.has_meta("Attracted"):
-            var data = entity.get_meta("Attracted")
-            if data == true:
-                var behaviour := Attracted.new()
-                behaviour.name = "Attracted"
-                entity.add_child(behaviour)
-        if entity.has_meta("Attracted"):
-
-            var data = entity.get_meta("Sleepy")
-            if data == true:
-                var behaviour := Sleepy.new()
-                behaviour.name = "Sleepy"
-                entity.add_child(behaviour)
-
-        var anim_path := "res://media/animations/entities/%s.tres" % [sprite_string]
-        if ResourceLoader.exists(anim_path) == false:
-            push_error("Failed to load sprite frames: %s" % [anim_path])
-            return
-
-        var sprite_frames : SpriteFrames = ResourceLoader.load(anim_path)
-        entity.sprite_body.frames = sprite_frames
-
-        if identifier == "Creature":
-            if Globals.creature != null:
-                push_error("Already on Creature in the world")
-                return
-
-            Globals.creature = child
+    LDTK.update_entities(Globals.current_level.find_node("Entities"))
 
     change_state(GameStates.PLAY)
 
