@@ -30,7 +30,7 @@ func _ready():
     _result = Globals.ui_title.button_quit.connect("pressed", self, "button_quit_pressed")
 
     if Globals.settings.skip_title:
-        start_game(0)
+        button_start_pressed()
     else:
         # Start the title
         yield(get_tree(), "idle_frame") # Wait for next frame before initializing the UI
@@ -86,7 +86,7 @@ func _process(delta: float):
             Globals.creature.position.x -= 120.0 * delta
 
 static func button_start_pressed() -> void:
-    start_game(0)
+    start_game(Globals.settings.level)
 
 static func button_continue_pressed() -> void:
     Globals.ui_title.close()
