@@ -14,20 +14,19 @@ radius = 61.2
 script = ExtResource( 3 )
 
 [node name="SpriteBody" type="Sprite" parent="."]
-unique_name_in_owner = true
 texture = ExtResource( 1 )
 
-[node name="Sound" type="Area2D" parent="."]
+[node name="SoundArea" type="Area2D" parent="."]
 script = ExtResource( 4 )
 stimulus = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundArea"]
 shape = SubResource( 1 )
 
-[node name="Mouse" type="Area2D" parent="."]
+[node name="MouseArea" type="Area2D" parent="."]
 collision_layer = 2147483648
 collision_mask = 0
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 shape = SubResource( 2 )

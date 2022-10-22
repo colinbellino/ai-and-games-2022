@@ -19,10 +19,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/entities/EntityArea2D.gd"
 }, {
-"base": "Node",
-"class": "EntityNode",
+"base": "Reference",
+"class": "Enums",
 "language": "GDScript",
-"path": "res://src/entities/EntityNode.gd"
+"path": "res://src/Enums.gd"
 }, {
 "base": "Node",
 "class": "Game",
@@ -62,7 +62,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Entity": "",
 "EntityArea2D": "",
-"EntityNode": "",
+"Enums": "",
 "Game": "",
 "GameSettings": "",
 "LDTK": "",

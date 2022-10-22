@@ -444,6 +444,23 @@
 								{ "__identifier": "NodeType", "__value": "res://media/scenes/entities/Entity.tscn", "__type": "String", "__tile": null, "defUid": 14, "realEditorValues": [] },
 								{ "__identifier": "Sprite", "__value": "plant", "__type": "String", "__tile": null, "defUid": 19, "realEditorValues": [] }
 							]
+						},
+						{
+							"__identifier": "Plant",
+							"__grid": [3,4],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 1, "x": 128, "y": 112, "w": 16, "h": 16 },
+							"__smartColor": "#94D9B3",
+							"iid": "99125fb0-5110-11ed-afb2-7153841a221b",
+							"width": 16,
+							"height": 16,
+							"defUid": 5,
+							"px": [63,77],
+							"fieldInstances": [
+								{ "__identifier": "NodeType", "__value": "res://media/scenes/entities/Entity.tscn", "__type": "String", "__tile": null, "defUid": 14, "realEditorValues": [] },
+								{ "__identifier": "Sprite", "__value": "plant", "__type": "String", "__tile": null, "defUid": 19, "realEditorValues": [] }
+							]
 						}
 					]
 				},

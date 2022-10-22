@@ -1,8 +1,5 @@
 extends Node
 
-enum Source {DINO, TREE}
-enum Stimulus {NONE, SIGHT, SOUND, TOUCH, TASTE, SMELL}
-
 const font1_path : String = "res://media/fonts/silver.ttf"
 const resolutions : Array = [
     # ["426 x 240", Vector2(426, 240)],
@@ -25,10 +22,7 @@ var bus_sound : int
 var state : int
 
 # Resources
-onready var textures : Dictionary = {
-    "creature": ResourceLoader.load("res://media/art/entities/creature.png"),
-    "plant": ResourceLoader.load("res://media/art/entities/plant.png"),
-}
+onready var textures : Dictionary = {}
 onready var map := ResourceLoader.load("res://media/maps/world_0.ldtk") as PackedScene
 onready var entity_prefab := ResourceLoader.load("res://media/scenes/entities/Entity.tscn") as PackedScene
 
@@ -38,6 +32,7 @@ var ui_settings : SettingsUI
 var world : Node2D
 var current_level: Node2D
 var camera: Camera2D
+var creature : Entity
 
 # Utils
 

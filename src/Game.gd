@@ -72,17 +72,25 @@ static func start_game() -> void:
 
     var entities_node = Globals.current_level.find_node("Entities")
     for child in entities_node.get_children():
-        print("child: ", [child])
         var entity : Entity = child
+        var identifier : String = entity.get_meta("__identifier")
+        entity.name = identifier
+        print("entity: ", [entity, entity.get_meta_list()])
 
-        var sprite_string : String = child.get_meta("Sprite")
+        var sprite_string : String = entity.get_meta("Sprite")
         # match sprite_string:
         #     "Creature": print("CREATURE!")
         #     "Plant": print("PLANT!")
 
         var sprite_texture : Texture = ResourceLoader.load("res://media/art/entities/%s.png" % [sprite_string])
-        print("sprite_texture: ", [sprite_string, sprite_texture])
         entity.sprite_body.texture = sprite_texture
+
+        if identifier == "Creature":
+            if Globals.creature != null:
+                push_error("Already on Creature in the world")
+                return
+
+            Globals.creature = child
 
         # print("entity: ", [entity, entity.get_meta_list(), entity.get_meta("Sprite")])
 

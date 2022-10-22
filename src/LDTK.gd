@@ -82,7 +82,7 @@ static func load_ldtk(filepath: String) -> Node2D:
 #create layers in level
 static func get_level_layerInstances(LDtk, level, options):
     var layers = []
-    var i = level.layerInstances.size()
+    # var i = level.layerInstances.size()
     for layerInstance in level.layerInstances:
         var new_layer = null
         match layerInstance.__type:
@@ -111,6 +111,6 @@ static func get_level_layerInstances(LDtk, level, options):
             new_layer.position = Vector2(layerInstance.__pxTotalOffsetX, layerInstance.__pxTotalOffsetY)
             layers.push_front(new_layer)
 
-        i -= 1
+        # i -= 1
 
     return layers
