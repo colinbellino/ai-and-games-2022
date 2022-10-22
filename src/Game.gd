@@ -35,14 +35,18 @@ func _ready():
         # Start the title
         yield(get_tree(), "idle_frame") # Wait for next frame before initializing the UI
         Globals.ui_title.open(Globals.version)
-        Globals.state = GameStates.TITLE
+        change_state(GameStates.TITLE)
 
 func _process(delta: float):
     if Input.is_action_just_released("ui_cancel"):
         quit_game()
         return
 
-    if Globals.state == GameStates.PLAY:
+    if Globals.game_state == GameStates.PLAY:
+        if Globals.game_state_entered == false:
+            Globals.creature.change_state(Enums.EntityStates.Asleep)
+            Globals.game_state_entered = true
+
         if Input.is_action_pressed("move_up"):
             Globals.camera.position.y -= 500.0 * delta
             Globals.creature.position.y -= 120.0 * delta
@@ -74,12 +78,13 @@ static func start_game() -> void:
     Globals.current_level = LDTK.load_ldtk("res://media/maps/world_0.ldtk")
     Globals.world.add_child(Globals.current_level)
 
+    # Extract metadata coming from LDTK file to do stuff specific to entities
     var entities_node = Globals.current_level.find_node("Entities")
     for child in entities_node.get_children():
         var entity : Entity = child
         var identifier : String = entity.get_meta("__identifier")
         entity.name = identifier
-        print("entity: ", [entity, entity.get_meta_list()])
+        # print("entity: ", [entity, entity.get_meta_list()])
 
         var sprite_string : String = entity.get_meta("Sprite")
         # match sprite_string:
@@ -96,9 +101,12 @@ static func start_game() -> void:
 
             Globals.creature = child
 
-        # print("entity: ", [entity, entity.get_meta_list(), entity.get_meta("Sprite")])
+    change_state(GameStates.PLAY)
 
-    Globals.state = GameStates.PLAY
+static func change_state(state) -> void:
+    print("[Game] Changing state: %s" % [GameStates.keys()[state]])
+    Globals.game_state = state
+    Globals.game_state_entered = false
 
 static func quit_game() -> void:
     print("[GAME] Quitting...")

@@ -1,5 +1,6 @@
 extends Node
 
+# Constants
 const font1_path : String = "res://media/fonts/silver.ttf"
 const resolutions : Array = [
     # ["426 x 240", Vector2(426, 240)],
@@ -13,18 +14,21 @@ const resolutions : Array = [
     ["7680 x 4320", Vector2(7680, 4320)],
 ]
 
+# Resources
+onready var textures : Dictionary = {}
+onready var map := ResourceLoader.load("res://media/maps/world_0.ldtk") as PackedScene
+onready var entity_prefab := ResourceLoader.load("res://media/scenes/entities/Entity.tscn") as PackedScene
+
+# State
 var settings : GameSettings
 var version : String = "0000000"
 var can_fullscreen : bool
 var bus_main : int
 var bus_music : int
 var bus_sound : int
-var state : int
-
-# Resources
-onready var textures : Dictionary = {}
-onready var map := ResourceLoader.load("res://media/maps/world_0.ldtk") as PackedScene
-onready var entity_prefab := ResourceLoader.load("res://media/scenes/entities/Entity.tscn") as PackedScene
+var game_state : int
+var game_state_entered : bool
+var game_state_exited : bool
 
 # Nodes
 var ui_title : TitleUI
