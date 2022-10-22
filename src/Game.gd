@@ -116,7 +116,7 @@ static func start_game(world_id: int) -> void:
         var identifier : String = entity.get_meta("__identifier")
         var iid : String = entity.get_meta("iid")
         entity.name = "%s (%s)" % [identifier, iid]
-        print("entity: ", [entity, entity.get_meta_list()])
+        # print("[Game] entity: ", [entity, entity.get_meta_list()])
 
         var sprite_string : String = entity.get_meta("Sprite")
         # match sprite_string:
@@ -124,10 +124,24 @@ static func start_game(world_id: int) -> void:
         #     "Plant": print("PLANT!")
 
         if entity.has_meta("WakeUp"):
-            var wake_up = entity.get_meta("WakeUp")
-            if wake_up == true:
+            var data = entity.get_meta("WakeUp")
+            if data == true:
                 var behaviour := WakeUp.new()
                 behaviour.name = "WakeUp"
+                entity.add_child(behaviour)
+
+        if entity.has_meta("AttractEntities"):
+            var data = entity.get_meta("AttractEntities")
+            if data == true:
+                var behaviour := AttractEntities.new()
+                behaviour.name = "AttractEntities"
+                entity.add_child(behaviour)
+
+        if entity.has_meta("Attracted"):
+            var data = entity.get_meta("Attracted")
+            if data == true:
+                var behaviour := Attracted.new()
+                behaviour.name = "Attracted"
                 entity.add_child(behaviour)
 
         var anim_path := "res://media/animations/entities/%s.tres" % [sprite_string]
@@ -153,14 +167,14 @@ static func change_state(state) -> void:
     Globals.game_state_entered = false
 
 static func quit_game() -> void:
-    print("[GAME] Quitting...")
+    print("[Game] Quitting...")
     Globals.get_tree().quit()
 
 static func load_version() -> String:
     var file := File.new()
     var result := file.open("res://version.txt", File.READ)
     if result != OK:
-        print("[GAME] Couldn't load version.")
+        print("[Game] Couldn't load version.")
         file.close()
         return "1111111"
 

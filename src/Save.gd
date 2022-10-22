@@ -6,9 +6,9 @@ static func read_settings() -> GameSettings:
     var settings : GameSettings
     if ResourceLoader.exists(settings_path):
         settings = ResourceLoader.load(settings_path) as GameSettings
-        print("[SAVE] Settings read from file.")
+        print("[Save] Settings read from file.")
     else:
-        print("[SAVE] Settings couldn't be read from file, creating default.")
+        print("[Save] Settings couldn't be read from file, creating default.")
         settings = GameSettings.new()
         write_settings(settings)
     return settings
@@ -16,6 +16,6 @@ static func read_settings() -> GameSettings:
 static func write_settings(data: GameSettings) -> void:
     var result = ResourceSaver.save(settings_path, data)
     if result == OK:
-        print("[SAVE] Settings written to file.")
+        print("[Save] Settings written to file.")
     else:
-        print("[SAVE] Settings couldn't be written to file: ", result)
+        print("[Save] Settings couldn't be written to file: ", result)

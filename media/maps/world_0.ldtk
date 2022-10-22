@@ -10,7 +10,7 @@
 	},
 	"jsonVersion": "1.1.3",
 	"appBuildId": 458364,
-	"nextUid": 22,
+	"nextUid": 25,
 	"identifierStyle": "Capitalize",
 	"worldLayout": "Free",
 	"worldGridWidth": 256,
@@ -238,6 +238,38 @@
 					"allowedRefs": "OnlySame",
 					"allowedRefTags": [],
 					"tilesetUid": null
+				},
+				{
+					"identifier": "Attracted",
+					"__type": "Bool",
+					"uid": 24,
+					"type": "F_Bool",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayPos": "Above",
+					"editorAlwaysShow": false,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": {
+						"id": "V_Bool",
+						"params": [ true ]
+					},
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefTags": [],
+					"tilesetUid": null
 				}
 			]
 		},
@@ -323,6 +355,38 @@
 					"defaultOverride": {
 						"id": "V_String",
 						"params": ["plant"]
+					},
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefTags": [],
+					"tilesetUid": null
+				},
+				{
+					"identifier": "AttractEntities",
+					"__type": "Bool",
+					"uid": 22,
+					"type": "F_Bool",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayPos": "Above",
+					"editorAlwaysShow": false,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": {
+						"id": "V_Bool",
+						"params": [ true ]
 					},
 					"textLanguageMode": null,
 					"symmetricalRef": false,
@@ -441,12 +505,13 @@
 							"fieldInstances": [
 								{ "__identifier": "NodeType", "__value": "res://media/scenes/entities/Entity.tscn", "__type": "String", "__tile": null, "defUid": 13, "realEditorValues": [] },
 								{ "__identifier": "Sprite", "__value": "creature", "__type": "String", "__tile": null, "defUid": 18, "realEditorValues": [] },
-								{ "__identifier": "WakeUp", "__value": true, "__type": "Bool", "__tile": null, "defUid": 21, "realEditorValues": [] }
+								{ "__identifier": "WakeUp", "__value": true, "__type": "Bool", "__tile": null, "defUid": 21, "realEditorValues": [] },
+								{ "__identifier": "Attracted", "__value": true, "__type": "Bool", "__tile": null, "defUid": 24, "realEditorValues": [] }
 							]
 						},
 						{
 							"__identifier": "Plant",
-							"__grid": [11,5],
+							"__grid": [6,6],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": { "tilesetUid": 15, "x": 80, "y": 160, "w": 16, "h": 16 },
@@ -455,15 +520,16 @@
 							"width": 16,
 							"height": 16,
 							"defUid": 5,
-							"px": [181,82],
+							"px": [101,98],
 							"fieldInstances": [
 								{ "__identifier": "NodeType", "__value": "res://media/scenes/entities/Entity.tscn", "__type": "String", "__tile": null, "defUid": 14, "realEditorValues": [] },
-								{ "__identifier": "Sprite", "__value": "plant", "__type": "String", "__tile": null, "defUid": 19, "realEditorValues": [] }
+								{ "__identifier": "Sprite", "__value": "plant", "__type": "String", "__tile": null, "defUid": 19, "realEditorValues": [] },
+								{ "__identifier": "AttractEntities", "__value": true, "__type": "Bool", "__tile": null, "defUid": 22, "realEditorValues": [] }
 							]
 						},
 						{
 							"__identifier": "Plant",
-							"__grid": [3,8],
+							"__grid": [2,8],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": { "tilesetUid": 15, "x": 80, "y": 160, "w": 16, "h": 16 },
@@ -472,10 +538,29 @@
 							"width": 16,
 							"height": 16,
 							"defUid": 5,
-							"px": [60,135],
+							"px": [44,135],
 							"fieldInstances": [
 								{ "__identifier": "NodeType", "__value": "res://media/scenes/entities/Entity.tscn", "__type": "String", "__tile": null, "defUid": 14, "realEditorValues": [] },
-								{ "__identifier": "Sprite", "__value": "plant", "__type": "String", "__tile": null, "defUid": 19, "realEditorValues": [] }
+								{ "__identifier": "Sprite", "__value": "plant", "__type": "String", "__tile": null, "defUid": 19, "realEditorValues": [] },
+								{ "__identifier": "AttractEntities", "__value": true, "__type": "Bool", "__tile": null, "defUid": 22, "realEditorValues": [] }
+							]
+						},
+						{
+							"__identifier": "Plant",
+							"__grid": [6,2],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 15, "x": 80, "y": 160, "w": 16, "h": 16 },
+							"__smartColor": "#94D9B3",
+							"iid": "746f7e60-5110-11ed-afb2-dbbab29b915b",
+							"width": 16,
+							"height": 16,
+							"defUid": 5,
+							"px": [98,46],
+							"fieldInstances": [
+								{ "__identifier": "NodeType", "__value": "res://media/scenes/entities/Entity.tscn", "__type": "String", "__tile": null, "defUid": 14, "realEditorValues": [] },
+								{ "__identifier": "Sprite", "__value": "plant", "__type": "String", "__tile": null, "defUid": 19, "realEditorValues": [] },
+								{ "__identifier": "AttractEntities", "__value": true, "__type": "Bool", "__tile": null, "defUid": 22, "realEditorValues": [] }
 							]
 						}
 					]

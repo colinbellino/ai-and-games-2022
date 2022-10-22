@@ -4,7 +4,7 @@ class_name EntityArea2D extends Area2D
 # because we might have multiple area2d's for
 # an entity to use (eyes, ears other sources of input)
 # Using olfactory senses as a starting point
-onready var parent : Node2D = get_parent()
+onready var entity : Node2D = get_parent()
 
 var source : int # Set to parent value for easier reference
 export(Enums.Stimulus) var stimulus : int # Override on scene inspector
@@ -16,11 +16,14 @@ func _ready() -> void:
 
 func _entity_entered(area: Area2D) -> void:
     if not _entities.has(area):
-        parent.area_entered(area)
+        entity.area_entered(area)
         _entities.append(area)
 
 func _entity_exited(area: Area2D) -> void:
     var entity_found = _entities.find(area)
     if entity_found != -1:
-        parent.area_exited(area)
+        entity.area_exited(area)
         _entities.remove(entity_found)
+
+func _interacted(area: EntityArea2D):
+    entity.area_interacted(area)
