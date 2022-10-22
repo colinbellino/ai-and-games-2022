@@ -12,7 +12,12 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "EntityArea2D",
 "language": "GDScript",
-"path": "res://src/EntityArea2D.gd"
+"path": "res://src/entities/EntityArea2D.gd"
+}, {
+"base": "Node",
+"class": "EntityNode",
+"language": "GDScript",
+"path": "res://src/entities/EntityNode.gd"
 }, {
 "base": "Node",
 "class": "Game",
@@ -23,6 +28,11 @@ _global_script_classes=[ {
 "class": "GameSettings",
 "language": "GDScript",
 "path": "res://src/GameSettings.gd"
+}, {
+"base": "Area2D",
+"class": "MouseArea2D",
+"language": "GDScript",
+"path": "res://src/MouseArea2D.gd"
 }, {
 "base": "Reference",
 "class": "Save",
@@ -41,8 +51,10 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "EntityArea2D": "",
+"EntityNode": "",
 "Game": "",
 "GameSettings": "",
+"MouseArea2D": "",
 "Save": "",
 "SettingsUI": "",
 "TitleUI": ""

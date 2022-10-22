@@ -1,5 +1,8 @@
 extends Node
 
+enum Source {DINO, TREE}
+enum Stimulus {NONE, SIGHT, SOUND, TOUCH, TASTE, SMELL}
+
 const font1_path : String = "res://media/fonts/silver.ttf"
 const resolutions : Array = [
     # ["426 x 240", Vector2(426, 240)],

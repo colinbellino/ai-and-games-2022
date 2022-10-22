@@ -1,0 +1,32 @@
+extends Area2D
+
+class_name EntityArea2D
+
+# Set this up as it's own script to the area2d
+# because we might have multiple area2d's for
+# an entity to use (eyes, ears other sources of input)
+# Using olfactory senses as a starting point
+
+onready var parent = get_parent()
+
+var source : int # Set to parent value for easier reference
+export(Globals.Stimulus) var stimulus : int # Override on scene inspector
+var _entities : Array = []
+
+func _ready() -> void:
+	source = parent.source
+	connect("area_entered", self, "_entity_entered")
+	connect("area_exited", self, "_entity_exited")
+
+
+func _entity_entered(area: Area2D) -> void:
+	if not _entities.has(area):
+		parent.stimulus_entered(area)
+		_entities.append(area)
+
+
+func _entity_exited(area: Area2D) -> void:
+	var entity_found = _entities.find(area)
+	if entity_found != -1:
+		parent.stimulus_exited(area)
+		_entities.remove(entity_found)

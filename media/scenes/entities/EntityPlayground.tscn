@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://media/scenes/entities/HeroEntity.tscn" type="PackedScene" id=1]
+[ext_resource path="res://media/scenes/entities/TreeEntity.tscn" type="PackedScene" id=2]
+
+[node name="EntityPlayground" type="Node2D"]
+
+[node name="Hero" parent="." instance=ExtResource( 1 )]
+position = Vector2( 139, 65 )
+
+[node name="Tree" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2, 53 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 88, 64 )
+current = true
+zoom = Vector2( 0.25, 0.25 )
