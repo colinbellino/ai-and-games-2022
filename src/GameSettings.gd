@@ -10,3 +10,4 @@ export var locale : String = "en"
 # Debug stuff
 export var skip_title : bool
 export var level : int
+export var entity_fullname : bool

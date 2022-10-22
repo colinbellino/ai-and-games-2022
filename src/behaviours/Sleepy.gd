@@ -1,6 +1,4 @@
-class_name Sleepy extends Node
-
-onready var entity : Entity = get_parent()
+class_name Sleepy extends Behaviour
 
 var timer_start : int
 var sleep_delay_in_ms : int = 5000

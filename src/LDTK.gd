@@ -37,7 +37,7 @@ static func load_ldtk(filepath: String) -> Node2D:
         new_level.set_owner(map)
 
         #add layers
-        var layerInstances = get_level_layerInstances(LDtk, level, options)
+        var layerInstances = _get_level_layerInstances(LDtk, level, options)
         for layerInstance in layerInstances:
             new_level.add_child(layerInstance)
             layerInstance.set_owner(map)
@@ -80,7 +80,7 @@ static func load_ldtk(filepath: String) -> Node2D:
     return map
 
 #create layers in level
-static func get_level_layerInstances(LDtk, level, options):
+static func _get_level_layerInstances(LDtk, level, options):
     var layers = []
     # var i = level.layerInstances.size()
     for layerInstance in level.layerInstances:
@@ -99,13 +99,13 @@ static func get_level_layerInstances(LDtk, level, options):
             'Tiles', 'IntGrid', 'AutoLayer':
                 new_layer = LDtk.new_tilemap(layerInstance)
 
-#check for collision layer
+        #check for collision layer
         if layerInstance.__type == 'IntGrid':
             var collision_layer = LDtk.import_collisions(layerInstance, options)
             if collision_layer:
                 layers.push_front(collision_layer)
 
-#add new layer to layers array if not null
+        #add new layer to layers array if not null
         if new_layer:
             new_layer.name = layerInstance.__identifier
             new_layer.position = Vector2(layerInstance.__pxTotalOffsetX, layerInstance.__pxTotalOffsetY)
@@ -118,41 +118,36 @@ static func get_level_layerInstances(LDtk, level, options):
 # Extract metadata coming from LDTK file to do stuff specific to entities
 # **Always do this AFTER the entities_node is added to the tree**
 static func update_entities(entities_node) -> void:
+    # This is an array of dictionary that look like this:
+    # {base:Behaviour, class:Attracted, language:GDScript, path:res://src/behaviours/Attracted.gd}
+    var behaviours : Array = []
+    for item in ProjectSettings.get_setting("_global_script_classes"):
+        if item.base == "Behaviour":
+            behaviours.append(item)
+
     for child in entities_node.get_children():
         var entity : Entity = child
         var identifier : String = entity.get_meta("__identifier")
         var iid : String = entity.get_meta("iid")
-        entity.name = "%s (%s)" % [identifier, iid]
+        if Globals.settings.entity_fullname:
+            entity.name = "%s (%s)" % [identifier, iid]
+        else:
+            entity.name = identifier
         # print("[Game] entity: ", [entity, entity.get_meta_list()])
 
-        # TODO: (Colin) Automate this
-        if entity.has_meta("WakeUp"):
-            var data = entity.get_meta("WakeUp")
-            if data == true:
-                var behaviour := WakeUp.new()
-                behaviour.name = "WakeUp"
-                entity.add_child(behaviour)
+        for behaviour_item in behaviours:
+            var behaviour_name : String = behaviour_item.class
+            if entity.has_meta(behaviour_name):
+                var is_active = entity.get_meta(behaviour_name)
+                if is_active:
+                    # TODO: (Colin) This might be super slow, investigate
+                    # print("behaviour_item: ", behaviour_item)
+                    var behaviour = ResourceLoader.load(behaviour_item.path).new()
+                    if behaviour == null:
+                        return
 
-        if entity.has_meta("SendStimulus"):
-            var data = entity.get_meta("SendStimulus")
-            if data == true:
-                var behaviour := SendStimulus.new()
-                behaviour.name = "SendStimulus"
-                entity.add_child(behaviour)
-
-        if entity.has_meta("Attracted"):
-            var data = entity.get_meta("Attracted")
-            if data == true:
-                var behaviour := Attracted.new()
-                behaviour.name = "Attracted"
-                entity.add_child(behaviour)
-        if entity.has_meta("Attracted"):
-
-            var data = entity.get_meta("Sleepy")
-            if data == true:
-                var behaviour := Sleepy.new()
-                behaviour.name = "Sleepy"
-                entity.add_child(behaviour)
+                    behaviour.name = behaviour_name
+                    entity.add_child(behaviour)
 
         var sprite_string : String = entity.get_meta("Sprite")
         var anim_path := "res://media/animations/entities/%s.tres" % [sprite_string]
@@ -172,3 +167,6 @@ static func update_entities(entities_node) -> void:
             # TODO: remove this
             # Quick hack to make the creature always visible
             Globals.creature.z_index = 99
+
+static func get_behaviour_meta(entity: Entity, behaviour_name: String, meta_identifier: String):
+    return entity.get_meta("%s_%s" % [behaviour_name, meta_identifier])

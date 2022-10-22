@@ -1,6 +1,4 @@
-class_name Attracted extends Node
-
-onready var entity : Entity = get_parent()
+class_name Attracted extends Behaviour
 
 func _ready() -> void:
     var _result = entity.connect("stimulus_received", self, "entity_stimulus_received")

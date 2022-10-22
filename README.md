@@ -1,5 +1,10 @@
 # Project Creature
 
+### Setup the project
+
+- Make sure you setup your editor (or Godot's editor) to indent with 4 SPACES (instead of 1 TAB)
+- For external editors, setup EditorConfig: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+
 ### Entities
 
 Fields used to create new entities:

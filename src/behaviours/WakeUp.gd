@@ -1,6 +1,4 @@
-class_name WakeUp extends Node
-
-onready var entity : Entity = get_parent()
+class_name WakeUp extends Behaviour
 
 func _ready() -> void:
     var _result = entity.connect("interacted", self, "entity_interacted")
