@@ -1,6 +1,4 @@
-extends Area2D
-
-class_name MouseArea2D
+class_name MouseArea2D extends Area2D
 
 onready var parent = get_parent()
 

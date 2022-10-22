@@ -83,7 +83,8 @@ static func start_game() -> void:
     for child in entities_node.get_children():
         var entity : Entity = child
         var identifier : String = entity.get_meta("__identifier")
-        entity.name = identifier
+        var iid : String = entity.get_meta("iid")
+        entity.name = "%s (%s)" % [identifier, iid]
         # print("entity: ", [entity, entity.get_meta_list()])
 
         var sprite_string : String = entity.get_meta("Sprite")
