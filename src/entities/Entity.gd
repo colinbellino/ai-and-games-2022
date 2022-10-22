@@ -38,7 +38,7 @@ func interacted(area: EntityArea2D) -> void:
 
 func area_entered(area: EntityArea2D) -> void:
     print("[ENTITY] %s entered | source: %s | stimulus: %s" % [name, area.source, area.stimulus])
-    connect("interacted", area, "_interacted", [area])
+    var _connection = connect("interacted", area, "_interacted", [area])
     emit_signal("area_entered", area)
 
 func area_exited(area: EntityArea2D) -> void:
