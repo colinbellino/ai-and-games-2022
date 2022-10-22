@@ -9,12 +9,12 @@ func clicked() -> void:
     pass #print("Clicked")
 
 
-func stimulus_entered(area: EntityArea2D) -> void:
+func stimulus_entered(_area: EntityArea2D) -> void:
     pass #print("Entered, Source: ", area.source, "Stimulus: ", area.stimulus)
     # You could do match statements for source and stimulus
     # just use the gobals to match enum values
 
-func stimulus_exited(area: EntityArea2D) -> void:
+func stimulus_exited(_area: EntityArea2D) -> void:
     pass #print("Exited, Source: ", area.source, "Stimulus: ", area.stimulus)
     # You could do match statements for source and stimulus
     # just use the gobals to match enum values

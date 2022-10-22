@@ -15,8 +15,8 @@ var _entities : Array = []
 
 func _ready() -> void:
 	source = parent.source
-	connect("area_entered", self, "_entity_entered")
-	connect("area_exited", self, "_entity_exited")
+	var _result = connect("area_entered", self, "_entity_entered")
+	_result = connect("area_exited", self, "_entity_exited")
 
 
 func _entity_entered(area: Area2D) -> void:

@@ -5,10 +5,10 @@ class_name MouseArea2D
 onready var parent = get_parent()
 
 func _ready() -> void:
-	connect("input_event", self, "_mouse_event")
+	var _result = connect("input_event", self, "_mouse_event")
 
 
-func _mouse_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _mouse_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	 if event is InputEventMouseMotion:
 		 pass # We could do something with mouseovers here
 
