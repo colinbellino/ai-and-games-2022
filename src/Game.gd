@@ -116,12 +116,19 @@ static func start_game(world_id: int) -> void:
         var identifier : String = entity.get_meta("__identifier")
         var iid : String = entity.get_meta("iid")
         entity.name = "%s (%s)" % [identifier, iid]
-        # print("entity: ", [entity, entity.get_meta_list()])
+        print("entity: ", [entity, entity.get_meta_list()])
 
         var sprite_string : String = entity.get_meta("Sprite")
         # match sprite_string:
         #     "Creature": print("CREATURE!")
         #     "Plant": print("PLANT!")
+
+        if entity.has_meta("WakeUp"):
+            var wake_up = entity.get_meta("WakeUp")
+            if wake_up == true:
+                var behaviour := WakeUp.new()
+                behaviour.name = "WakeUp"
+                entity.add_child(behaviour)
 
         var anim_path := "res://media/animations/entities/%s.tres" % [sprite_string]
         if ResourceLoader.exists(anim_path) == false:

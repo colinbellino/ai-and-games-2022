@@ -11,20 +11,17 @@ signal interacted
 signal area_entered(area)
 signal area_exited(area)
 
-func _ready() -> void:
-    pass
-
 func _process(_delta: float):
     if _state == Enums.EntityStates.Idle:
         if _state_entered == false:
             _state_entered = true
-            print("[ENTITY] %s doing nuffin (idle)" % [name])
+            # print("[ENTITY] %s doing nuffin (idle)" % [name])
             sprite_body.play("idle")
 
     if _state == Enums.EntityStates.Asleep:
         if _state_entered == false:
             _state_entered = true
-            print("[ENTITY] %s fell asleep" % [name])
+            # print("[ENTITY] %s fell asleep" % [name])
             sprite_body.play("fall_asleep")
             yield(sprite_body, "animation_finished")
             sprite_body.play("asleep")
