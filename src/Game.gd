@@ -44,8 +44,8 @@ func _process(delta: float):
 
     if Globals.game_state == GameStates.PLAY:
         if Globals.game_state_entered == false:
-            Globals.creature.change_state(Enums.EntityStates.Asleep)
             Globals.game_state_entered = true
+            Globals.creature.change_state(Enums.EntityStates.Asleep)
 
         if Input.is_action_pressed("move_up"):
             Globals.camera.position.y -= 500.0 * delta
@@ -92,8 +92,12 @@ static func start_game() -> void:
         #     "Creature": print("CREATURE!")
         #     "Plant": print("PLANT!")
 
-        var sprite_texture : Texture = ResourceLoader.load("res://media/art/entities/%s.png" % [sprite_string])
-        entity.sprite_body.texture = sprite_texture
+        var path := "res://media/animations/entities/%s.tres" % [sprite_string]
+        if ResourceLoader.exists(path) == false:
+            push_error("Failed to load sprite frames: %s" % [path])
+
+        var sprite_frames : SpriteFrames = ResourceLoader.load(path)
+        entity.sprite_body.frames = sprite_frames
 
         if identifier == "Creature":
             if Globals.creature != null:
