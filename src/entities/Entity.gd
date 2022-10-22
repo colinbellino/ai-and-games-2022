@@ -8,8 +8,8 @@ var _state_entered : bool
 var _state_exited : bool
 
 signal interacted
-signal stimulus_entered(area)
-signal stimulus_exited(area)
+signal area_entered(area)
+signal area_exited(area)
 
 func _ready() -> void:
     pass
@@ -33,13 +33,13 @@ func clicked() -> void:
     print("[ENTITY] %s clicked" % [name])
     emit_signal("interacted")
 
-func stimulus_entered(area: EntityArea2D) -> void:
+func area_entered(area: EntityArea2D) -> void:
     print("[ENTITY] %s entered | source: %s | stimulus: %s" % [name, area.source, area.stimulus])
-    emit_signal("stimulus_entered", area)
+    emit_signal("area_entered", area)
 
-func stimulus_exited(area: EntityArea2D) -> void:
+func area_exited(area: EntityArea2D) -> void:
     print("[ENTITY] %s exited | source: %s | stimulus: %s" % [name, area.source, area.stimulus])
-    emit_signal("stimulus_exit", area)
+    emit_signal("area_exited", area)
 
 func change_state(state: int) -> void:
     print("[ENTITY] %s changing state: %s" % [name, Enums.EntityStates.keys()[state]])
