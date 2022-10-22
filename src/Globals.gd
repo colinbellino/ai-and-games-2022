@@ -16,7 +16,6 @@ const resolutions : Array = [
 
 # Resources
 onready var textures : Dictionary = {}
-onready var map := ResourceLoader.load("res://media/maps/world_0.ldtk") as PackedScene
 onready var entity_prefab := ResourceLoader.load("res://media/scenes/entities/Entity.tscn") as PackedScene
 
 # State

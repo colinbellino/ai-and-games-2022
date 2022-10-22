@@ -30,7 +30,7 @@ func _ready():
     _result = Globals.ui_title.button_quit.connect("pressed", self, "button_quit_pressed")
 
     if Globals.settings.skip_title:
-        start_game()
+        start_game(0)
     else:
         # Start the title
         yield(get_tree(), "idle_frame") # Wait for next frame before initializing the UI
@@ -41,6 +41,31 @@ func _process(delta: float):
     if Input.is_action_just_released("ui_cancel"):
         quit_game()
         return
+
+    if Input.is_action_just_released("debug_1"):
+        start_game(0)
+    if Input.is_action_just_released("debug_2"):
+        start_game(1)
+    if Input.is_action_just_released("debug_3"):
+        start_game(2)
+    if Input.is_action_just_released("debug_4"):
+        start_game(3)
+    if Input.is_action_just_released("debug_5"):
+        start_game(4)
+    if Input.is_action_just_released("debug_6"):
+        start_game(5)
+    if Input.is_action_just_released("debug_7"):
+        start_game(6)
+    if Input.is_action_just_released("debug_8"):
+        start_game(7)
+    if Input.is_action_just_released("debug_9"):
+        start_game(8)
+    if Input.is_action_just_released("debug_10"):
+        start_game(10)
+    if Input.is_action_just_released("debug_11"):
+        start_game(11)
+    if Input.is_action_just_released("debug_12"):
+        start_game(12)
 
     if Globals.game_state == GameStates.PLAY:
         if Globals.game_state_entered == false:
@@ -61,7 +86,7 @@ func _process(delta: float):
             Globals.creature.position.x -= 120.0 * delta
 
 static func button_start_pressed() -> void:
-    start_game()
+    start_game(0)
 
 static func button_continue_pressed() -> void:
     Globals.ui_title.close()
@@ -72,10 +97,16 @@ static func button_settings_pressed() -> void:
 static func button_quit_pressed() -> void:
     quit_game()
 
-static func start_game() -> void:
+static func start_game(world_id: int) -> void:
     Globals.ui_title.close()
 
-    Globals.current_level = LDTK.load_ldtk("res://media/maps/world_0.ldtk")
+    var world_path := "res://media/maps/world_%s.ldtk" % [world_id]
+    var file := File.new()
+    if file.file_exists(world_path) == false:
+        push_error("Failed to load sprite frames: %s" % [world_path])
+        return
+
+    Globals.current_level = LDTK.load_ldtk(world_path)
     Globals.world.add_child(Globals.current_level)
 
     # Extract metadata coming from LDTK file to do stuff specific to entities
@@ -92,11 +123,12 @@ static func start_game() -> void:
         #     "Creature": print("CREATURE!")
         #     "Plant": print("PLANT!")
 
-        var path := "res://media/animations/entities/%s.tres" % [sprite_string]
-        if ResourceLoader.exists(path) == false:
-            push_error("Failed to load sprite frames: %s" % [path])
+        var anim_path := "res://media/animations/entities/%s.tres" % [sprite_string]
+        if ResourceLoader.exists(anim_path) == false:
+            push_error("Failed to load sprite frames: %s" % [anim_path])
+            return
 
-        var sprite_frames : SpriteFrames = ResourceLoader.load(path)
+        var sprite_frames : SpriteFrames = ResourceLoader.load(anim_path)
         entity.sprite_body.frames = sprite_frames
 
         if identifier == "Creature":
