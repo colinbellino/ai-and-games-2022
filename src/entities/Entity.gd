@@ -33,12 +33,17 @@ func clicked() -> void:
     print("[ENTITY] %s clicked" % [name])
     emit_signal("interacted")
 
+func interacted(area: EntityArea2D) -> void:
+    print("[ENTITY] %s interacted | source: %s | stimulus: %s" % [name, area.source, area.stimulus])
+
 func area_entered(area: EntityArea2D) -> void:
     print("[ENTITY] %s entered | source: %s | stimulus: %s" % [name, area.source, area.stimulus])
+    connect("interacted", area, "_interacted", [area])
     emit_signal("area_entered", area)
 
 func area_exited(area: EntityArea2D) -> void:
     print("[ENTITY] %s exited | source: %s | stimulus: %s" % [name, area.source, area.stimulus])
+    disconnect("interacted", area, "_interacted")
     emit_signal("area_exited", area)
 
 func change_state(state: int) -> void:

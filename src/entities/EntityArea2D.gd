@@ -24,3 +24,7 @@ func _entity_exited(area: Area2D) -> void:
 	if entity_found != -1:
 		parent.area_exited(area)
 		_entities.remove(entity_found)
+
+
+func _interacted(area: EntityArea2D):
+	parent.interacted(area)

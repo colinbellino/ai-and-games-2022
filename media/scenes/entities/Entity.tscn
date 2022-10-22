@@ -19,6 +19,8 @@ frames = ExtResource( 1 )
 animation = "wake_up"
 
 [node name="SoundArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 4 )
 stimulus = 2
 
