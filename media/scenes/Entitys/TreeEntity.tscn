@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://media/art/colored_tilemap.png" type="Texture" id=1]
+[ext_resource path="res://src/EntityArea2D.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 61.2
+
+[node name="Sprite" type="Sprite"]
+texture = ExtResource( 1 )
+hframes = 16
+vframes = 10
+frame = 84
+
+[node name="Sound" type="Area2D" parent="."]
+script = ExtResource( 2 )
+stimulus = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sound"]
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
