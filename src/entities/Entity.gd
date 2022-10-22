@@ -12,6 +12,8 @@ var _state_exited : bool
 signal interacted
 signal area_entered(area)
 signal area_exited(area)
+signal state_entered(new_state)
+signal state_exited(previous_state)
 
 signal attracted(emiter)
 
@@ -45,9 +47,9 @@ func _process(_delta: float):
             yield(sprite_body, "animation_finished")
             sprite_body.play("walk")
 
-            # print("MOVING TOWARD: ", destination)
             var tween = create_tween()
             tween.tween_property(self, "position", destination, 1.0)
+            yield(tween, "finished")
 
             change_state(Enums.EntityStates.Idle)
 
@@ -70,9 +72,11 @@ func area_exited(area: EntityArea2D) -> void:
     # disconnect("interacted", area, "_interacted")
 
 func change_state(state: int) -> void:
+    emit_signal("state_exited", _state)
     print("[Entity] %s changing state: %s" % [name, Enums.EntityStates.keys()[state]])
     _state = state
     _state_entered = false
+    emit_signal("state_entered", state)
 
 # Returns an array of Entity found in the area.
 func get_entities_in_area() -> Array:

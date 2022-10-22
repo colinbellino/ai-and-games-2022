@@ -70,7 +70,7 @@ func _process(delta: float):
     if Globals.game_state == GameStates.PLAY:
         if Globals.game_state_entered == false:
             Globals.game_state_entered = true
-            Globals.creature.change_state(Enums.EntityStates.Asleep)
+            # Globals.creature.change_state(Enums.EntityStates.Asleep)
 
         if Input.is_action_pressed("move_up"):
             Globals.camera.position.y -= 500.0 * delta
@@ -142,6 +142,13 @@ static func start_game(world_id: int) -> void:
             if data == true:
                 var behaviour := Attracted.new()
                 behaviour.name = "Attracted"
+                entity.add_child(behaviour)
+        if entity.has_meta("Attracted"):
+
+            var data = entity.get_meta("Sleepy")
+            if data == true:
+                var behaviour := Sleepy.new()
+                behaviour.name = "Sleepy"
                 entity.add_child(behaviour)
 
         var anim_path := "res://media/animations/entities/%s.tres" % [sprite_string]
