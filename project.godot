@@ -130,6 +130,10 @@ action_4={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_32="mouse"
+
 [locale]
 
 locale_filter=[ 0, [ "en", "fr" ] ]
