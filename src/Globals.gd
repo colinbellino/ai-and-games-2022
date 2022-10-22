@@ -25,12 +25,12 @@ var bus_sound : int
 var state : int
 
 # Resources
-onready var sounds : Dictionary = {
-    # 1: ResourceLoader.load("res://media/sounds/death_0.mp3"),
-    # 2: ResourceLoader.load("res://media/sounds/death_1.mp3"),
-    # 3: ResourceLoader.load("res://media/sounds/hit.mp3"),
-    # 4: ResourceLoader.load("res://media/sounds/cast_summoning.mp3"),
+onready var textures : Dictionary = {
+    "creature": ResourceLoader.load("res://media/art/entities/creature.png"),
+    "plant": ResourceLoader.load("res://media/art/entities/plant.png"),
 }
+onready var map := ResourceLoader.load("res://media/maps/world_0.ldtk") as PackedScene
+onready var entity_prefab := ResourceLoader.load("res://media/scenes/entities/Entity.tscn") as PackedScene
 
 # Nodes
 var ui_title : TitleUI

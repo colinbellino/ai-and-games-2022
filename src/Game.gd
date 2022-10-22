@@ -29,10 +29,13 @@ func _ready():
     _result = Globals.ui_title.button_settings.connect("pressed", self, "button_settings_pressed")
     _result = Globals.ui_title.button_quit.connect("pressed", self, "button_quit_pressed")
 
-    # Start the title
-    yield(get_tree(), "idle_frame") # Wait for next frame before initializing the UI
-    Globals.ui_title.open(Globals.version)
-    Globals.state = GameStates.TITLE
+    if Globals.settings.skip_title:
+        start_game()
+    else:
+        # Start the title
+        yield(get_tree(), "idle_frame") # Wait for next frame before initializing the UI
+        Globals.ui_title.open(Globals.version)
+        Globals.state = GameStates.TITLE
 
 func _process(delta: float):
     if Input.is_action_just_released("ui_cancel"):
@@ -49,27 +52,45 @@ func _process(delta: float):
         if Input.is_action_pressed("move_left"):
             Globals.camera.position.x -= 500.0 * delta
 
-func button_start_pressed() -> void:
+static func button_start_pressed() -> void:
+    start_game()
+
+static func button_continue_pressed() -> void:
     Globals.ui_title.close()
 
-    var map := ResourceLoader.load("res://media/maps/sample1.ldtk") as PackedScene
-    Globals.current_level = map.instance()
+static func button_settings_pressed() -> void:
+    Globals.ui_settings.open()
+
+static func button_quit_pressed() -> void:
+    quit_game()
+
+static func start_game() -> void:
+    Globals.ui_title.close()
+
+    Globals.current_level = LDTK.load_ldtk("res://media/maps/world_0.ldtk")
     Globals.world.add_child(Globals.current_level)
+
+    var entities_node = Globals.current_level.find_node("Entities")
+    for child in entities_node.get_children():
+        print("child: ", [child])
+        var entity : Entity = child
+
+        var sprite_string : String = child.get_meta("Sprite")
+        # match sprite_string:
+        #     "Creature": print("CREATURE!")
+        #     "Plant": print("PLANT!")
+
+        var sprite_texture : Texture = ResourceLoader.load("res://media/art/entities/%s.png" % [sprite_string])
+        print("sprite_texture: ", [sprite_string, sprite_texture])
+        entity.sprite_body.texture = sprite_texture
+
+        # print("entity: ", [entity, entity.get_meta_list(), entity.get_meta("Sprite")])
 
     Globals.state = GameStates.PLAY
 
-func button_continue_pressed() -> void:
-    Globals.ui_title.close()
-
-func button_settings_pressed() -> void:
-    Globals.ui_settings.open()
-
-func quit_game() -> void:
+static func quit_game() -> void:
     print("[GAME] Quitting...")
-    get_tree().quit()
-
-func button_quit_pressed() -> void:
-    quit_game()
+    Globals.get_tree().quit()
 
 static func load_version() -> String:
     var file := File.new()
