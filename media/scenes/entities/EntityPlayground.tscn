@@ -7,9 +7,10 @@
 
 [node name="Hero" parent="." instance=ExtResource( 1 )]
 position = Vector2( 139, 65 )
+source = null
 
 [node name="Tree" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2, 53 )
+position = Vector2( 28, 60 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 88, 64 )
