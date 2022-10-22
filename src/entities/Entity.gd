@@ -1,17 +1,15 @@
 class_name Entity extends Node
 
-# export(Globals.Source) var source : int # Set in scene inspector
-
-var sprite_body : Sprite
+onready var sprite_body : Sprite = find_node("SpriteBody")
 
 func _ready() -> void:
-    sprite_body = find_node("SpriteBody")
+    pass
 
 func clicked() -> void:
-    print("[ENTITY] Clicked: ", self)
+    print("[ENTITY] %s clicked" % [name])
 
 func stimulus_entered(area: EntityArea2D) -> void:
-    print("[ENTITY] Entered, Source: ", area.source, " | Stimulus: ", area.stimulus)
+    print("[ENTITY] %s entered | source: %s | stimulus: %s" % [name, area.source, area.stimulus])
 
 func stimulus_exited(area: EntityArea2D) -> void:
-    print("[ENTITY] Exited, Source: ", area.source, " | Stimulus: ", area.stimulus)
+    print("[ENTITY] %s exited | source: %s | stimulus: %s" % [name, area.source, area.stimulus])
