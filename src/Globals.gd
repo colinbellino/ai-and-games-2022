@@ -29,10 +29,12 @@ var bus_sound : int
 var game_state : int
 var game_state_entered : bool
 var game_state_exited : bool
+var emotion_level : int
 
 # Nodes
 var ui_title : TitleUI
 var ui_settings : SettingsUI
+var ui_debug : DebugUI
 var world : Node2D
 var current_level: Node2D
 var camera: Camera2D

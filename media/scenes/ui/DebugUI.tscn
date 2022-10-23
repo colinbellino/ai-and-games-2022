@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://media/main.theme" type="Theme" id=1]
+[ext_resource path="res://src/DebugUI.gd" type="Script" id=2]
+
+[node name="DebugUI" type="CanvasLayer"]
+unique_name_in_owner = true
+layer = 2
+follow_viewport_enable = true
+script = ExtResource( 2 )
+
+[node name="Dump" type="Label" parent="."]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -468.0
+margin_top = 15.0
+margin_right = 60.0
+margin_bottom = 466.0
+theme = ExtResource( 1 )
+text = "{
+DEBUG HERE
+}"

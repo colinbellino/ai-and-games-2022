@@ -17,6 +17,8 @@ func _ready():
     assert(Globals.ui_title != null, "Globals.ui_title not initialized correctly.")
     Globals.ui_settings = get_node("%SettingsUI")
     assert(Globals.ui_settings != null, "Globals.ui_settings not initialized correctly.")
+    Globals.ui_debug = get_node("%DebugUI")
+    assert(Globals.ui_debug != null, "Globals.ui_debug not initialized correctly.")
     Globals.camera = get_node("%MainCamera")
     assert(Globals.camera != null, "Globals.camera not initialized correctly.")
     Globals.audio_player_sound = get_node("%SoundPlayer")
@@ -89,7 +91,9 @@ func _process(delta: float):
             Globals.game_state_entered = true
             # Globals.creature.change_state(Enums.EntityStates.Asleep)
 
-        Globals.camera.position = Globals.creature.position * Globals.world.scale - get_viewport().size / 2
+        Globals.ui_debug.dump_label.text = JSON.print({
+            "emotion": Globals.emotion_level,
+        }, "  ")
 
         if Input.is_action_pressed("move_up"):
             Globals.camera.position.y -= 500.0 * delta
