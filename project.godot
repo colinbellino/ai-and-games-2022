@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Reference",
+"base": "Behaviour",
 "class": "Attracted",
 "language": "GDScript",
 "path": "res://src/behaviours/Attracted.gd"
@@ -79,7 +79,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/SettingsUI.gd"
 }, {
-"base": "Reference",
+"base": "Behaviour",
 "class": "Sleepy",
 "language": "GDScript",
 "path": "res://src/behaviours/Sleepy.gd"
@@ -89,7 +89,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/TitleUI.gd"
 }, {
-"base": "Reference",
+"base": "Behaviour",
 "class": "WakeUp",
 "language": "GDScript",
 "path": "res://src/behaviours/WakeUp.gd"
