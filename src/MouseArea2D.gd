@@ -3,11 +3,11 @@ class_name MouseArea2D extends Area2D
 onready var entity = get_parent()
 
 func _ready() -> void:
-    var _result = connect("input_event", self, "_mouse_event")
+    var _result = connect("input_event", self, "on_input_event")
 
-func _mouse_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+func on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
     if event is InputEventMouseMotion:
         pass # We could do something with mouseovers here
 
-    if event is InputEventMouseButton and event.is_action_pressed("mouse_left"):
+    if event.is_action_released("mouse_left"):
         entity.interact()
