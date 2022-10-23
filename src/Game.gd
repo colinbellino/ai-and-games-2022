@@ -50,16 +50,8 @@ func _ready():
         Globals.ui_title.open(Globals.version)
         change_state(GameStates.TITLE)
 
-        # Start playing menu music - temp placeholder, will cleanup and migrate music management
-        # NOTE: can't start/stop music from the static functions - I'll work on some kind of management scheme
-        #       on Sunday.
-        # print("scene music player vol: ", $MusicPlayer.volume_db)
-        # var audio_stream: AudioStreamOGGVorbis = preload("res://media/audio/ui/menu.ogg") # <-- this didn't accept a const string from Globals.gd :(
-        # audio_stream.set_loop(true)
-        # $MusicPlayer.stream = audio_stream
-        # $MusicPlayer.play()
+        # Start playing menu music
         Globals.play_music(Globals.MUSIC.MENU)
-        # AudioManager.play_music(AudioManager.MUSIC.MENU)
 
 func _process(delta: float):
     if Input.is_action_just_released("ui_cancel"):
@@ -116,9 +108,11 @@ static func button_start_pressed() -> void:
     start_game(Globals.settings.level)
 
 static func button_continue_pressed() -> void:
+    Globals.play_sfx(Globals.SFX.BUTTON_CLICK)
     Globals.ui_title.close()
 
 static func button_settings_pressed() -> void:
+    Globals.play_sfx(Globals.SFX.BUTTON_CLICK)
     Globals.ui_settings.open()
 
 static func button_quit_pressed() -> void:
