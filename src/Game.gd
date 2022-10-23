@@ -12,6 +12,8 @@ func _ready():
     Globals.ui_title = get_node("%TitleUI")
     Globals.ui_settings = get_node("%SettingsUI")
     Globals.camera = get_node("%MainCamera")
+    Globals.audio_player_sound = get_node("%SoundPlayer")
+    Globals.audio_player_music = get_node("%MusicPlayer")
     Globals.version = load_version()
     Globals.can_fullscreen = OS.get_name() == "Windows"
     Globals.can_change_resolution = OS.get_name() != "HTML5"
