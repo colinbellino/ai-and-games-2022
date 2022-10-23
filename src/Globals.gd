@@ -37,6 +37,8 @@ var world : Node2D
 var current_level: Node2D
 var camera: Camera2D
 var creature : Entity
+var audio_player_sound : AudioStreamPlayer
+var audio_player_music : AudioStreamPlayer
 
 # Utils
 
