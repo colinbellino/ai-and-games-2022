@@ -83,14 +83,12 @@ func play_sfx( fx: int) -> void:
         Globals.audio_player_sound.play()
     elif fx == SFX.BUTTON_CLICK:
         var num = randf()
-        print(num)
         if num < 0.5:
             audio_player_sound.stream = _snd_button_e
         else:
             audio_player_sound.stream = _snd_button_c
 
         Globals.audio_player_sound.play()
-
 
 func play_music( music: int ) -> void:
     var stream = null
