@@ -6,15 +6,25 @@ func _ready():
     # Init stuff here
     Globals.settings = Save.read_settings()
     Globals.bus_main = AudioServer.get_bus_index("Master")
+    assert(Globals.bus_main != null, "Globals.bus_main not initialized correctly.")
     Globals.bus_music = AudioServer.get_bus_index("Music")
+    assert(Globals.bus_music != null, "Globals.bus_music not initialized correctly.")
     Globals.bus_sound = AudioServer.get_bus_index("Sound")
+    assert(Globals.bus_sound != null, "Globals.bus_sound not initialized correctly.")
     Globals.world = get_node("%World")
+    assert(Globals.world != null, "Globals.world not initialized correctly.")
     Globals.ui_title = get_node("%TitleUI")
+    assert(Globals.ui_title != null, "Globals.ui_title not initialized correctly.")
     Globals.ui_settings = get_node("%SettingsUI")
+    assert(Globals.ui_settings != null, "Globals.ui_settings not initialized correctly.")
     Globals.camera = get_node("%MainCamera")
+    assert(Globals.camera != null, "Globals.camera not initialized correctly.")
     Globals.audio_player_sound = get_node("%SoundPlayer")
+    assert(Globals.audio_player_sound != null, "Globals.audio_player_sound not initialized correctly.")
     Globals.audio_player_music = get_node("%MusicPlayer")
+    assert(Globals.audio_player_music != null, "Globals.audio_player_music not initialized correctly.")
     Globals.version = load_version()
+    assert(Globals.version != null, "Globals.version not initialized correctly.")
     Globals.can_fullscreen = OS.get_name() == "Windows"
     Globals.can_change_resolution = OS.get_name() != "HTML5"
 
