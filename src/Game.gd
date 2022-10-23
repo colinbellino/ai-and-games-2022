@@ -110,13 +110,13 @@ static func start_game(world_id: int) -> void:
 
     var world_path := "res://media/maps/world_%s.ldtk" % [world_id]
     var file := File.new()
-    if file.file_exists(world_path) == false:
-        push_error("Failed to load sprite frames: %s" % [world_path])
-        return
+    assert(file.file_exists(world_path), "Failed to load sprite frames: %s" % [world_path])
 
     Globals.current_level = LDTK.load_ldtk(world_path)
     Globals.world.add_child(Globals.current_level)
     LDTK.update_entities(Globals.current_level.find_node("Entities"))
+
+    assert(Globals.creature != null, "No creature found in the level, did we forget to add one?")
 
     change_state(GameStates.PLAY)
 

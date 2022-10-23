@@ -151,23 +151,10 @@ static func update_entities(entities_node) -> void:
                     # TODO: (Colin) This might be super slow, investigate
                     # print("[LDTK] behaviour_item: ", behaviour_item)
                     var behaviour = ResourceLoader.load(behaviour_item.path).new()
-                    if behaviour == null:
-                        push_error("Failed to load the behaviour: %s" % [behaviour_name])
-                        return
+                    assert(behaviour != null, "Failed to load the behaviour: %s" % [behaviour_name])
 
                     behaviour.name = behaviour_name
                     entity.add_child(behaviour)
-
-        # TODO: Move this to a behaviour
-        if identifier == "Creature":
-            if Globals.creature != null:
-                push_error("Already on Creature in the world")
-                return
-
-            Globals.creature = child
-            # TODO: remove this
-            # Quick hack to make the creature always visible
-            Globals.creature.z_index = 99
 
     if OS.is_debug_build() && had_behaviour_warning:
         var names = []
