@@ -50,35 +50,38 @@ func _process(delta: float):
         quit_game()
         return
 
-    if Input.is_action_just_released("debug_1"):
-        start_game(0)
-    if Input.is_action_just_released("debug_2"):
-        start_game(1)
-    if Input.is_action_just_released("debug_3"):
-        start_game(2)
-    if Input.is_action_just_released("debug_4"):
-        start_game(3)
-    if Input.is_action_just_released("debug_5"):
-        start_game(4)
-    if Input.is_action_just_released("debug_6"):
-        start_game(5)
-    if Input.is_action_just_released("debug_7"):
-        start_game(6)
-    if Input.is_action_just_released("debug_8"):
-        start_game(7)
-    if Input.is_action_just_released("debug_9"):
-        start_game(8)
-    if Input.is_action_just_released("debug_10"):
-        start_game(10)
-    if Input.is_action_just_released("debug_11"):
-        start_game(11)
-    if Input.is_action_just_released("debug_12"):
-        start_game(12)
+    if Globals.game_state == GameStates.TITLE:
+        if Input.is_action_just_released("debug_1"):
+            start_game(0)
+        if Input.is_action_just_released("debug_2"):
+            start_game(1)
+        if Input.is_action_just_released("debug_3"):
+            start_game(2)
+        if Input.is_action_just_released("debug_4"):
+            start_game(3)
+        if Input.is_action_just_released("debug_5"):
+            start_game(4)
+        if Input.is_action_just_released("debug_6"):
+            start_game(5)
+        if Input.is_action_just_released("debug_7"):
+            start_game(6)
+        if Input.is_action_just_released("debug_8"):
+            start_game(7)
+        if Input.is_action_just_released("debug_9"):
+            start_game(8)
+        if Input.is_action_just_released("debug_10"):
+            start_game(10)
+        if Input.is_action_just_released("debug_11"):
+            start_game(11)
+        if Input.is_action_just_released("debug_12"):
+            start_game(12)
 
     if Globals.game_state == GameStates.PLAY:
         if Globals.game_state_entered == false:
             Globals.game_state_entered = true
             # Globals.creature.change_state(Enums.EntityStates.Asleep)
+
+        Globals.camera.position = Globals.creature.position * Globals.world.scale - get_viewport().size / 2
 
         if Input.is_action_pressed("move_up"):
             Globals.camera.position.y -= 500.0 * delta

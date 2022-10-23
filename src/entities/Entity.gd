@@ -47,7 +47,7 @@ func _process(_delta: float):
             sprite_body.play("walk")
 
             var tween = create_tween()
-            tween.tween_property(self, "position", destination, 1.0)
+            tween.tween_property(self, "position", destination, 2.0)
             yield(tween, "finished")
 
             change_state(Enums.EntityStates.Idle)
