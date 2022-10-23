@@ -67,7 +67,7 @@
 			"__cHei": 6,
 			"identifier": "Tileset_island2",
 			"uid": 11,
-			"relPath": "../../../LDtk/G_/Pictures/Pixel Practice/aiAndGamesArt/tileset_island.png",
+			"relPath": "../art/tiles/tileset_island.png",
 			"embedAtlas": null,
 			"pxWid": 96,
 			"pxHei": 96,
@@ -79,7 +79,10 @@
 			"enumTags": [],
 			"customData": [],
 			"savedSelections": [],
-			"cachedPixelData": null
+			"cachedPixelData": {
+				"opaqueTiles": "111111111111111111111111111111111111",
+				"averageColors": "f67af879f57afa87f879fa77f879fb87f879f879f17bf879f57af879f67afa88f879fa87fa86f985fa86f683f885f683f985f592f985f985fb87f985fa86f885fa86f683f985f683"
+			}
 		}
 	], "enums": [], "externalEnums": [], "levelFields": [] },
 	"levels": [
@@ -114,7 +117,7 @@
 					"__pxTotalOffsetX": 0,
 					"__pxTotalOffsetY": 0,
 					"__tilesetDefUid": 11,
-					"__tilesetRelPath": "G:/Pictures/Pixel Practice/aiAndGamesArt/tileset_island.png",
+					"__tilesetRelPath": "../art/tiles/tileset_island.png",
 					"iid": "b95c12a0-5110-11ed-ba07-d36595a61514",
 					"levelId": 0,
 					"layerDefUid": 13,
