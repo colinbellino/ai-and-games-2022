@@ -24,6 +24,7 @@ onready var entity_prefab := ResourceLoader.load("res://media/scenes/entities/En
 var settings : GameSettings
 var version : String = "0000000"
 var can_fullscreen : bool
+var can_change_resolution : bool
 var bus_main : int
 var bus_music : int
 var bus_sound : int

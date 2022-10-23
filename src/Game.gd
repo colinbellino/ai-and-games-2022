@@ -14,6 +14,7 @@ func _ready():
     Globals.camera = get_node("%MainCamera")
     Globals.version = load_version()
     Globals.can_fullscreen = OS.get_name() == "Windows"
+    Globals.can_change_resolution = OS.get_name() != "HTML5"
 
     if Globals.can_fullscreen:
         Globals.set_fullscreen(Globals.settings.window_fullscreen)

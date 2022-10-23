@@ -33,10 +33,13 @@ func open() -> void:
         button_fullscreen.visible = true
         button_fullscreen.pressed = Globals.settings.window_fullscreen
 
-    button_resolution.clear()
-    for item in Globals.resolutions:
-        button_resolution.add_item(item[0])
-    button_resolution.selected = Globals.settings.resolution_index
+    button_resolution.visible = false
+    if Globals.can_change_resolution:
+        button_resolution.visible = true
+        button_resolution.clear()
+        for item in Globals.resolutions:
+            button_resolution.add_item(item[0])
+        button_resolution.selected = Globals.settings.resolution_index
 
     slider_volume_main.value = Globals.settings.volume_main
     slider_volume_music.value = Globals.settings.volume_music

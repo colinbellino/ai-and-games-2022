@@ -20,7 +20,7 @@
         {
             "label": "Windows: deploy",
             "type": "shell",
-            "command": "butler push ./builds/Windows/${input:folder} colinbellino/AI2022:win",
+            "command": "butler push ./builds/Windows/${input:folder} colinbellino/ai-and-games-2022:win",
             "problemMatcher": []
         },
         {
@@ -42,7 +42,7 @@
         {
             "label": "Mac: deploy",
             "type": "shell",
-            "command": "butler push ./builds/Mac/${input:folder} colinbellino/AI2022:mac",
+            "command": "butler push ./builds/Mac/${input:folder} colinbellino/ai-and-games-2022:mac",
             "problemMatcher": []
         },
         {
@@ -60,7 +60,7 @@
         {
             "label": "Web: deploy",
             "type": "shell",
-            "command": "butler push ./builds/Web/${input:folder} colinbellino/AI2022:web",
+            "command": "butler push ./builds/Web/${input:folder} colinbellino/ai-and-games-2022:web",
             "problemMatcher": []
         },
     ],
