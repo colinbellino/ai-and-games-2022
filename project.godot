@@ -74,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/MouseArea2D.gd"
 }, {
+"base": "Behaviour",
+"class": "Pet",
+"language": "GDScript",
+"path": "res://src/behaviours/Pet.gd"
+}, {
 "base": "Reference",
 "class": "Save",
 "language": "GDScript",
@@ -113,6 +118,7 @@ _global_script_class_icons={
 "IsCreature": "",
 "LDTK": "",
 "MouseArea2D": "",
+"Pet": "",
 "Save": "",
 "SettingsUI": "",
 "Sleepy": "",
@@ -220,6 +226,11 @@ action_4={
 mouse_left={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+mouse_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 debug_1={

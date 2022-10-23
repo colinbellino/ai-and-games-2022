@@ -10,4 +10,6 @@ func on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void
         pass # We could do something with mouseovers here
 
     if event.is_action_released("mouse_left"):
-        entity.interact()
+        entity.interact(0)
+    elif event.is_action_released("mouse_right"):
+        entity.interact(1)

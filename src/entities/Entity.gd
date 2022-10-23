@@ -9,7 +9,7 @@ var _state : int
 var _state_entered : bool
 var _state_exited : bool
 
-signal interacted
+signal interacted(interaction_type)
 signal area_entered(area)
 signal area_exited(area)
 signal state_entered(new_state)
@@ -52,9 +52,9 @@ func _process(_delta: float):
 
             change_state(Enums.EntityStates.Idle)
 
-func interact() -> void:
+func interact(_interaction_type: int) -> void:
     # print("[Entity] %s interact" % [name])
-    emit_signal("interacted")
+    emit_signal("interacted", _interaction_type)
 
 func area_interacted(_area: EntityArea2D) -> void:
     # print("[Entity] %s interacted | source: %s | stimulus: %s" % [name, area.source, area.stimulus])
@@ -63,12 +63,10 @@ func area_interacted(_area: EntityArea2D) -> void:
 func area_entered(area: EntityArea2D) -> void:
     # print("[Entity] %s entered | source: %s | stimulus: %s" % [name, area.source, area.stimulus])
     emit_signal("area_entered", area)
-    # var _result = connect("interacted", area, "_interacted", [area])
 
 func area_exited(area: EntityArea2D) -> void:
     # print("[Entity] %s exited | source: %s | stimulus: %s" % [name, area.source, area.stimulus])
     emit_signal("area_exited", area)
-    # disconnect("interacted", area, "_interacted")
 
 func change_state(state: int) -> void:
     emit_signal("state_exited", _state)

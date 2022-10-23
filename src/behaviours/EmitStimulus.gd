@@ -6,7 +6,7 @@ func _ready() -> void:
 func _exit_tree() -> void:
     entity.disconnect("interacted", self, "entity_interacted")
 
-func entity_interacted() -> void:
+func entity_interacted(_interaction_type: int) -> void:
     entity.change_state(Enums.EntityStates.Activating)
     var type = LDTK.get_behaviour_meta(entity, "EmitStimulus", "Type")
 

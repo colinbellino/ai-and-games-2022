@@ -43,13 +43,14 @@ func _ready():
     _result = Globals.ui_title.button_continue.connect("pressed", self, "button_continue_pressed")
     _result = Globals.ui_title.button_settings.connect("pressed", self, "button_settings_pressed")
     _result = Globals.ui_title.button_quit.connect("pressed", self, "button_quit_pressed")
+    Globals.ui_debug.version_label.text = Globals.version
 
     if Globals.settings.skip_title:
         button_start_pressed()
     else:
         # Start the title
         yield(get_tree(), "idle_frame") # Wait for next frame before initializing the UI
-        Globals.ui_title.open(Globals.version)
+        Globals.ui_title.open()
         change_state(GameStates.TITLE)
 
         # Start playing menu music
