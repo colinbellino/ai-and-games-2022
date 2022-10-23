@@ -41,10 +41,13 @@ func _ready():
         # Start playing menu music - temp placeholder, will cleanup and migrate music management
         # NOTE: can't start/stop music from the static functions - I'll work on some kind of management scheme
         #       on Sunday.
+        # print("scene music player vol: ", $MusicPlayer.volume_db)
         var audio_stream: AudioStreamOGGVorbis = preload("res://media/audio/ui/menu.ogg") # <-- this didn't accept a const string from Globals.gd :(
         audio_stream.set_loop(true)
         $MusicPlayer.stream = audio_stream
         $MusicPlayer.play()
+
+        # AudioManager.play_music(AudioManager.MUSIC.MENU)
 
 func _process(delta: float):
     if Input.is_action_just_released("ui_cancel"):

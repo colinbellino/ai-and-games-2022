@@ -14,8 +14,6 @@ const resolutions : Array = [
     ["7680 x 4320", Vector2(7680, 4320)],
 ]
 
-const music_menu_path : String = "res://media/audio/ui/menu.ogg"
-
 # Resources
 onready var textures : Dictionary = {}
 onready var entity_prefab := ResourceLoader.load("res://media/scenes/entities/Entity.tscn") as PackedScene
