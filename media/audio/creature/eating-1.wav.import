@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/step-1234.wav-da8c6900d46c7a94ba2c01e6516a4bdf.sample"
+path="res://.import/eating-1.wav-4bb45233276e0dc3e132c9e08173c419.sample"
 
 [deps]
 
-source_file="res://media/audio/step-1234.wav"
-dest_files=[ "res://.import/step-1234.wav-da8c6900d46c7a94ba2c01e6516a4bdf.sample" ]
+source_file="res://media/audio/creature/eating-1.wav"
+dest_files=[ "res://.import/eating-1.wav-4bb45233276e0dc3e132c9e08173c419.sample" ]
 
 [params]
 
