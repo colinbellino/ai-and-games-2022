@@ -6,13 +6,25 @@ func _ready():
     # Init stuff here
     Globals.settings = Save.read_settings()
     Globals.bus_main = AudioServer.get_bus_index("Master")
+    assert(Globals.bus_main != null, "Globals.bus_main not initialized correctly.")
     Globals.bus_music = AudioServer.get_bus_index("Music")
+    assert(Globals.bus_music != null, "Globals.bus_music not initialized correctly.")
     Globals.bus_sound = AudioServer.get_bus_index("Sound")
+    assert(Globals.bus_sound != null, "Globals.bus_sound not initialized correctly.")
     Globals.world = get_node("%World")
+    assert(Globals.world != null, "Globals.world not initialized correctly.")
     Globals.ui_title = get_node("%TitleUI")
+    assert(Globals.ui_title != null, "Globals.ui_title not initialized correctly.")
     Globals.ui_settings = get_node("%SettingsUI")
+    assert(Globals.ui_settings != null, "Globals.ui_settings not initialized correctly.")
     Globals.camera = get_node("%MainCamera")
+    assert(Globals.camera != null, "Globals.camera not initialized correctly.")
+    Globals.audio_player_sound = get_node("%SoundPlayer")
+    assert(Globals.audio_player_sound != null, "Globals.audio_player_sound not initialized correctly.")
+    Globals.audio_player_music = get_node("%MusicPlayer")
+    assert(Globals.audio_player_music != null, "Globals.audio_player_music not initialized correctly.")
     Globals.version = load_version()
+    assert(Globals.version != null, "Globals.version not initialized correctly.")
     Globals.can_fullscreen = OS.get_name() == "Windows"
     Globals.can_change_resolution = OS.get_name() != "HTML5"
 
@@ -38,13 +50,8 @@ func _ready():
         Globals.ui_title.open(Globals.version)
         change_state(GameStates.TITLE)
 
-        # Start playing menu music - temp placeholder, will cleanup and migrate music management
-        # NOTE: can't start/stop music from the static functions - I'll work on some kind of management scheme
-        #       on Sunday.
-        var audio_stream: AudioStreamOGGVorbis = preload("res://media/audio/ui/menu.ogg") # <-- this didn't accept a const string from Globals.gd :(
-        audio_stream.set_loop(true)
-        $MusicPlayer.stream = audio_stream
-        $MusicPlayer.play()
+        # Start playing menu music
+        Globals.play_music(Globals.MUSIC.MENU)
 
 func _process(delta: float):
     if Input.is_action_just_released("ui_cancel"):
@@ -101,9 +108,11 @@ static func button_start_pressed() -> void:
     start_game(Globals.settings.level)
 
 static func button_continue_pressed() -> void:
+    Globals.play_sfx(Globals.SFX.BUTTON_CLICK)
     Globals.ui_title.close()
 
 static func button_settings_pressed() -> void:
+    Globals.play_sfx(Globals.SFX.BUTTON_CLICK)
     Globals.ui_settings.open()
 
 static func button_quit_pressed() -> void:
@@ -111,6 +120,7 @@ static func button_quit_pressed() -> void:
 
 static func start_game(world_id: int) -> void:
     Globals.ui_title.close()
+    Globals.play_music(Globals.MUSIC.CALM)
 
     var world_path := "res://media/maps/world_%s.ldtk" % [world_id]
     var file := File.new()

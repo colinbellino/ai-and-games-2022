@@ -13,6 +13,10 @@ func _ready() -> void:
     button_settings = get_node("%Settings")
     button_quit = get_node("%Quit")
 
+    var _result := button_start.connect("mouse_entered", self, "on_button_hover")
+    _result = button_settings.connect("mouse_entered", self, "on_button_hover")
+    _result = button_quit.connect("mouse_entered", self, "on_button_hover")
+
     close()
 
 func open(version: String) -> void:
@@ -22,3 +26,6 @@ func open(version: String) -> void:
 
 func close() -> void:
     visible = false
+
+func on_button_hover():
+    Globals.play_sfx(Globals.SFX.BUTTON_HOVER)

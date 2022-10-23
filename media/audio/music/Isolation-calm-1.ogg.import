@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Isolation-calm-1.ogg-1f3b09fcf74a7459e8862fbc1fdc2b45.oggstr"
+
+[deps]
+
+source_file="res://media/audio/music/Isolation-calm-1.ogg"
+dest_files=[ "res://.import/Isolation-calm-1.ogg-1f3b09fcf74a7459e8862fbc1fdc2b45.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
