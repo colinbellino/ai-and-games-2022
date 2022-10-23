@@ -1,4 +1,4 @@
-class_name SendStimulus extends Behaviour
+class_name EmitStimulus extends Behaviour
 
 func _ready() -> void:
     var _result = entity.connect("interacted", self, "entity_interacted")
@@ -8,7 +8,7 @@ func _exit_tree() -> void:
 
 func entity_interacted() -> void:
     entity.change_state(Enums.EntityStates.Activating)
-    var type = LDTK.get_behaviour_meta(entity, "SendStimulus", "Type")
+    var type = LDTK.get_behaviour_meta(entity, "EmitStimulus", "Type")
 
     var entities = entity.get_entities_in_area()
     for target in entities:

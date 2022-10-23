@@ -397,7 +397,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "SendStimulus",
+					"identifier": "EmitStimulus",
 					"__type": "Bool",
 					"uid": 22,
 					"type": "F_Bool",
@@ -429,7 +429,7 @@
 					"tilesetUid": null
 				},
 				{
-					"identifier": "SendStimulus_Type",
+					"identifier": "EmitStimulus_Type",
 					"__type": "String",
 					"uid": 26,
 					"type": "F_String",
@@ -621,8 +621,8 @@
 							"fieldInstances": [
 								{ "__identifier": "NodeType", "__value": "res://media/scenes/entities/Entity.tscn", "__type": "String", "__tile": null, "defUid": 14, "realEditorValues": [] },
 								{ "__identifier": "Sprite", "__value": "plant", "__type": "String", "__tile": null, "defUid": 19, "realEditorValues": [] },
-								{ "__identifier": "SendStimulus", "__value": true, "__type": "Bool", "__tile": null, "defUid": 22, "realEditorValues": [] },
-								{ "__identifier": "SendStimulus_Type", "__value": "Attraction", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
+								{ "__identifier": "EmitStimulus", "__value": true, "__type": "Bool", "__tile": null, "defUid": 22, "realEditorValues": [] },
+								{ "__identifier": "EmitStimulus_Type", "__value": "Attraction", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
 								{ "__identifier": "hello", "__value": true, "__type": "Bool", "__tile": null, "defUid": 28, "realEditorValues": [] }
 							]
 						},
@@ -641,8 +641,8 @@
 							"fieldInstances": [
 								{ "__identifier": "NodeType", "__value": "res://media/scenes/entities/Entity.tscn", "__type": "String", "__tile": null, "defUid": 14, "realEditorValues": [] },
 								{ "__identifier": "Sprite", "__value": "plant", "__type": "String", "__tile": null, "defUid": 19, "realEditorValues": [] },
-								{ "__identifier": "SendStimulus", "__value": true, "__type": "Bool", "__tile": null, "defUid": 22, "realEditorValues": [] },
-								{ "__identifier": "SendStimulus_Type", "__value": "Attraction", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
+								{ "__identifier": "EmitStimulus", "__value": true, "__type": "Bool", "__tile": null, "defUid": 22, "realEditorValues": [] },
+								{ "__identifier": "EmitStimulus_Type", "__value": "Attraction", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
 								{ "__identifier": "hello", "__value": true, "__type": "Bool", "__tile": null, "defUid": 28, "realEditorValues": [] }
 							]
 						},
@@ -661,8 +661,8 @@
 							"fieldInstances": [
 								{ "__identifier": "NodeType", "__value": "res://media/scenes/entities/Entity.tscn", "__type": "String", "__tile": null, "defUid": 14, "realEditorValues": [] },
 								{ "__identifier": "Sprite", "__value": "plant", "__type": "String", "__tile": null, "defUid": 19, "realEditorValues": [] },
-								{ "__identifier": "SendStimulus", "__value": true, "__type": "Bool", "__tile": null, "defUid": 22, "realEditorValues": [] },
-								{ "__identifier": "SendStimulus_Type", "__value": "Attraction", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
+								{ "__identifier": "EmitStimulus", "__value": true, "__type": "Bool", "__tile": null, "defUid": 22, "realEditorValues": [] },
+								{ "__identifier": "EmitStimulus_Type", "__value": "Attraction", "__type": "String", "__tile": null, "defUid": 26, "realEditorValues": [] },
 								{ "__identifier": "hello", "__value": true, "__type": "Bool", "__tile": null, "defUid": 28, "realEditorValues": [] }
 							]
 						}

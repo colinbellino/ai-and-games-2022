@@ -118,12 +118,30 @@ static func _get_level_layerInstances(LDtk, level, options):
 # Extract metadata coming from LDTK file to do stuff specific to entities
 # **Always do this AFTER the entities_node is added to the tree**
 static func update_entities(entities_node) -> void:
+    var known_metas : Array = [
+        "__grid",
+        "__identifier",
+        "__pivot",
+        "__smartColor",
+        "__tags",
+        "__tile",
+        "defUid",
+        "fieldInstances",
+        "height",
+        "iid",
+        "px",
+        "width",
+        "Sprite"
+    ]
+
     # This is an array of dictionary that look like this:
     # {base:Behaviour, class:Attracted, language:GDScript, path:res://src/behaviours/Attracted.gd}
     var behaviours : Array = []
     for item in ProjectSettings.get_setting("_global_script_classes"):
         if item.base == "Behaviour":
             behaviours.append(item)
+
+    var had_behaviour_warning := false
 
     for child in entities_node.get_children():
         var entity : Entity = child
@@ -133,7 +151,22 @@ static func update_entities(entities_node) -> void:
             entity.name = "%s (%s)" % [identifier, iid]
         else:
             entity.name = identifier
-        # print("[Game] entity: ", [entity, entity.get_meta_list()])
+        # print("[LDTK] entity: ", [entity, entity.get_meta_list()])
+
+        if OS.is_debug_build():
+            for meta_name in entity.get_meta_list():
+                var found := false
+                if known_metas.find(meta_name) > -1:
+                    found = true
+                else:
+                    for behaviour_item in behaviours:
+                        if meta_name.begins_with(behaviour_item.class):
+                            found = true
+                            break
+
+                if found == false:
+                    had_behaviour_warning = true
+                    push_warning("Unknown behaviour: %s " % [meta_name])
 
         for behaviour_item in behaviours:
             var behaviour_name : String = behaviour_item.class
@@ -144,11 +177,13 @@ static func update_entities(entities_node) -> void:
                     # print("behaviour_item: ", behaviour_item)
                     var behaviour = ResourceLoader.load(behaviour_item.path).new()
                     if behaviour == null:
+                        push_error("Failed to load the behaviour: %s" % [behaviour_name])
                         return
 
                     behaviour.name = behaviour_name
                     entity.add_child(behaviour)
 
+        # TODO: Move this to a behaviour
         var sprite_string : String = entity.get_meta("Sprite")
         var anim_path := "res://media/animations/entities/%s.tres" % [sprite_string]
         if ResourceLoader.exists(anim_path) == false:
@@ -158,6 +193,7 @@ static func update_entities(entities_node) -> void:
         var sprite_frames : SpriteFrames = ResourceLoader.load(anim_path)
         entity.sprite_body.frames = sprite_frames
 
+        # TODO: Move this to a behaviour
         if identifier == "Creature":
             if Globals.creature != null:
                 push_error("Already on Creature in the world")
@@ -167,6 +203,12 @@ static func update_entities(entities_node) -> void:
             # TODO: remove this
             # Quick hack to make the creature always visible
             Globals.creature.z_index = 99
+
+    if had_behaviour_warning:
+        var names = []
+        for behaviour_item in behaviours:
+            names.append(behaviour_item.class)
+        push_warning("List of existing behaviours: %s" % [names])
 
 static func get_behaviour_meta(entity: Entity, behaviour_name: String, meta_identifier: String):
     return entity.get_meta("%s_%s" % [behaviour_name, meta_identifier])
