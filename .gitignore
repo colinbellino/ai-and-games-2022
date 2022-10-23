@@ -26,3 +26,4 @@ screenshots/*
 *.blend1
 
 version.txt
+.vscode/launch.json
