@@ -37,8 +37,17 @@ var world : Node2D
 var current_level: Node2D
 var camera: Camera2D
 var creature : Entity
+
+# Audio
 var audio_player_sound : AudioStreamPlayer
 var audio_player_music : AudioStreamPlayer
+
+enum MUSIC { MENU, CALM, ACTIVE }
+enum SFX { WALK }
+
+const _music_menu : String = "res://media/audio/ui/menu.ogg"
+const _music_calm_1 : String = "res://media/audio/music/Isolation-calm-1.ogg"
+const _music_active : String = "res://media/audio/music/Isolation-active.ogg"
 
 # Utils
 
@@ -57,3 +66,21 @@ func get_linear_db(bus_index: int) -> float:
 func set_linear_db(bus_index: int, linear_db: float) -> void:
     linear_db = clamp(linear_db, 0.0, 1.0)
     AudioServer.set_bus_volume_db(bus_index, linear2db(linear_db))
+
+func play_music( music: int ) -> void:
+    var stream = null
+
+    if music == MUSIC.MENU:
+        stream = load(_music_menu)
+    elif music == MUSIC.CALM:
+        stream = load(_music_calm_1)
+    elif music == MUSIC.ACTIVE:
+        stream = load(_music_active)
+
+    if stream != null:
+        print("Stream not null")
+        stream.set_loop(true)
+        if Globals.audio_player_music.playing:
+            Globals.audio_player_music.stop()
+        Globals.audio_player_music.stream = stream
+        Globals.audio_player_music.play()

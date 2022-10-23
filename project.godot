@@ -128,7 +128,6 @@ default_bus_layout="res://media/default_bus_layout.tres"
 [autoload]
 
 Globals="*res://src/Globals.gd"
-AudioManager="*res://src/AudioManager.gd"
 
 [debug]
 

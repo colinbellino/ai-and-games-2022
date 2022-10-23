@@ -44,11 +44,11 @@ func _ready():
         # NOTE: can't start/stop music from the static functions - I'll work on some kind of management scheme
         #       on Sunday.
         # print("scene music player vol: ", $MusicPlayer.volume_db)
-        var audio_stream: AudioStreamOGGVorbis = preload("res://media/audio/ui/menu.ogg") # <-- this didn't accept a const string from Globals.gd :(
-        audio_stream.set_loop(true)
-        $MusicPlayer.stream = audio_stream
-        $MusicPlayer.play()
-
+        # var audio_stream: AudioStreamOGGVorbis = preload("res://media/audio/ui/menu.ogg") # <-- this didn't accept a const string from Globals.gd :(
+        # audio_stream.set_loop(true)
+        # $MusicPlayer.stream = audio_stream
+        # $MusicPlayer.play()
+        Globals.play_music(Globals.MUSIC.MENU)
         # AudioManager.play_music(AudioManager.MUSIC.MENU)
 
 func _process(delta: float):
@@ -116,6 +116,7 @@ static func button_quit_pressed() -> void:
 
 static func start_game(world_id: int) -> void:
     Globals.ui_title.close()
+    Globals.play_music(Globals.MUSIC.CALM)
 
     var world_path := "res://media/maps/world_%s.ldtk" % [world_id]
     var file := File.new()
