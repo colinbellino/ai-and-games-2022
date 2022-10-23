@@ -53,30 +53,6 @@ static func load_ldtk(filepath: String) -> Node2D:
 
                     children.erase(child)
 
-    #Post imports script
-    # if not options.Post_Import_Script.empty():
-    #     var script = load(options.Post_Import_Script)
-    #     if not script or not script is GDScript:
-    #         printerr("Post import script is not a GDScript.")
-    #         # return ERR_INVALID_PARAMETER
-    #         push_error("Error: %s" % ERR_INVALID_PARAMETER)
-    #         return null
-
-    #     script = script.new()
-    #     if not script.has_method("post_import"):
-    #         printerr("Post import script does not have a 'post_import' method.")
-    #         # return ERR_INVALID_PARAMETER
-    #         push_error("Error: %s" % ERR_INVALID_PARAMETER)
-    #         return null
-
-    #     map = script.post_import(map)
-
-    #     if not map or not map is Node2D:
-    #         printerr("Invalid scene returned from post import script.")
-    #         # return ERR_INVALID_DATA
-    #         push_error("Error: %s" % ERR_INVALID_DATA)
-    #         return null
-
     return map
 
 #create layers in level
@@ -131,7 +107,6 @@ static func update_entities(entities_node) -> void:
         "iid",
         "px",
         "width",
-        "Sprite"
     ]
 
     # This is an array of dictionary that look like this:
@@ -174,7 +149,7 @@ static func update_entities(entities_node) -> void:
                 var is_active = entity.get_meta(behaviour_name)
                 if is_active:
                     # TODO: (Colin) This might be super slow, investigate
-                    # print("behaviour_item: ", behaviour_item)
+                    # print("[LDTK] behaviour_item: ", behaviour_item)
                     var behaviour = ResourceLoader.load(behaviour_item.path).new()
                     if behaviour == null:
                         push_error("Failed to load the behaviour: %s" % [behaviour_name])
@@ -182,16 +157,6 @@ static func update_entities(entities_node) -> void:
 
                     behaviour.name = behaviour_name
                     entity.add_child(behaviour)
-
-        # TODO: Move this to a behaviour
-        var sprite_string : String = entity.get_meta("Sprite")
-        var anim_path := "res://media/animations/entities/%s.tres" % [sprite_string]
-        if ResourceLoader.exists(anim_path) == false:
-            push_error("Failed to load sprite frames: %s" % [anim_path])
-            return
-
-        var sprite_frames : SpriteFrames = ResourceLoader.load(anim_path)
-        entity.sprite_body.frames = sprite_frames
 
         # TODO: Move this to a behaviour
         if identifier == "Creature":
@@ -204,7 +169,7 @@ static func update_entities(entities_node) -> void:
             # Quick hack to make the creature always visible
             Globals.creature.z_index = 99
 
-    if had_behaviour_warning:
+    if OS.is_debug_build() && had_behaviour_warning:
         var names = []
         for behaviour_item in behaviours:
             names.append(behaviour_item.class)
@@ -212,3 +177,6 @@ static func update_entities(entities_node) -> void:
 
 static func get_behaviour_meta(entity: Entity, behaviour_name: String, meta_identifier: String):
     return entity.get_meta("%s_%s" % [behaviour_name, meta_identifier])
+
+static func get_behaviour_value(entity: Entity, behaviour_name: String):
+    return entity.get_meta(behaviour_name)
