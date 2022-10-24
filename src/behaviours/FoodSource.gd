@@ -15,6 +15,7 @@ func entity_interacted(interaction_type: int) -> void:
 
     if interaction_type == 0:
         var amount : int = LDTK.get_behaviour_meta(entity, "FoodSource", "Amount", 10)
+        Audio.play_sound(Globals.SFX.BUTTON_CLICK_1)
         Globals.creature.emit_signal("fed", amount)
 
     last_interaction = OS.get_ticks_msec()
