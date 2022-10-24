@@ -37,6 +37,12 @@ func _process(_delta: float):
             yield(sprite_body, "animation_finished")
             change_state(Enums.EntityStates.Idle)
 
+    if _state == Enums.EntityStates.Dead:
+        if _state_entered == false:
+            _state_entered = true
+            sprite_body.play(get_meta("dead_animation"))
+            yield(sprite_body, "animation_finished")
+
 func interact(_interaction_type: int) -> void:
     # print("[Entity] %s interact" % [name])
     emit_signal("interacted", _interaction_type)

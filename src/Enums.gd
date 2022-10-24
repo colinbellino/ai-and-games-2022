@@ -2,4 +2,4 @@ class_name Enums
 
 enum Sources { DINO, TREE }
 
-enum EntityStates { Idle, Asleep, Bark }
+enum EntityStates { Idle, Asleep, Bark, Dead }

@@ -3,7 +3,8 @@ class_name Hunger extends Behaviour
 const HUNGER_TICKS_IN_SECONDS := 3
 const HUNTER_START := 10 # Start the dino a little hungry
 const HUNTER_MAX := 60 # Fullness trying 60 to represent 1 minute
-const HUNTER_DOES_EMOTIONAL_DAMAGE_BELOW := 0
+const HUNTER_EMOTION_DAMAGE_THRESHOLD := 0
+const HUNGER_DEATH_THRESHOLD := -20
 const EMOTION_TICKS_IN_SECONDS := 10
 
 var hunger_timer : Timer
@@ -34,6 +35,11 @@ func _hunger_timeout():
     # print("[HUNGER] ticked: ", Globals.hunger)
 
 func _emotional_impact_timeout():
-    if Globals.hunger < HUNTER_DOES_EMOTIONAL_DAMAGE_BELOW:
+    if Globals.hunger < HUNTER_EMOTION_DAMAGE_THRESHOLD:
         Globals.emotion -= 1
-        print("[HUNGER] emotional impact: ", Globals.emotion)
+        # print("[HUNGER] emotional impact: ", Globals.emotion)
+
+    if Globals.hunger < HUNGER_DEATH_THRESHOLD:
+        if entity._state == Enums.EntityStates.Idle:
+            entity.set_meta("dead_animation", "dead_hunger")
+            entity.change_state(Enums.EntityStates.Dead)
