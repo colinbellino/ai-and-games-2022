@@ -92,10 +92,10 @@ func _process(delta: float):
             Globals.game_state_entered = true
             # Globals.creature.change_state(Enums.EntityStates.Asleep)
 
-        Globals.ui_debug.dump_label.text = JSON.print({
-            "emotion": Globals.emotion,
-            "hunger": Globals.hunger,
-        }, "  ")
+        if Input.is_key_pressed(KEY_SHIFT):
+            Engine.time_scale = 10
+        else:
+            Engine.time_scale = 1
 
         if Input.is_action_pressed("move_up"):
             Globals.camera.position.y -= 500.0 * delta
@@ -109,6 +109,12 @@ func _process(delta: float):
         if Input.is_action_pressed("move_left"):
             Globals.camera.position.x -= 500.0 * delta
             # Globals.creature.position.x -= 120.0 * delta
+
+        Globals.ui_debug.dump_label.text = JSON.print({
+            "time_scale": "x%s" % [Engine.time_scale],
+            "emotion": Globals.emotion,
+            "hunger": Globals.hunger,
+        }, "  ")
 
 static func button_start_pressed() -> void:
     start_game(Globals.settings.level)
