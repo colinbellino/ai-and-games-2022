@@ -16,11 +16,11 @@ layer = 2
 [node name="DebugUI" parent="." instance=ExtResource( 3 )]
 layer = 128
 
-[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SoundPlayer" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 bus = "Sound"
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 bus = "Music"
 
