@@ -11,3 +11,4 @@ export var locale : String = "en"
 export var skip_title : bool
 export var level : int
 export var entity_fullname : bool
+export var skip_pet_cooldown : bool
