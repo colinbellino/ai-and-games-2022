@@ -16,14 +16,13 @@ position = Vector2( 1, 0 )
 script = ExtResource( 3 )
 
 [node name="SpriteEmote" type="Sprite" parent="."]
-unique_name_in_owner = true
+visible = false
 position = Vector2( 0, -16 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 32, 0, 16, 16 )
 
 [node name="SpriteBody" type="AnimatedSprite" parent="."]
-unique_name_in_owner = true
 frames = ExtResource( 1 )
 animation = "idle"
 

@@ -6,9 +6,9 @@ export var volume_main : float = 1.0
 export var volume_music : float = 1.0
 export var volume_sound : float = 1.0
 export var locale : String = "en"
+export var level : int
 
 # Debug stuff
-export var skip_title : bool
-export var level : int
-export var entity_fullname : bool
-export var skip_pet_cooldown : bool
+export var debug_skip_title : bool
+export var debug_entity_fullname : bool
+export var debug_skip_cooldowns : bool

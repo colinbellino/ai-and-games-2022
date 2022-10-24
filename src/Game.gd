@@ -45,7 +45,7 @@ func _ready():
     Globals.ui_title.button_quit.connect("pressed", self, "button_quit_pressed")
     Globals.ui_debug.version_label.text = Globals.version
 
-    if Globals.settings.skip_title:
+    if Globals.settings.debug_skip_title:
         button_start_pressed()
     else:
         # Start the title

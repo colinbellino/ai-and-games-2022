@@ -122,7 +122,7 @@ static func update_entities(entities_node) -> void:
         var entity : Entity = child
         var identifier : String = entity.get_meta("__identifier")
         var iid : String = entity.get_meta("iid")
-        if Globals.settings.entity_fullname:
+        if Globals.settings.debug_entity_fullname:
             entity.name = "%s (%s)" % [identifier, iid]
         else:
             entity.name = identifier
@@ -162,8 +162,13 @@ static func update_entities(entities_node) -> void:
             names.append(behaviour_item.class)
         push_warning("List of existing behaviours: %s" % [names])
 
-static func get_behaviour_meta(entity: Entity, behaviour_name: String, meta_identifier: String):
-    return entity.get_meta("%s_%s" % [behaviour_name, meta_identifier])
+static func get_behaviour_meta(entity: Entity, behaviour_name: String, meta_identifier: String, default_value = null):
+    var key := "%s_%s" % [behaviour_name, meta_identifier]
+    if entity.has_meta(key) == false:
+        return default_value
+    return entity.get_meta(key)
 
-static func get_behaviour_value(entity: Entity, behaviour_name: String):
+static func get_behaviour_value(entity: Entity, behaviour_name: String, default_value = null):
+    if entity.has_meta(behaviour_name) == false:
+        return default_value
     return entity.get_meta(behaviour_name)
