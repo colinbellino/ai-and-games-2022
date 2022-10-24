@@ -52,3 +52,4 @@ func _entity_fed(amount: int) -> void:
     entity.set_meta("bark_animation", "eat_large")
     entity.change_state(Enums.EntityStates.Bark)
     Pet.emote(entity, 26)
+    Audio.play_sound(Globals.SFX.EAT)
