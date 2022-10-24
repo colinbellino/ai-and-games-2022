@@ -1,6 +1,7 @@
 class_name Entity extends Node2D
 
 onready var sprite_body : AnimatedSprite = find_node("SpriteBody")
+onready var sprite_emote : Sprite = find_node("SpriteEmote")
 onready var area_sound : Area2D = find_node("SoundArea")
 var destination : Vector2
 
