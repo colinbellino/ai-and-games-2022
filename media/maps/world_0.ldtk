@@ -1011,7 +1011,7 @@
 			]
 		},
 		{
-			"identifier": "FoodBig",
+			"identifier": "FoodLarge",
 			"uid": 5,
 			"tags": [],
 			"width": 16,
@@ -1091,7 +1091,7 @@
 					"acceptFileTypes": null,
 					"defaultOverride": {
 						"id": "V_String",
-						"params": ["food"]
+						"params": ["food_large"]
 					},
 					"textLanguageMode": null,
 					"symmetricalRef": false,
@@ -1245,7 +1245,7 @@
 					"acceptFileTypes": null,
 					"defaultOverride": {
 						"id": "V_String",
-						"params": ["food"]
+						"params": ["food_small"]
 					},
 					"textLanguageMode": null,
 					"symmetricalRef": false,
@@ -1457,7 +1457,7 @@
 							]
 						},
 						{
-							"__identifier": "FoodBig",
+							"__identifier": "FoodLarge",
 							"__grid": [1,7],
 							"__pivot": [0.5,0.5],
 							"__tags": [],
@@ -1470,7 +1470,7 @@
 							"px": [24,120],
 							"fieldInstances": [
 								{ "__identifier": "NodeType", "__value": "res://media/scenes/entities/Entity.tscn", "__type": "String", "__tile": null, "defUid": 14, "realEditorValues": [] },
-								{ "__identifier": "EntityAnimation", "__value": "food", "__type": "String", "__tile": null, "defUid": 19, "realEditorValues": [] },
+								{ "__identifier": "EntityAnimation", "__value": "food_large", "__type": "String", "__tile": null, "defUid": 19, "realEditorValues": [] },
 								{ "__identifier": "FoodSource", "__value": true, "__type": "Bool", "__tile": null, "defUid": 79, "realEditorValues": [] },
 								{ "__identifier": "FoodSource_Amount", "__value": 10, "__type": "Int", "__tile": null, "defUid": 80, "realEditorValues": [] }
 							]
@@ -1489,7 +1489,7 @@
 							"px": [56,120],
 							"fieldInstances": [
 								{ "__identifier": "NodeType", "__value": "res://media/scenes/entities/Entity.tscn", "__type": "String", "__tile": null, "defUid": 82, "realEditorValues": [] },
-								{ "__identifier": "EntityAnimation", "__value": "food", "__type": "String", "__tile": null, "defUid": 83, "realEditorValues": [] },
+								{ "__identifier": "EntityAnimation", "__value": "food_small", "__type": "String", "__tile": null, "defUid": 83, "realEditorValues": [] },
 								{ "__identifier": "FoodSource", "__value": true, "__type": "Bool", "__tile": null, "defUid": 84, "realEditorValues": [] },
 								{ "__identifier": "FoodSource_Amount", "__value": 5, "__type": "Int", "__tile": null, "defUid": 85, "realEditorValues": [] }
 							]
