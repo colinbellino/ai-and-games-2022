@@ -1,47 +1,26 @@
 class_name Bark extends Behaviour
 
-var next_bark : int
-var delay_in_ms : int = 5000
-
-signal bark_finished()
+var timer_start : int
+var sleep_delay_in_ms : int = 5000
 
 func _ready() -> void:
-    next_bark = OS.get_ticks_msec() + delay_in_ms
-    pass
+    entity.connect("state_entered", self, "entity_state_entered")
 
 func _exit_tree() -> void:
-    pass
+    entity.disconnect("state_entered", self, "entity_state_entered")
 
 func _process(_delta: float) -> void:
-    if OS.get_ticks_msec() >= next_bark:
-        next_bark = OS.get_ticks_msec() + delay_in_ms
+    if entity._state == Enums.EntityStates.Idle:
+        if OS.get_ticks_msec() >= timer_start + sleep_delay_in_ms:
+            # Live, laugh, love very inspirational
+            if Globals.emotion_level < -5: # Sad
+                entity.set_meta("bark_animation", "cry")
+            elif Globals.emotion_level > 5: # Happy
+                entity.set_meta("bark_animation", "laugh")
+            else: # Neutral
+                entity.set_meta("bark_animation", "bored")
+            entity.change_state(Enums.EntityStates.Bark)
 
-        bark(Globals.emotion_level)
-        yield(self, "bark_finished")
-        next_bark = OS.get_ticks_msec() + delay_in_ms
-
-func bark(emotion_level: int) -> void:
-    var original_position := entity.sprite_body.position
-    var original_scale := entity.sprite_body.scale
-
-    if emotion_level < -5: # Sad
-        var tween := create_tween()
-        tween.set_loops(2)
-        tween.tween_property(entity.sprite_body, "position:x", original_position.x + -2.0, 0.25)
-        tween.tween_property(entity.sprite_body, "position:x", original_position.x, 0.25)
-        yield(tween, "finished")
-
-    elif emotion_level > 5: # Happy
-        var tween := create_tween()
-        tween.set_loops(2)
-        tween.tween_property(entity.sprite_body, "position:y", original_position.y + -2.0, 0.25)
-        tween.tween_property(entity.sprite_body, "position:y", original_position.y, 0.25)
-        yield(tween, "finished")
-
-    else: # Neutral
-        var tween := create_tween()
-        tween.tween_property(entity.sprite_body, "scale", original_scale * 0.5, 0.25)
-        tween.tween_property(entity.sprite_body, "scale", original_scale, 0.25)
-        yield(tween, "finished")
-
-    emit_signal("bark_finished")
+func entity_state_entered(state: int) -> void:
+    if state == Enums.EntityStates.Idle:
+        timer_start = OS.get_ticks_msec()

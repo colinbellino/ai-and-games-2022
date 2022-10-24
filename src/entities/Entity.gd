@@ -21,36 +21,20 @@ func _process(_delta: float):
     if _state == Enums.EntityStates.Idle:
         if _state_entered == false:
             _state_entered = true
-            # print("[Entity] %s doing nuffin (idle)" % [name])
             sprite_body.play("idle")
 
     if _state == Enums.EntityStates.Asleep:
         if _state_entered == false:
             _state_entered = true
-            # print("[Entity] %s fell asleep" % [name])
             sprite_body.play("fall_asleep")
             yield(sprite_body, "animation_finished")
             sprite_body.play("asleep")
 
-    if _state == Enums.EntityStates.Activating:
+    if _state == Enums.EntityStates.Bark:
         if _state_entered == false:
             _state_entered = true
-            # print("[Entity] %s activated" % [name])
-            sprite_body.play("activating")
+            sprite_body.play(get_meta("bark_animation"))
             yield(sprite_body, "animation_finished")
-            sprite_body.play("idle")
-
-    if _state == Enums.EntityStates.Attracted:
-        if _state_entered == false:
-            _state_entered = true
-            sprite_body.play("react")
-            yield(sprite_body, "animation_finished")
-            sprite_body.play("walk")
-
-            var tween = create_tween()
-            tween.tween_property(self, "position", destination, 2.0)
-            yield(tween, "finished")
-
             change_state(Enums.EntityStates.Idle)
 
 func interact(_interaction_type: int) -> void:
