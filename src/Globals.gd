@@ -31,6 +31,7 @@ var game_state_entered : bool
 var game_state_exited : bool
 var emotion : int
 var hunger : int
+var astar : AStar2D
 var creature_name : String
 
 # Nodes
@@ -39,6 +40,7 @@ var ui_settings : SettingsUI
 var ui_debug : DebugUI
 var world : Node2D
 var current_level: Node2D
+var current_level_data: Dictionary
 var camera: Camera2D
 var creature : Entity
 

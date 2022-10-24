@@ -1,11 +1,11 @@
 class_name LDTK
 
 # Warning: this is some very bad code that i had to copy from the LDtk importer
-static func load_ldtk(filepath: String) -> Node2D:
+static func load_ldtk(filepath: String) -> Array:
     var LDtk = preload("res://addons/LDtk-Importer/LDtk.gd").new()
 
     var options := {
-        "Import_Collisions": false,
+        "Import_Collisions": true,
         "Import_Custom_Entities": true,
         "Import_Metadata": true,
         "Import_YSort_Entities_Layer": false,
@@ -53,7 +53,7 @@ static func load_ldtk(filepath: String) -> Node2D:
 
                     children.erase(child)
 
-    return map
+    return [map, LDtk.map_data]
 
 #create layers in level
 static func _get_level_layerInstances(LDtk, level, options):
@@ -161,6 +161,34 @@ static func update_entities(entities_node) -> void:
         for behaviour_item in behaviours:
             names.append(behaviour_item.class)
         push_warning("List of existing behaviours: %s" % [names])
+
+static func create_astar() -> AStar2D:
+    var astar := AStar2D.new()
+
+    var DIRECTIONS := PoolVector2Array([
+        Vector2.LEFT,
+        Vector2.UP,
+        Vector2.RIGHT,
+        Vector2.DOWN,
+    ])
+
+    var ground : TileMap = Globals.world.find_node("Ground", true, false)
+    var cells : PoolVector2Array = ground.get_used_cells()
+    for index in range(0, cells.size()):
+        var position = cells[index]
+        astar.add_point(index, position)
+
+    var points := astar.get_points()
+    for cell_index in points:
+        var cell_position := astar.get_point_position(cell_index)
+
+        for direction in DIRECTIONS:
+            var neighbour_position : Vector2 = cell_position + direction
+            var neighour_index := astar.get_closest_point(neighbour_position)
+            if cell_index != neighour_index:
+                astar.connect_points(cell_index, neighour_index, true)
+
+    return astar
 
 static func get_behaviour_meta(entity: Entity, behaviour_name: String, meta_identifier: String, default_value = null):
     var key := "%s_%s" % [behaviour_name, meta_identifier]

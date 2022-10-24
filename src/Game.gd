@@ -30,6 +30,7 @@ func _ready():
     Globals.can_fullscreen = OS.get_name() == "Windows"
     Globals.can_change_resolution = OS.get_name() != "HTML5"
 
+
     if Globals.can_fullscreen:
         Globals.set_fullscreen(Globals.settings.window_fullscreen)
     Globals.set_resolution(Globals.settings.resolution_index)
@@ -139,9 +140,12 @@ static func start_game(world_id: int) -> void:
     var file := File.new()
     assert(file.file_exists(world_path), "Failed to load sprite frames: %s" % [world_path])
 
-    Globals.current_level = LDTK.load_ldtk(world_path)
+    var result = LDTK.load_ldtk(world_path)
+    Globals.current_level = result[0]
+    Globals.current_level_data = result[1]
     Globals.world.add_child(Globals.current_level)
     LDTK.update_entities(Globals.current_level.find_node("Entities"))
+    Globals.astar = LDTK.create_astar()
 
     assert(Globals.creature != null, "No creature found in the level, did we forget to add one?")
 
