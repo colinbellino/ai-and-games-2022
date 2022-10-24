@@ -4,16 +4,19 @@ var button_start: Button
 var button_continue: Button
 var button_settings: Button
 var button_quit: Button
+var button_name: LineEdit
 
 func _ready() -> void:
     button_start = get_node("%Start")
     button_continue = get_node("%Continue")
     button_settings = get_node("%Settings")
     button_quit = get_node("%Quit")
+    button_name = get_node("%Name")
 
     button_start.connect("mouse_entered", self, "on_button_hover")
     button_settings.connect("mouse_entered", self, "on_button_hover")
     button_quit.connect("mouse_entered", self, "on_button_hover")
+    button_name.connect("text_changed", self, "_name_changed")
 
     close()
 
@@ -26,3 +29,10 @@ func close() -> void:
 
 func on_button_hover():
     Audio.play_sound_random([Globals.SFX.BUTTON_HOVER])
+
+func _name_changed(new_text: String) -> void:
+    if new_text.length() == 0:
+        button_start.disabled = true
+    elif button_start.disabled:
+        Globals.creature_name = new_text
+        button_start.disabled = false
