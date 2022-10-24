@@ -49,4 +49,6 @@ func _emotional_impact_timeout() -> void:
 
 func _entity_fed(amount: int) -> void:
     Globals.hunger += amount
+    entity.set_meta("bark_animation", "eat_large")
+    entity.change_state(Enums.EntityStates.Bark)
     Pet.emote(entity, 26)
