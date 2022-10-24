@@ -39,10 +39,10 @@ func _ready():
     TranslationServer.set_locale(Globals.settings.locale)
 
     # Connect the UI
-    var _result := Globals.ui_title.button_start.connect("pressed", self, "button_start_pressed")
-    _result = Globals.ui_title.button_continue.connect("pressed", self, "button_continue_pressed")
-    _result = Globals.ui_title.button_settings.connect("pressed", self, "button_settings_pressed")
-    _result = Globals.ui_title.button_quit.connect("pressed", self, "button_quit_pressed")
+    Globals.ui_title.button_start.connect("pressed", self, "button_start_pressed")
+    Globals.ui_title.button_continue.connect("pressed", self, "button_continue_pressed")
+    Globals.ui_title.button_settings.connect("pressed", self, "button_settings_pressed")
+    Globals.ui_title.button_quit.connect("pressed", self, "button_quit_pressed")
     Globals.ui_debug.version_label.text = Globals.version
 
     if Globals.settings.skip_title:

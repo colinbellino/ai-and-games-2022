@@ -4,7 +4,7 @@ var timer_start : int
 var sleep_delay_in_ms : int = 5000
 
 func _ready() -> void:
-    var _result = entity.connect("state_entered", self, "entity_state_entered")
+    entity.connect("state_entered", self, "entity_state_entered")
 
 func _exit_tree() -> void:
     entity.disconnect("state_entered", self, "entity_state_entered")

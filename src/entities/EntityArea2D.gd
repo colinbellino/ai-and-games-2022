@@ -10,8 +10,8 @@ var source : int # Set to parent value for easier reference
 var _entities : Array = []
 
 func _ready() -> void:
-    var _result = connect("area_entered", self, "_entity_entered")
-    _result = connect("area_exited", self, "_entity_exited")
+    connect("area_entered", self, "_entity_entered")
+    connect("area_exited", self, "_entity_exited")
 
 func _entity_entered(area: Area2D) -> void:
     if not _entities.has(area):

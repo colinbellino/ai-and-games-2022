@@ -3,7 +3,7 @@ class_name MouseArea2D extends Area2D
 onready var entity = get_parent()
 
 func _ready() -> void:
-    var _result = connect("input_event", self, "on_input_event")
+    connect("input_event", self, "on_input_event")
 
 func on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
     if event is InputEventMouseMotion:

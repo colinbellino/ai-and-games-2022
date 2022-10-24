@@ -1,7 +1,7 @@
 class_name Attracted extends Behaviour
 
 func _ready() -> void:
-    var _result = entity.connect("stimulus_received", self, "entity_stimulus_received")
+    entity.connect("stimulus_received", self, "entity_stimulus_received")
 
 func _exit_tree() -> void:
     entity.disconnect("stimulus_received", self, "entity_stimulus_received")

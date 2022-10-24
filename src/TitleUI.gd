@@ -11,9 +11,9 @@ func _ready() -> void:
     button_settings = get_node("%Settings")
     button_quit = get_node("%Quit")
 
-    var _result := button_start.connect("mouse_entered", self, "on_button_hover")
-    _result = button_settings.connect("mouse_entered", self, "on_button_hover")
-    _result = button_quit.connect("mouse_entered", self, "on_button_hover")
+    button_start.connect("mouse_entered", self, "on_button_hover")
+    button_settings.connect("mouse_entered", self, "on_button_hover")
+    button_quit.connect("mouse_entered", self, "on_button_hover")
 
     close()
 

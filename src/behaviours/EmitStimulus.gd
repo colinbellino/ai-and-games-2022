@@ -1,7 +1,7 @@
 class_name EmitStimulus extends Behaviour
 
 func _ready() -> void:
-    var _result = entity.connect("interacted", self, "entity_interacted")
+    entity.connect("interacted", self, "entity_interacted")
 
 func _exit_tree() -> void:
     entity.disconnect("interacted", self, "entity_interacted")

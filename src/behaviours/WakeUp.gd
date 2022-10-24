@@ -1,7 +1,7 @@
 class_name WakeUp extends Behaviour
 
 func _ready() -> void:
-    var _result = entity.connect("interacted", self, "entity_interacted")
+    entity.connect("interacted", self, "entity_interacted")
 
 func entity_interacted(_interaction_type: int) -> void:
     print("[WAKE_UP] %s waking up" % [name])

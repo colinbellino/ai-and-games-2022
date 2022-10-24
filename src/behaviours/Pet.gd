@@ -4,7 +4,7 @@ var last_interaction : int
 var cooldown : int = 1500
 
 func _ready() -> void:
-    var _result = entity.connect("interacted", self, "entity_interacted")
+    entity.connect("interacted", self, "entity_interacted")
     entity.sprite_emote.modulate.a8 = 0
 
 func entity_interacted(interaction_type: int) -> void:

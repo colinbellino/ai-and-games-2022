@@ -17,13 +17,13 @@ func _ready() -> void:
     slider_volume_music = get_node("%VolumeMusic")
     slider_volume_sound = get_node("%VolumeSound")
 
-    var _result = button_fullscreen.connect("pressed", self, "button_fullscreen_pressed")
-    _result = button_resolution.connect("item_selected", self, "button_resolution_item_selected")
-    _result = button_locale.connect("item_selected", self, "button_locale_item_selected")
-    _result = button_close.connect("pressed", self, "button_close_pressed")
-    _result = slider_volume_main.connect("value_changed", self, "slider_volume_main_changed")
-    _result = slider_volume_music.connect("value_changed", self, "slider_volume_music_changed")
-    _result = slider_volume_sound.connect("value_changed", self, "slider_volume_sound_changed")
+    button_fullscreen.connect("pressed", self, "button_fullscreen_pressed")
+    button_resolution.connect("item_selected", self, "button_resolution_item_selected")
+    button_locale.connect("item_selected", self, "button_locale_item_selected")
+    button_close.connect("pressed", self, "button_close_pressed")
+    slider_volume_main.connect("value_changed", self, "slider_volume_main_changed")
+    slider_volume_music.connect("value_changed", self, "slider_volume_music_changed")
+    slider_volume_sound.connect("value_changed", self, "slider_volume_sound_changed")
 
     close()
 
