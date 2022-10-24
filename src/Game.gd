@@ -54,7 +54,7 @@ func _ready():
         change_state(GameStates.TITLE)
 
         # Start playing menu music
-        Globals.play_music(Globals.MUSIC.MENU)
+        Audio.play_music(Globals.MUSIC.MENU)
 
 func _process(delta: float):
     if Input.is_action_just_released("ui_cancel"):
@@ -121,11 +121,11 @@ static func button_start_pressed() -> void:
     start_game(Globals.settings.level)
 
 static func button_continue_pressed() -> void:
-    Globals.play_sfx(Globals.SFX.BUTTON_CLICK)
+    Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_1, Globals.SFX.BUTTON_CLICK_2])
     Globals.ui_title.close()
 
 static func button_settings_pressed() -> void:
-    Globals.play_sfx(Globals.SFX.BUTTON_CLICK)
+    Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_1, Globals.SFX.BUTTON_CLICK_2])
     Globals.ui_settings.open()
 
 static func button_quit_pressed() -> void:
@@ -133,7 +133,7 @@ static func button_quit_pressed() -> void:
 
 static func start_game(world_id: int) -> void:
     Globals.ui_title.close()
-    Globals.play_music(Globals.MUSIC.CALM)
+    Audio.play_music(Globals.MUSIC.CALM)
 
     var world_path := "res://media/maps/world_%s.ldtk" % [world_id]
     var file := File.new()

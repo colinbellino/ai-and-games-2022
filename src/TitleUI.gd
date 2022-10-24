@@ -25,4 +25,4 @@ func close() -> void:
     visible = false
 
 func on_button_hover():
-    Globals.play_sfx(Globals.SFX.BUTTON_HOVER)
+    Audio.play_sound_random([Globals.SFX.BUTTON_HOVER])

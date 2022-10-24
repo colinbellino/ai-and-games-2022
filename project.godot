@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/behaviours/Attracted.gd"
 }, {
+"base": "Reference",
+"class": "Audio",
+"language": "GDScript",
+"path": "res://src/Audio.gd"
+}, {
 "base": "Behaviour",
 "class": "Bark",
 "language": "GDScript",
@@ -121,6 +126,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Attracted": "",
+"Audio": "",
 "Bark": "",
 "Behaviour": "",
 "DebugUI": "",
