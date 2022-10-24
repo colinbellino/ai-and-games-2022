@@ -31,6 +31,7 @@ var game_state_entered : bool
 var game_state_exited : bool
 var emotion : int
 var hunger : int
+var creature_name : String
 
 # Nodes
 var ui_title : TitleUI

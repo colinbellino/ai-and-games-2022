@@ -33,10 +33,25 @@ margin_top = 200.0
 margin_right = 150.0
 margin_bottom = 415.0
 
+[node name="Label" type="Label" parent="Menu"]
+margin_right = 300.0
+margin_bottom = 42.0
+theme = ExtResource( 2 )
+text = "Give your Dino a name:"
+
+[node name="Name" type="LineEdit" parent="Menu"]
+unique_name_in_owner = true
+margin_top = 46.0
+margin_right = 300.0
+margin_bottom = 98.0
+theme = ExtResource( 2 )
+text = "Gregasourus III"
+
 [node name="Start" type="Button" parent="Menu"]
 unique_name_in_owner = true
+margin_top = 102.0
 margin_right = 300.0
-margin_bottom = 48.0
+margin_bottom = 150.0
 theme = ExtResource( 2 )
 text = "Start"
 
@@ -51,16 +66,16 @@ text = "Continue"
 
 [node name="Settings" type="Button" parent="Menu"]
 unique_name_in_owner = true
-margin_top = 52.0
+margin_top = 154.0
 margin_right = 300.0
-margin_bottom = 100.0
+margin_bottom = 202.0
 theme = ExtResource( 2 )
 text = "Settings"
 
 [node name="Quit" type="Button" parent="Menu"]
 unique_name_in_owner = true
-margin_top = 104.0
+margin_top = 206.0
 margin_right = 300.0
-margin_bottom = 152.0
+margin_bottom = 254.0
 theme = ExtResource( 2 )
 text = "Quit"
