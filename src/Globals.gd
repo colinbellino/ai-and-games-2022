@@ -30,6 +30,7 @@ var game_state : int
 var game_state_entered : bool
 var game_state_exited : bool
 var emotion_level : int
+var hunger : int
 
 # Nodes
 var ui_title : TitleUI
