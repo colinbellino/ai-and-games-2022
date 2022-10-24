@@ -13,10 +13,10 @@ func entity_interacted(interaction_type: int) -> void:
         return
 
     if interaction_type == 1:
-        Globals.emotion_level += 1
+        Globals.emotion += 1
         emote(7)
     elif interaction_type == 0:
-        Globals.emotion_level -= 1
+        Globals.emotion -= 1
         emote(2)
 
     last_interaction = OS.get_ticks_msec()

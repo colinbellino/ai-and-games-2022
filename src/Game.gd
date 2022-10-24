@@ -93,7 +93,8 @@ func _process(delta: float):
             # Globals.creature.change_state(Enums.EntityStates.Asleep)
 
         Globals.ui_debug.dump_label.text = JSON.print({
-            "emotion": Globals.emotion_level,
+            "emotion": Globals.emotion,
+            "hunger": Globals.hunger,
         }, "  ")
 
         if Input.is_action_pressed("move_up"):

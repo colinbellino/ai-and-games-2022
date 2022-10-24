@@ -29,7 +29,7 @@ var bus_sound : int
 var game_state : int
 var game_state_entered : bool
 var game_state_exited : bool
-var emotion_level : int
+var emotion : int
 var hunger : int
 
 # Nodes

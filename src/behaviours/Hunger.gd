@@ -1,10 +1,10 @@
 class_name Hunger extends Behaviour
 
-const STARTING_HUNGER = 20 # Start the dino a little hungry
-const MAX_HUNGER = 60 # Fullness trying 60 to represent 1 minute
-const HUNGER_TICKS = 3 # Hunger ticks every
-const EMOTION_TICKS = 5 # Check for emotional impact every
-const EMOTIONAL_THRESHOLD = 10 # Threshold for emotional impact
+const STARTING_HUNGER := 20 # Start the dino a little hungry
+const MAX_HUNGER := 60 # Fullness trying 60 to represent 1 minute
+const HUNGER_TICKS := 3 # Hunger ticks every
+const EMOTION_TICKS := 5 # Check for emotional impact every
+const EMOTIONAL_THRESHOLD := 10 # Threshold for emotional impact
 
 func _ready() -> void:
     Globals.hunger = STARTING_HUNGER
@@ -30,5 +30,5 @@ func _hunger_timeout():
 
 func _emotional_impact_timeout():
     if Globals.hunger <= EMOTIONAL_THRESHOLD:
-        Globals.emotion_level -= 1
-        print("[HUNGER] emotional impact: ", Globals.emotion_level)
+        Globals.emotion -= 1
+        print("[HUNGER] emotional impact: ", Globals.emotion)

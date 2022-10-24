@@ -13,9 +13,9 @@ func _process(_delta: float) -> void:
     if entity._state == Enums.EntityStates.Idle:
         if OS.get_ticks_msec() >= timer_start + sleep_delay_in_ms:
             # Live, laugh, love very inspirational
-            if Globals.emotion_level < -5: # Sad
+            if Globals.emotion < -5: # Sad
                 entity.set_meta("bark_animation", "cry")
-            elif Globals.emotion_level > 5: # Happy
+            elif Globals.emotion > 5: # Happy
                 entity.set_meta("bark_animation", "laugh")
             else: # Neutral
                 entity.set_meta("bark_animation", "bored")
