@@ -13,6 +13,10 @@ const resolutions : Array = [
     ["3840 x 2160", Vector2(3840, 2160)],
     ["7680 x 4320", Vector2(7680, 4320)],
 ]
+const creature_names : Array = [
+    "Gregasourus III",
+    "Sebastian",
+]
 
 # Resources
 onready var textures : Dictionary = {}
@@ -33,6 +37,7 @@ var emotion : int
 var hunger : int
 var astar : AStar2D
 var creature_name : String
+var random = RandomNumberGenerator.new()
 
 # Nodes
 var ui_title : TitleUI
@@ -63,6 +68,43 @@ var audio_musics : Dictionary = {
     MUSIC.ACTIVE: preload("res://media/audio/music/Isolation-active.ogg"),
 }
 
+func _ready() -> void:
+    # Init stuff here
+    Globals.settings = Save.read_settings()
+    Globals.bus_main = AudioServer.get_bus_index("Master")
+    assert(Globals.bus_main != null, "Globals.bus_main not initialized correctly.")
+    Globals.bus_music = AudioServer.get_bus_index("Music")
+    assert(Globals.bus_music != null, "Globals.bus_music not initialized correctly.")
+    Globals.bus_sound = AudioServer.get_bus_index("Sound")
+    assert(Globals.bus_sound != null, "Globals.bus_sound not initialized correctly.")
+    Globals.world = get_node("/root/Game/%World")
+    assert(Globals.world != null, "Globals.world not initialized correctly.")
+    Globals.ui_title = get_node("/root/Game/%TitleUI")
+    assert(Globals.ui_title != null, "Globals.ui_title not initialized correctly.")
+    Globals.ui_settings = get_node("/root/Game/%SettingsUI")
+    assert(Globals.ui_settings != null, "Globals.ui_settings not initialized correctly.")
+    Globals.ui_debug = get_node("/root/Game/%DebugUI")
+    assert(Globals.ui_debug != null, "Globals.ui_debug not initialized correctly.")
+    Globals.camera = get_node("/root/Game/%MainCamera")
+    assert(Globals.camera != null, "Globals.camera not initialized correctly.")
+    Globals.audio_player_sound = get_node("/root/Game/%SoundPlayer")
+    assert(Globals.audio_player_sound != null, "Globals.audio_player_sound not initialized correctly.")
+    Globals.audio_player_music = get_node("/root/Game/%MusicPlayer")
+    assert(Globals.audio_player_music != null, "Globals.audio_player_music not initialized correctly.")
+    Globals.version = load_file("res://version.txt", "1111111")
+    assert(Globals.version != null, "Globals.version not initialized correctly.")
+    Globals.can_fullscreen = OS.get_name() == "Windows"
+    Globals.can_change_resolution = OS.get_name() != "HTML5"
+    Globals.random.randomize()
+
+    if Globals.can_fullscreen:
+        Globals.set_fullscreen(Globals.settings.window_fullscreen)
+    Globals.set_resolution(Globals.settings.resolution_index)
+    Globals.set_linear_db(Globals.bus_main, Globals.settings.volume_main)
+    Globals.set_linear_db(Globals.bus_music, Globals.settings.volume_music)
+    Globals.set_linear_db(Globals.bus_sound, Globals.settings.volume_sound)
+    TranslationServer.set_locale(Globals.settings.locale)
+
 # Utils
 
 # FIXME: looks like this doesn't work on MacOS
@@ -80,3 +122,15 @@ func get_linear_db(bus_index: int) -> float:
 func set_linear_db(bus_index: int, linear_db: float) -> void:
     linear_db = clamp(linear_db, 0.0, 1.0)
     AudioServer.set_bus_volume_db(bus_index, linear2db(linear_db))
+
+static func load_file(filepath: String, default_value: String = "") -> String:
+    var file := File.new()
+    var result := file.open(filepath, File.READ)
+    if result != OK:
+        print("[Game] Couldn't load file: %s" % [filepath])
+        file.close()
+        return default_value
+
+    var data = file.get_as_text()
+    file.close()
+    return data

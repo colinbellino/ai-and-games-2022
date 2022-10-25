@@ -4,19 +4,21 @@ var button_start: Button
 var button_continue: Button
 var button_settings: Button
 var button_quit: Button
-var button_name: LineEdit
+var input_name: LineEdit
 
 func _ready() -> void:
     button_start = get_node("%Start")
     button_continue = get_node("%Continue")
     button_settings = get_node("%Settings")
     button_quit = get_node("%Quit")
-    button_name = get_node("%Name")
+    input_name = get_node("%Name")
 
     button_start.connect("mouse_entered", self, "on_button_hover")
     button_settings.connect("mouse_entered", self, "on_button_hover")
     button_quit.connect("mouse_entered", self, "on_button_hover")
-    button_name.connect("text_changed", self, "_name_changed")
+    input_name.connect("text_changed", self, "_name_changed")
+
+    input_name.text = Globals.creature_names[Globals.random.randi() % Globals.creature_names.size()]
 
     close()
 

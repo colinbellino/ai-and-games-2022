@@ -45,7 +45,7 @@ margin_top = 46.0
 margin_right = 300.0
 margin_bottom = 98.0
 theme = ExtResource( 2 )
-text = "Gregasourus III"
+text = "Hello"
 
 [node name="Start" type="Button" parent="Menu"]
 unique_name_in_owner = true
