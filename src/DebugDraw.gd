@@ -18,6 +18,9 @@ func _draw() -> void:
     var TEXT_OFFSET := Vector2(0.3, 0.6)
     var SCALE := 64
 
+    if Globals.astar == null:
+        return
+
     var points := Globals.astar.get_points()
     for cell_index in points:
         var cell_position := Globals.astar.get_point_position(cell_index)
