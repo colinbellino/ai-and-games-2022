@@ -119,6 +119,8 @@ func _ready() -> void:
     assert(Globals.creature_names.size() > 0, "Globals.creature_names not initialized correctly.")
     Globals.creature_name = Globals.creature_names[Globals.random.randi() % Globals.creature_names.size()]
     assert(Globals.creature_name != "", "Globals.creature_name not initialized correctly.")
+    Globals.astar = AStar2D.new()
+    assert(Globals.astar != null, "Globals.astar not initialized correctly.")
 
     if Globals.can_fullscreen:
         Globals.set_fullscreen(Globals.settings.window_fullscreen)

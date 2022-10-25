@@ -24,7 +24,6 @@ func _ready():
 func _process(delta: float):
     Globals.mouse_position = Globals.camera.get_local_mouse_position() / Globals.SPRITE_SIZE / Globals.SCALE
     Globals.mouse_closest_point = Globals.astar.get_closest_point(Globals.mouse_position - Globals.CELL_CENTER_OFFSET)
-    Globals.creature_closest_point = Globals.astar.get_closest_point(Globals.creature.position / Globals.SPRITE_SIZE)
     Globals.time_elapsed += delta * 1000
 
     if Input.is_action_just_released("debug_1"):
@@ -64,6 +63,8 @@ func _process(delta: float):
     if Globals.game_state == GameStates.PLAY:
         if Globals.game_state_entered == false:
             Globals.game_state_entered = true
+
+        Globals.creature_closest_point = Globals.astar.get_closest_point(Globals.creature.position / Globals.SPRITE_SIZE)
 
         if Input.is_key_pressed(KEY_SHIFT):
             Engine.time_scale = 10
