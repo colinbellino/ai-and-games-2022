@@ -13,7 +13,7 @@ func _process(_delta: float) -> void:
     if entity._state == Enums.EntityStates.Idle:
         if OS.get_ticks_msec() >= timer_start + sleep_delay_in_ms:
             entity.change_state(Enums.EntityStates.Asleep)
-            Audio.play_sound(Globals.SFX.SLEEP)
+            Audio.play_sound(Globals.SFX.SLEEP, Vector3.ZERO, true)
 
 func entity_state_entered(state: int) -> void:
     if state == Enums.EntityStates.Idle:

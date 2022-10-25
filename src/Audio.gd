@@ -8,6 +8,9 @@ static func play_sound(id: int, position: Vector3 = Vector3.ZERO, loop: bool = f
     Globals.audio_player_sound.stream = stream
     Globals.audio_player_sound.play()
 
+static func stop_sound() -> void:
+    Globals.audio_player_sound.stop()
+
 static func play_sound_random(ids: PoolIntArray, position: Vector3 = Vector3.ZERO, loop: bool = false) -> void:
     var id := randi() % ids.size()
     assert(Globals.audio_sounds.has(id), "[Audio] Stream not found (sound_random): %s" % [id])

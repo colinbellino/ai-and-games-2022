@@ -45,8 +45,9 @@ var camera: Camera2D
 var creature : Entity
 
 # Audio
-var audio_player_sound : AudioStreamPlayer
-var audio_player_music : AudioStreamPlayer
+var audio_player_sound : AudioStreamPlayer2D
+var audio_player_music : AudioStreamPlayer2D
+
 enum SFX { BUTTON_HOVER, BUTTON_CLICK_1, BUTTON_CLICK_2, EAT, SLEEP }
 var audio_sounds : Dictionary = {
     SFX.BUTTON_HOVER: preload("res://media/audio/ui/menu-tick.wav"),
