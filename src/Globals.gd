@@ -1,6 +1,19 @@
 extends Node
 
 # Constants
+const UINT8_MAX  = (1 << 8)  - 1 # 255
+const UINT16_MAX = (1 << 16) - 1 # 65535
+const UINT32_MAX = (1 << 32) - 1 # 4294967295
+
+const INT8_MIN  = -(1 << 7)  # -128
+const INT16_MIN = -(1 << 15) # -32768
+const INT32_MIN = -(1 << 31) # -2147483648
+const INT64_MIN = -(1 << 63) # -9223372036854775808
+
+const INT8_MAX  = (1 << 7)  - 1 # 127
+const INT16_MAX = (1 << 15) - 1 # 32767
+const INT32_MAX = (1 << 31) - 1 # 2147483647
+const INT64_MAX = (1 << 63) - 1 # 9223372036854775807
 const font1_path : String = "res://media/fonts/silver.ttf"
 const resolutions : Array = [
     # ["426 x 240", Vector2(426, 240)],
@@ -38,8 +51,10 @@ var astar : AStar2D
 var creature_name : String
 var mouse_position : Vector2
 var mouse_closest_point : int
+var creature_closest_point : int
 var random = RandomNumberGenerator.new()
 var creature_names : Array = []
+var time_elapsed : float
 
 # Nodes
 var ui_title : TitleUI

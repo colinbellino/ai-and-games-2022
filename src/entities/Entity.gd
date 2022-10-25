@@ -23,17 +23,19 @@ func _process(_delta: float):
             _state_entered = true
             sprite_body.play("idle")
 
-    if _state == Enums.EntityStates.Asleep:
-        if _state_entered == false:
-            _state_entered = true
-            sprite_body.play("fall_asleep")
-            yield(sprite_body, "animation_finished")
-            sprite_body.play("asleep")
+    # if _state == Enums.EntityStates.Asleep:
+    #     if _state_entered == false:
+    #         _state_entered = true
+    #         sprite_body.play("fall_asleep")
+    #         yield(sprite_body, "animation_finished")
+    #         sprite_body.play("asleep")
 
     if _state == Enums.EntityStates.Bark:
         if _state_entered == false:
             _state_entered = true
-            sprite_body.play(get_meta("bark_animation"))
+            var animation = get_meta("bark_animation")
+            # print("bark_animation: ", animation)
+            sprite_body.play(animation)
             yield(sprite_body, "animation_finished")
             change_state(Enums.EntityStates.Idle)
 
@@ -79,6 +81,7 @@ func area_exited(area: EntityArea2D) -> void:
 func change_state(state: int) -> void:
     emit_signal("state_exited", _state)
     print("[Entity] %s changing state: %s" % [name, Enums.EntityStates.keys()[state]])
+    # print_stack()
     _state = state
     _state_entered = false
     emit_signal("state_entered", state)

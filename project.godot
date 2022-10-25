@@ -99,11 +99,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/behaviours/Pet.gd"
 }, {
-"base": "Behaviour",
-"class": "Roaming",
-"language": "GDScript",
-"path": "res://src/behaviours/Roaming.gd"
-}, {
 "base": "Reference",
 "class": "Save",
 "language": "GDScript",
@@ -113,11 +108,6 @@ _global_script_classes=[ {
 "class": "SettingsUI",
 "language": "GDScript",
 "path": "res://src/SettingsUI.gd"
-}, {
-"base": "Behaviour",
-"class": "Sleepy",
-"language": "GDScript",
-"path": "res://src/behaviours/Sleepy.gd"
 }, {
 "base": "CanvasLayer",
 "class": "TitleUI",
@@ -148,10 +138,8 @@ _global_script_class_icons={
 "LDTK": "",
 "MouseArea2D": "",
 "Pet": "",
-"Roaming": "",
 "Save": "",
 "SettingsUI": "",
-"Sleepy": "",
 "TitleUI": "",
 "WakeUp": ""
 }

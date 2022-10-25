@@ -1,6 +1,6 @@
 class_name Pet extends Behaviour
 
-var last_interaction : int
+var last_interaction : float
 var cooldown_in_ms : int = 1500
 
 func _ready() -> void:
@@ -13,18 +13,18 @@ func _exit_tree() -> void:
 
 func entity_interacted(interaction_type: int) -> void:
     # Maybe later we want to queue the emotion changes, but for now a cooldown will suffice
-    if Globals.settings.debug_skip_cooldowns == false && OS.get_ticks_msec() < last_interaction + cooldown_in_ms:
+    if Globals.settings.debug_skip_cooldowns == false && Globals.time_elapsed < last_interaction + cooldown_in_ms:
         return
 
-    if interaction_type == 1:
+    if interaction_type == 0:
         Globals.emotion += 1
         Audio.play_sound(Globals.SFX.LAUGH)
         emote(entity, 7)
-    elif interaction_type == 0:
-        Globals.emotion -= 1
-        emote(entity, 2)
+    # elif interaction_type == 1:
+    #     Globals.emotion -= 1
+    #     emote(entity, 2)
 
-    last_interaction = OS.get_ticks_msec()
+    last_interaction = Globals.time_elapsed
 
 static func emote(entity: Entity, index: int) -> void:
     var sprite_size := 16

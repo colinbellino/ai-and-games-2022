@@ -24,6 +24,8 @@ func _ready():
 func _process(delta: float):
     Globals.mouse_position = Globals.camera.get_local_mouse_position() / Globals.SPRITE_SIZE / Globals.SCALE
     Globals.mouse_closest_point = Globals.astar.get_closest_point(Globals.mouse_position - Globals.CELL_CENTER_OFFSET)
+    Globals.creature_closest_point = Globals.astar.get_closest_point(Globals.creature.position / Globals.SPRITE_SIZE)
+    Globals.time_elapsed += delta * 1000
 
     if Input.is_action_just_released("debug_1"):
         Globals.settings.debug_draw = !Globals.settings.debug_draw
@@ -62,7 +64,6 @@ func _process(delta: float):
     if Globals.game_state == GameStates.PLAY:
         if Globals.game_state_entered == false:
             Globals.game_state_entered = true
-            # Globals.creature.change_state(Enums.EntityStates.Asleep)
 
         if Input.is_key_pressed(KEY_SHIFT):
             Engine.time_scale = 10
@@ -83,11 +84,13 @@ func _process(delta: float):
             # Globals.creature.position.x -= 120.0 * delta
 
         Globals.ui_debug.dump_label.text = JSON.print({
-            "creature_name": Globals.creature_name,
             "time_scale": "x%s" % [Engine.time_scale],
+            "time_elapsed": Globals.time_elapsed,
+            "creature_name": Globals.creature_name,
             "creature_state": Enums.EntityStates.keys()[Globals.creature._state],
             "emotion": Globals.emotion,
             "hunger": Globals.hunger,
+            "delta": delta,
         }, "  ")
 
 static func button_start_pressed() -> void:
