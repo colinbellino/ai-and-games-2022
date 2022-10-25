@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/snoring-1.ogg-81979eadad6b1975f5aaa8a3df325e63.oggstr"
+
+[deps]
+
+source_file="res://media/audio/creature/snoring-1.ogg"
+dest_files=[ "res://.import/snoring-1.ogg-81979eadad6b1975f5aaa8a3df325e63.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

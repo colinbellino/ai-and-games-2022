@@ -54,7 +54,7 @@ var audio_sounds : Dictionary = {
     SFX.BUTTON_CLICK_1: preload("res://media/audio/ui/menu-fx-e.ogg"),
     SFX.BUTTON_CLICK_2: preload("res://media/audio/ui/menu-fx-c.ogg"),
     SFX.EAT: preload("res://media/audio/creature/eating-2.wav"),
-    SFX.SLEEP: preload("res://media/audio/creature/snoring-1.wav"),
+    SFX.SLEEP: preload("res://media/audio/creature/snoring-1.ogg"),
 }
 enum MUSIC { MENU, CALM, ACTIVE }
 var audio_musics : Dictionary = {
