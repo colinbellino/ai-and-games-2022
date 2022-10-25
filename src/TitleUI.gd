@@ -35,6 +35,6 @@ func on_button_hover():
 func _name_changed(new_text: String) -> void:
     if new_text.length() == 0:
         button_start.disabled = true
-    elif button_start.disabled:
-        Globals.creature_name = new_text
+    else:
         button_start.disabled = false
+        Globals.creature_name = new_text
