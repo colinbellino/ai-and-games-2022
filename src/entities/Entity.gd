@@ -55,7 +55,7 @@ func _process(_delta: float):
                     direction = -1
 
                 var tween := create_tween()
-                tween.tween_property(self, "scale:x", direction * scale.x, 0.1)
+                tween.tween_property(self, "scale:x", direction * 1.0, 0.1)
                 tween.tween_property(self, "position", destination, duration)
                 yield(tween, "finished")
 

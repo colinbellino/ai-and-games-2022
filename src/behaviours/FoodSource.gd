@@ -13,6 +13,9 @@ func entity_interacted(interaction_type: int) -> void:
     if Globals.settings.debug_skip_cooldowns == false && Globals.time_elapsed < last_interaction + cooldown_in_ms:
         return
 
+    if Globals.creature._state != Enums.EntityStates.Idle:
+        return
+
     if interaction_type == 0:
         var amount : int = LDTK.get_behaviour_meta(entity, "FoodSource", "Amount", 10)
         Audio.play_sound(Globals.SFX.BUTTON_CLICK_1)
