@@ -22,6 +22,8 @@ func _ready():
         Audio.play_music(Globals.MUSIC.MENU)
 
 func _process(delta: float):
+    Globals.mouse_position = Globals.camera.get_local_mouse_position() / Globals.SPRITE_SIZE / Globals.SCALE
+
     if Input.is_action_just_released("debug_1"):
         Globals.settings.debug_draw = !Globals.settings.debug_draw
 

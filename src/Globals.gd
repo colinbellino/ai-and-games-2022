@@ -13,6 +13,9 @@ const resolutions : Array = [
     ["3840 x 2160", Vector2(3840, 2160)],
     ["7680 x 4320", Vector2(7680, 4320)],
 ]
+const SPRITE_SIZE : int = 16
+const SCALE : int = 4
+const CELL_CENTER_OFFSET : Vector2 = Vector2(0.5, 0.5)
 
 # Resources
 onready var textures : Dictionary = {}
@@ -33,6 +36,8 @@ var emotion : int
 var hunger : int
 var astar : AStar2D
 var creature_name : String
+var mouse_position : Vector2
+var mouse_closest_point : int
 var random = RandomNumberGenerator.new()
 var creature_names : Array = []
 

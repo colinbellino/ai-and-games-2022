@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Behaviour",
-"class": "Attracted",
-"language": "GDScript",
-"path": "res://src/behaviours/Attracted.gd"
-}, {
 "base": "Reference",
 "class": "Audio",
 "language": "GDScript",
@@ -104,6 +99,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/behaviours/Pet.gd"
 }, {
+"base": "Behaviour",
+"class": "Roaming",
+"language": "GDScript",
+"path": "res://src/behaviours/Roaming.gd"
+}, {
 "base": "Reference",
 "class": "Save",
 "language": "GDScript",
@@ -130,7 +130,6 @@ _global_script_classes=[ {
 "path": "res://src/behaviours/WakeUp.gd"
 } ]
 _global_script_class_icons={
-"Attracted": "",
 "Audio": "",
 "Bark": "",
 "Behaviour": "",
@@ -149,6 +148,7 @@ _global_script_class_icons={
 "LDTK": "",
 "MouseArea2D": "",
 "Pet": "",
+"Roaming": "",
 "Save": "",
 "SettingsUI": "",
 "Sleepy": "",

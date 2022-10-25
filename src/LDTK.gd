@@ -170,6 +170,10 @@ static func create_astar() -> AStar2D:
         Vector2.UP,
         Vector2.RIGHT,
         Vector2.DOWN,
+        Vector2(-1, -1),
+        Vector2(-1, 1),
+        Vector2(1, 1),
+        Vector2(1, -1),
     ])
 
     var ground : TileMap = Globals.world.find_node("AutoLayer", true, false)

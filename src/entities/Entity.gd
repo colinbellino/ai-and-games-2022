@@ -3,7 +3,6 @@ class_name Entity extends Node2D
 onready var sprite_body : AnimatedSprite = find_node("SpriteBody")
 onready var sprite_emote : Sprite = find_node("SpriteEmote")
 onready var area_sound : Area2D = find_node("SoundArea")
-var destination : Vector2
 
 # Note: don't change this without using change_state()
 var _state : int
@@ -36,6 +35,23 @@ func _process(_delta: float):
             _state_entered = true
             sprite_body.play(get_meta("bark_animation"))
             yield(sprite_body, "animation_finished")
+            change_state(Enums.EntityStates.Idle)
+
+    if _state == Enums.EntityStates.Moving:
+        if _state_entered == false:
+            _state_entered = true
+            sprite_body.play("walk")
+
+            var path : PoolVector2Array = get_meta("moving_path")
+            var speed : float = get_meta("moving_speed")
+            for index in range(1, path.size()):
+                var point = path[index]
+                var destination : Vector2 = (point + Globals.CELL_CENTER_OFFSET) * Globals.SPRITE_SIZE
+                var duration := position.distance_to(destination) / speed
+                var tween := create_tween()
+                tween.tween_property(self, "position", destination, duration)
+                yield(tween, "finished")
+
             change_state(Enums.EntityStates.Idle)
 
     if _state == Enums.EntityStates.Dead:
