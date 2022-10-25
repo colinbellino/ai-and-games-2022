@@ -1,7 +1,7 @@
 class_name Sleepy extends Behaviour
 
 var timer_start : int
-var sleep_delay_in_ms : int = 1000
+var sleep_delay_in_ms : int = 2000
 
 func _ready() -> void:
     entity.connect("state_entered", self, "entity_state_entered")
