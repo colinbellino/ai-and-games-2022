@@ -11,9 +11,9 @@ follow_viewport_enable = true
 script = ExtResource( 2 )
 
 [node name="DebugDraw" type="Control" parent="."]
-margin_right = 10.0
-margin_bottom = 10.0
-mouse_filter = 1
+margin_right = 960.0
+margin_bottom = 540.0
+mouse_filter = 2
 script = ExtResource( 3 )
 
 [node name="Dump" type="Label" parent="."]

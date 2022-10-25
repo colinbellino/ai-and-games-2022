@@ -8,6 +8,7 @@ func _ready() -> void:
     font.size = 26
 
 func _process(_delta: float) -> void:
+    get_parent().visible = Globals.settings.debug_draw
     update()
 
 func _draw() -> void:
