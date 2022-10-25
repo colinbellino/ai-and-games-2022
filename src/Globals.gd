@@ -92,13 +92,13 @@ func _ready() -> void:
     assert(Globals.audio_player_music != null, "Globals.audio_player_music not initialized correctly.")
     Globals.version = load_file("res://version.txt", "1111111")
     assert(Globals.version != null, "Globals.version not initialized correctly.")
+    Globals.can_fullscreen = OS.get_name() == "Windows"
+    Globals.can_change_resolution = OS.get_name() != "HTML5"
+    Globals.random.randomize()
     Globals.creature_names = load_creatures()
     assert(Globals.creature_names.size() > 0, "Globals.creature_names not initialized correctly.")
     Globals.creature_name = Globals.creature_names[Globals.random.randi() % Globals.creature_names.size()]
     assert(Globals.creature_name != "", "Globals.creature_name not initialized correctly.")
-    Globals.can_fullscreen = OS.get_name() == "Windows"
-    Globals.can_change_resolution = OS.get_name() != "HTML5"
-    Globals.random.randomize()
 
     if Globals.can_fullscreen:
         Globals.set_fullscreen(Globals.settings.window_fullscreen)
