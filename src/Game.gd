@@ -23,6 +23,7 @@ func _ready():
 
 func _process(delta: float):
     Globals.mouse_position = Globals.camera.get_local_mouse_position() / Globals.SPRITE_SIZE / Globals.SCALE
+    Globals.mouse_closest_point = Globals.astar.get_closest_point(Globals.mouse_position - Globals.CELL_CENTER_OFFSET)
 
     if Input.is_action_just_released("debug_1"):
         Globals.settings.debug_draw = !Globals.settings.debug_draw

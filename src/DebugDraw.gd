@@ -18,7 +18,6 @@ func _draw() -> void:
     var scale := Globals.SPRITE_SIZE * Globals.SCALE
     var TEXT_OFFSET := Vector2(0.3, 0.6)
 
-    Globals.mouse_closest_point = Globals.astar.get_closest_point(Globals.mouse_position - Globals.CELL_CENTER_OFFSET)
     var point_position := Globals.astar.get_point_position(Globals.mouse_closest_point)
     draw_rect(Rect2((point_position + Vector2(0.1, 0.1)) * scale, Vector2(0.8, 0.8) * scale),  Color.yellow)
     draw_rect(Rect2(Globals.mouse_position * scale, Vector2(10, 10)), Color.yellow)

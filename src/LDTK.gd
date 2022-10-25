@@ -189,8 +189,15 @@ static func create_astar() -> AStar2D:
         for direction in DIRECTIONS:
             var neighbour_position : Vector2 = cell_position + direction
             var neighour_index := astar.get_closest_point(neighbour_position)
-            if cell_index != neighour_index:
-                astar.connect_points(cell_index, neighour_index, true)
+            var neighbour_position2 := astar.get_point_position(neighour_index)
+            # get_closest_point is getting the closest neighour (even if really far), so we have to check if it's the one we wanted to check
+            if neighbour_position != neighbour_position2:
+                continue
+
+            if cell_index == neighour_index:
+                continue
+
+            astar.connect_points(cell_index, neighour_index, true)
 
     return astar
 
