@@ -13,10 +13,6 @@ const resolutions : Array = [
     ["3840 x 2160", Vector2(3840, 2160)],
     ["7680 x 4320", Vector2(7680, 4320)],
 ]
-const creature_names : Array = [
-    "Gregasourus III",
-    "Sebastian",
-]
 
 # Resources
 onready var textures : Dictionary = {}
@@ -38,6 +34,7 @@ var hunger : int
 var astar : AStar2D
 var creature_name : String
 var random = RandomNumberGenerator.new()
+var creature_names : Array = []
 
 # Nodes
 var ui_title : TitleUI
@@ -95,6 +92,10 @@ func _ready() -> void:
     assert(Globals.audio_player_music != null, "Globals.audio_player_music not initialized correctly.")
     Globals.version = load_file("res://version.txt", "1111111")
     assert(Globals.version != null, "Globals.version not initialized correctly.")
+    Globals.creature_names = load_creatures()
+    assert(Globals.creature_names.size() > 0, "Globals.creature_names not initialized correctly.")
+    Globals.creature_name = Globals.creature_names[Globals.random.randi() % Globals.creature_names.size()]
+    assert(Globals.creature_name != "", "Globals.creature_name not initialized correctly.")
     Globals.can_fullscreen = OS.get_name() == "Windows"
     Globals.can_change_resolution = OS.get_name() != "HTML5"
     Globals.random.randomize()
@@ -136,3 +137,11 @@ static func load_file(filepath: String, default_value: String = "") -> String:
     var data = file.get_as_text()
     file.close()
     return data
+
+static func load_creatures() -> Array:
+    var text := load_file("res://creatures.txt", "Denver")
+    var lines : Array = text.split("\n")
+    if lines[lines.size() -1] == "":
+        lines.pop_back()
+
+    return lines

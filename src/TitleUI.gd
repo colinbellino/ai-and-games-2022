@@ -18,7 +18,7 @@ func _ready() -> void:
     button_quit.connect("mouse_entered", self, "on_button_hover")
     input_name.connect("text_changed", self, "_name_changed")
 
-    input_name.text = Globals.creature_names[Globals.random.randi() % Globals.creature_names.size()]
+    input_name.text = Globals.creature_name
 
     close()
 

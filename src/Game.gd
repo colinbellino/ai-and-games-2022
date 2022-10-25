@@ -80,6 +80,7 @@ func _process(delta: float):
             # Globals.creature.position.x -= 120.0 * delta
 
         Globals.ui_debug.dump_label.text = JSON.print({
+            "creature_name": Globals.creature_name,
             "time_scale": "x%s" % [Engine.time_scale],
             "creature_state": Enums.EntityStates.keys()[Globals.creature._state],
             "emotion": Globals.emotion,
