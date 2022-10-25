@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/crying-1.ogg-0ba734ef04ffbf1ee7ccbd32032c80e2.oggstr"
+
+[deps]
+
+source_file="res://media/audio/creature/crying-1.ogg"
+dest_files=[ "res://.import/crying-1.ogg-0ba734ef04ffbf1ee7ccbd32032c80e2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
