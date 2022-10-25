@@ -108,10 +108,10 @@
 			"requiredTags": [],
 			"excludedTags": [],
 			"intGridValues": [],
-			"autoTilesetDefUid": 116,
+			"autoTilesetDefUid": null,
 			"autoRuleGroups": [],
 			"autoSourceLayerDefUid": null,
-			"tilesetDefUid": 116,
+			"tilesetDefUid": null,
 			"tilePivotX": 0,
 			"tilePivotY": 0
 		},
@@ -1313,25 +1313,6 @@
 				"opaqueTiles": "111111111111111111111111111111111111",
 				"averageColors": "fec9fcb9fec9f999fcb9f999fcb9f889fcb9fcb9ffdafcb9fec9fcb9fec9f999fcb9f999fec9fca9fec9f999fcb9f999fcb9f889fca9fca9ffdafcb9fec9fcb9fec9f999fca9f999"
 			}
-		},
-		{
-			"__cWid": 3,
-			"__cHei": 3,
-			"identifier": "Entities",
-			"uid": 116,
-			"relPath": "G:/Pictures/Pixel Practice/aiAndGamesArt/entities.png",
-			"embedAtlas": null,
-			"pxWid": 48,
-			"pxHei": 48,
-			"tileGridSize": 16,
-			"spacing": 0,
-			"padding": 0,
-			"tags": [],
-			"tagsSourceEnumUid": null,
-			"enumTags": [],
-			"customData": [],
-			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "100000000", "averageColors": "f446b4460000a79a00000000000000000000" }
 		}
 	], "enums": [], "externalEnums": [], "levelFields": [] },
 	"levels": [
@@ -1551,8 +1532,8 @@
 					"__opacity": 1,
 					"__pxTotalOffsetX": 0,
 					"__pxTotalOffsetY": 0,
-					"__tilesetDefUid": 116,
-					"__tilesetRelPath": "G:/Pictures/Pixel Practice/aiAndGamesArt/entities.png",
+					"__tilesetDefUid": null,
+					"__tilesetRelPath": null,
 					"iid": "ff27fd60-5110-11ed-afd5-7179745dcfc6",
 					"levelId": 0,
 					"layerDefUid": 117,
@@ -1565,9 +1546,9 @@
 					"seed": 4451546,
 					"overrideTilesetUid": null,
 					"gridTiles": [
-						{ "px": [64,32], "src": [0,0], "f": 0, "t": 0, "d": [34] },
-						{ "px": [32,64], "src": [0,16], "f": 0, "t": 3, "d": [62] },
-						{ "px": [176,96], "src": [16,0], "f": 0, "t": 1, "d": [101] }
+						{ "px": [64,32], "src": [-1,-1], "f": 0, "t": 0, "d": [34] },
+						{ "px": [32,64], "src": [-1,-1], "f": 0, "t": 3, "d": [62] },
+						{ "px": [176,96], "src": [-1,-1], "f": 0, "t": 1, "d": [101] }
 					],
 					"entityInstances": []
 				},
