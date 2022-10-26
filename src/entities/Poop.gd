@@ -1,6 +1,6 @@
 extends Node2D
 
-const CLEAN_POOP_MOD = Vector2(-0.1, -0.2)
+const CLEAN_POOP_MOD = Vector2(0.1, 0.2)
 
 
 func _ready() -> void:
