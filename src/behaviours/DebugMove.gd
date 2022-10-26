@@ -22,3 +22,4 @@ func _process(_delta: float) -> void:
 
 func entity_state_entered(state: int) -> void:
     print("entity_state_entered: ", [state])
+    Audio.play_sound(Globals.SFX.WALK)

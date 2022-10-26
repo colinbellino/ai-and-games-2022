@@ -70,7 +70,7 @@ var creature : Entity
 var audio_player_sound : AudioStreamPlayer2D
 var audio_player_music : AudioStreamPlayer2D
 
-enum SFX { BUTTON_HOVER, BUTTON_CLICK_1, BUTTON_CLICK_2, EAT, SLEEP, LAUGH, CRY }
+enum SFX { BUTTON_HOVER, BUTTON_CLICK_1, BUTTON_CLICK_2, EAT, SLEEP, LAUGH, CRY, WALK }
 
 var audio_sounds : Dictionary = {
     SFX.BUTTON_HOVER: preload("res://media/audio/ui/menu-tick.wav"),
@@ -80,6 +80,7 @@ var audio_sounds : Dictionary = {
     SFX.SLEEP: preload("res://media/audio/creature/snoring-1.ogg"),
     SFX.LAUGH: preload("res://media/audio/creature/laugh.wav"),
     SFX.CRY: preload("res://media/audio/creature/crying-1.ogg"),
+    SFX.WALK: preload("res://media/audio/creature/step-slow.ogg"),
 }
 enum MUSIC { MENU, CALM, ACTIVE }
 var audio_musics : Dictionary = {
