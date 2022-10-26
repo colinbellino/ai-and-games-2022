@@ -47,6 +47,7 @@ var game_state_entered : bool
 var game_state_exited : bool
 var emotion : Vector2
 var hunger : int
+var poop : int
 var astar : AStar2D
 var creature_name : String
 var mouse_position : Vector2

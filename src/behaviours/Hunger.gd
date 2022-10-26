@@ -1,20 +1,20 @@
 class_name Hunger extends Behaviour
 
 const HUNGER_TICKS_IN_SECONDS := 3
-const HUNTER_START := 10 # Start the dino a little hungry
-const HUNTER_MAX := 60 # Fullness trying 60 to represent 1 minute
-const HUNTER_EMOTION_DAMAGE_THRESHOLD := 0
+const HUNGER_START := 10 # Start the dino a little hungry
+const HUNGER_MAX := 60 # Fullness trying 60 to represent 1 minute
+const HUNGER_EMOTION_DAMAGE_THRESHOLD := 0
 const HUNGER_DEATH_THRESHOLD := -20
 const EMOTION_TICKS_IN_SECONDS := 10
 const HUNGER_EMOTION = Vector2(-0.2, -0.1)
 const FEED_EMOTION = Vector2(0.2, 0.2)
+const POOP_AT = 10
 
 var hunger_timer : Timer
 var emotional_impact_timer : Timer
 
 func _ready() -> void:
-    Globals.hunger = HUNTER_START
-
+    Globals.hunger = HUNGER_START
     entity.connect("fed", self, "_entity_fed")
 
     hunger_timer = Timer.new()
@@ -37,10 +37,18 @@ func _exit_tree() -> void:
 
 func _hunger_timeout() -> void:
     Globals.hunger -= 1
+
+    # Increase poop number to represent bowels fill with waste
+    Globals.poop += 1
+
+    if Globals.poop >= POOP_AT:
+        Globals.poop = 0
+        # Poop code goes here
+
     # print("[HUNGER] ticked: ", Globals.hunger)
 
 func _emotional_impact_timeout() -> void:
-    if Globals.hunger < HUNTER_EMOTION_DAMAGE_THRESHOLD:
+    if Globals.hunger < HUNGER_EMOTION_DAMAGE_THRESHOLD:
         Globals.add_emotion(HUNGER_EMOTION, "Pet")
         # print("[HUNGER] emotional impact: ", Globals.emotion)
 
