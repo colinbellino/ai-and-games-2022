@@ -44,6 +44,8 @@ func _hunger_timeout() -> void:
     if Globals.poop >= POOP_AT:
         Globals.poop = 0
         # Poop code goes here
+        Audio.play_sound(Globals.SFX.POOP)
+        # TODO: Colin there's an awesome poop png in the art assets.. Spawn a poo entity
 
     # print("[HUNGER] ticked: ", Globals.hunger)
 
