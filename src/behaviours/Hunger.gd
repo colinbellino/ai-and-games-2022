@@ -38,6 +38,7 @@ func _exit_tree() -> void:
 func _hunger_timeout() -> void:
     Globals.hunger -= 1
 
+    # This should probably just be it's own behavoir
     # Increase poop number to represent bowels fill with waste
     Globals.poop += 1
 
