@@ -13,7 +13,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 9.45308, 9.55308, 9.65308, 9.8, 10.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 80, 72 ), Vector2( 80, 72 ), Vector2( 80, 69 ), Vector2( 80, 72 ), Vector2( 80, 72 ), Vector2( -22, 72 ) ]
+"values": [ Vector2( 90, 72 ), Vector2( 90, 72 ), Vector2( 90, 69 ), Vector2( 90, 72 ), Vector2( 90, 72 ), Vector2( -22, 72 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("World/Parent1:position")
@@ -22,10 +22,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 9.8, 10.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 9.7, 9.8, 9.9, 10.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 160, 72 ), Vector2( 160, 72 ), Vector2( 280, 72 ) ]
+"values": [ Vector2( 150, 72 ), Vector2( 150, 72 ), Vector2( 150, 69 ), Vector2( 150, 72 ), Vector2( 280, 72 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("World/Parent0:scale")
@@ -46,7 +46,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 9.65111, 9.8 ),
+"times": PoolRealArray( 0, 9.9, 10 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ) ]
@@ -70,10 +70,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 9.8, 10.6 ),
+"times": PoolRealArray( 0, 10, 10.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ "idle", "idle", "idle" ]
+"values": [ "idle", "walk", "idle" ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("World/Parent0:playing")
@@ -94,7 +94,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 9.8, 10.6 ),
+"times": PoolRealArray( 0, 10, 10.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -237,4 +237,28 @@ tracks/18/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Rect2( 16, 80, 16, 16 ), Rect2( 16, 80, 16, 16 ), Rect2( 16, 80, 16, 16 ), Rect2( 16, 64, 16, 16 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("World/Parent0:rotation_degrees")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.6, 0.7, 0.8, 0.9, 1, 1.5, 1.6, 1.7, 1.8, 1.9, 2.65068, 2.75068, 2.85068, 2.95068, 3.05068, 3.4, 3.5, 3.6, 3.7, 3.8, 4.7, 4.8, 4.9, 5, 5.1, 5.8, 5.9, 6, 6.1, 6.2, 7.3, 7.4, 7.5, 7.6, 7.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 10.0, 0.0, -10.0, 0.0, 0.0, 10.0, 0.0, -10.0, 0.0, 0.0, 10.0, 0.0, -10.0, 0.0, 0.0, 10.0, 0.0, -10.0, 0.0, 0.0, 10.0, 0.0, -10.0, 0.0, 0.0, 10.0, 0.0, -10.0, 0.0, 0.0, 10.0, 0.0, -10.0, 0.0 ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("World/Parent1:rotation_degrees")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 1, 1.1, 1.2, 1.3, 1.4, 2.2, 2.3, 2.4, 2.5, 2.6, 3.1, 3.2, 3.3, 3.4, 3.5, 4.2, 4.3, 4.4, 4.5, 4.6, 5.1, 5.2, 5.3, 5.4, 5.5, 6.8, 6.9, 7, 7.1, 7.2, 8.2, 8.3, 8.4, 8.5, 8.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 10.0, 0.0, -10.0, 0.0, 0.0, 10.0, 0.0, -10.0, 0.0, 0.0, 10.0, 0.0, -10.0, 0.0, 0.0, 10.0, 0.0, -10.0, 0.0, 0.0, 10.0, 0.0, -10.0, 0.0, 0.0, 10.0, 0.0, -10.0, 0.0, 0.0, 10.0, 0.0, -10.0, 0.0 ]
 }

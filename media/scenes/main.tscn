@@ -123,8 +123,9 @@ script = ExtResource( 9 )
 
 [node name="BorderTop" type="ColorRect" parent="IntroUI"]
 unique_name_in_owner = true
+margin_top = -80.0
 margin_right = 960.0
-margin_bottom = 270.0
+margin_bottom = 190.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="BorderRight" type="ColorRect" parent="IntroUI"]
@@ -138,7 +139,7 @@ color = Color( 0, 0, 0, 1 )
 unique_name_in_owner = true
 margin_top = 541.0
 margin_right = 960.0
-margin_bottom = 810.998
+margin_bottom = 810.996
 color = Color( 0, 0, 0, 1 )
 
 [node name="BorderLeft" type="ColorRect" parent="IntroUI"]
@@ -216,13 +217,14 @@ scale = Vector2( 4, 4 )
 
 [node name="Parent0" type="AnimatedSprite" parent="World"]
 position = Vector2( 50, 64.25 )
+rotation = -0.174533
 z_index = 99
 frames = ExtResource( 6 )
 animation = "idle"
 
 [node name="Parent0Emote" type="Sprite" parent="World"]
 visible = false
-position = Vector2( 84, 56 )
+position = Vector2( 94, 56 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 z_index = 99
@@ -236,11 +238,10 @@ scale = Vector2( -1, 1 )
 z_index = 99
 frames = ExtResource( 6 )
 animation = "idle"
-frame = 1
 
 [node name="Parent1Emote" type="Sprite" parent="World"]
 visible = false
-position = Vector2( 156, 56 )
+position = Vector2( 146, 56 )
 z_index = 99
 texture = ExtResource( 8 )
 region_enabled = true
@@ -253,11 +254,10 @@ frames = ExtResource( 6 )
 animation = "egg"
 
 [node name="Egg0Emote" type="Sprite" parent="World"]
-visible = false
 position = Vector2( 120, 56 )
 rotation = 3.14159
 scale = Vector2( -1, -1 )
 z_index = 99
 texture = ExtResource( 8 )
 region_enabled = true
-region_rect = Rect2( 16, 64, 16, 16 )
+region_rect = Rect2( 16, 80, 16, 16 )
