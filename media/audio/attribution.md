@@ -23,22 +23,32 @@
     * License: CC0
     * Link: https://freesound.org/people/NenadSimic/sounds/268108/
     * Author: NenadSimic - https://freesound.org/people/NenadSimic/
-  
+
   * Asset: 491056__sleepskraper__running-on-gravel.wav
     * RENAMED: step-[1,2,3,4].wav
     * License: CC0
     * Link: https://freesound.org/people/sleepskraper/sounds/491056/
     * Author: sleepskraper - https://freesound.org/people/sleepskraper/
-  
+
   * Asset: 334209__sethroph__eating-crisps.wav
     * RENAMED: eating-1.wav
     * License: CC0
     * Link: https://freesound.org/people/Sethroph/sounds/334209/
     * Author: Sethroph - https://freesound.org/people/Sethroph/
-  
+
   * Asset: 215639__thedust82__eating-a-cracker.mp3
     * RENAMED: eating-2.wav
     * License: CC0
     * Link: https://freesound.org/people/Thedust82/sounds/215639/
     * Author: thedust82 - https://freesound.org/people/Thedust82/
-  
+
+## Placeholders
+
+  * Asset fft-text.mp3
+    * Ripped from Final Fantasy Tactics
+
+  * Asset not_a_creeper.mp3
+    * Ripped from Minecraft
+
+  * Asset Then, everything changed when the fire nation attacked.mp3
+    * Ripped from Avatar: The Last Airbender

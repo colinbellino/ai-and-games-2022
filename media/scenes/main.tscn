@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Game.gd" type="Script" id=1]
 [ext_resource path="res://media/scenes/ui/TitleUI.tscn" type="PackedScene" id=2]
@@ -10,10 +10,11 @@
 [ext_resource path="res://media/art/entities/emotions.png" type="Texture" id=8]
 [ext_resource path="res://src/IntroUI.gd" type="Script" id=9]
 [ext_resource path="res://media/fonts/silver.tres" type="DynamicFont" id=10]
+[ext_resource path="res://src/ScreenShake.gd" type="Script" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Intro1"
-length = 7.0
+length = 12.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("World/Parent0:position")
 tracks/0/interp = 1
@@ -21,7 +22,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 4.19215, 4.29215, 4.39215, 4.79215, 5.99215 ),
+"times": PoolRealArray( 0, 9.45308, 9.55308, 9.65308, 10.0079, 11.0549 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 80, 72 ), Vector2( 80, 72 ), Vector2( 80, 69 ), Vector2( 80, 72 ), Vector2( 80, 72 ), Vector2( -22, 72 ) ]
@@ -33,7 +34,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 4.79215, 5.99215 ),
+"times": PoolRealArray( 0, 10.0079, 11.0549 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 160, 72 ), Vector2( 160, 72 ), Vector2( 280, 72 ) ]
@@ -45,7 +46,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 4.49215, 4.79215 ),
+"times": PoolRealArray( 0, 9.65111, 10.0079 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( -1, 1 ) ]
@@ -57,7 +58,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 4.49215, 4.79215 ),
+"times": PoolRealArray( 0, 9.65111, 10.0079 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ) ]
@@ -69,7 +70,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 4.79215, 5.99215 ),
+"times": PoolRealArray( 0, 10.0079, 11.0549 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ "idle", "walk", "idle" ]
@@ -81,7 +82,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 4.79215, 5.99215 ),
+"times": PoolRealArray( 0, 10.0079, 11.0549 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ "idle", "idle", "idle" ]
@@ -93,7 +94,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 4.79215, 5.99215 ),
+"times": PoolRealArray( 0, 10.0079, 11.0549 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -105,7 +106,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 4.79215, 5.99215 ),
+"times": PoolRealArray( 0, 10.0079, 11.0549 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -117,7 +118,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.6, 6.69215 ),
+"times": PoolRealArray( 0, 0.6, 11.7549 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -80 ), Vector2( 0, -80 ) ]
@@ -129,7 +130,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.6, 6.69215 ),
+"times": PoolRealArray( 0, 0.6, 11.7549 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 270 ), Vector2( 0, 380 ), Vector2( 0, 380 ) ]
@@ -141,7 +142,7 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 3.99215 ),
+"times": PoolRealArray( 0.0145459 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 120, 72 ) ]
@@ -153,7 +154,7 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 3.99215, 4.19215 ),
+"times": PoolRealArray( 0, 8.96471, 9.35757 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -165,7 +166,7 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 3.99215, 4.19215 ),
+"times": PoolRealArray( 0, 8.96471, 9.35757 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -177,7 +178,7 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 6.29215, 6.69215 ),
+"times": PoolRealArray( 0, 11.3549, 11.7549 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 960, 0 ), Vector2( 960, 0 ), Vector2( 580, 0 ) ]
@@ -189,7 +190,7 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0, 6.29215, 6.69215 ),
+"times": PoolRealArray( 0, 11.3549, 11.7549 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -480, 0 ), Vector2( -480, 0 ), Vector2( -100, 0 ) ]
@@ -201,11 +202,28 @@ tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0.00762563 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 4.1025, 8.30821 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "play_danger_sound"
+}, {
+"args": [  ],
+"method": "play_explosion_sound"
+} ]
+}
+tracks/16/type = "method"
+tracks/16/path = NodePath("ScreenShake")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 8.31497 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 5.0, 0.3, 2 ],
+"method": "shake"
 } ]
 }
 
@@ -290,6 +308,10 @@ tracks/1/keys = {
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="ScreenShake" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource( 11 )
+
 [node name="SplashUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 layer = 128
@@ -316,8 +338,9 @@ script = ExtResource( 9 )
 
 [node name="BorderTop" type="ColorRect" parent="IntroUI"]
 unique_name_in_owner = true
+margin_top = -80.0
 margin_right = 960.0
-margin_bottom = 270.0
+margin_bottom = 190.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="BorderRight" type="ColorRect" parent="IntroUI"]
@@ -428,6 +451,7 @@ scale = Vector2( -1, 1 )
 z_index = 99
 frames = ExtResource( 6 )
 animation = "idle"
+frame = 2
 
 [node name="Parent1Emote" type="Sprite" parent="World"]
 visible = false
