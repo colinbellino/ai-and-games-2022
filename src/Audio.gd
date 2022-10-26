@@ -30,6 +30,9 @@ static func play_music(id: int, loop: bool = true) -> void:
     Globals.audio_player_music.stream = stream
     Globals.audio_player_music.play()
 
+static func stop_music() -> void:
+    Globals.audio_player_music.stop()
+
 static func spawn_audio_player() -> AudioStreamPlayer:
     var player := AudioStreamPlayer.new()
     # Globals.audio_players.append(player)

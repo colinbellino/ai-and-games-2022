@@ -1,3 +1,4 @@
+# Source: https://github.com/jotson/camera_shake_tutorial/blob/main/shake.gd
 class_name ScreenShake extends Node
 
 var camera_shake_intensity = 0.0
