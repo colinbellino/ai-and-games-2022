@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bored.ogg-b2097b2184b97a978e521daa1eb22266.oggstr"
+
+[deps]
+
+source_file="res://media/audio/creature/bored.ogg"
+dest_files=[ "res://.import/bored.ogg-b2097b2184b97a978e521daa1eb22266.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
