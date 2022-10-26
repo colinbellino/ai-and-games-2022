@@ -30,8 +30,8 @@ static func play_music(id: int, loop: bool = true) -> void:
     Globals.audio_player_music.stream = stream
     Globals.audio_player_music.play()
 
-static func spawn_audio_player() -> AudioStreamPlayer2D:
-    var player := AudioStreamPlayer2D.new()
+static func spawn_audio_player() -> AudioStreamPlayer:
+    var player := AudioStreamPlayer.new()
     # Globals.audio_players.append(player)
     Globals.world.add_child(player)
     return player
