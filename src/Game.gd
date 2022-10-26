@@ -56,6 +56,8 @@ func _process(delta: float):
                 # Remove all entities for the duration of the intro
                 entities_node.get_parent().remove_child(entities_node)
 
+                Audio.play_music(Globals.MUSIC.MENU)
+
                 Globals.animation_player.play("Intro1")
                 yield(Globals.animation_player, "animation_finished")
 
@@ -64,6 +66,8 @@ func _process(delta: float):
 
                 yield(Globals.ui_intro, "name_submitted")
                 Globals.ui_intro.container_name.visible = false
+
+                    Audio.stop_music()
 
                 Globals.animation_player.play("Intro2")
                 yield(Globals.animation_player, "animation_finished")
