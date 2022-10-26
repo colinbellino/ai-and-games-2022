@@ -62,11 +62,14 @@ var time_elapsed : float
 var ui_title : TitleUI
 var ui_settings : SettingsUI
 var ui_debug : DebugUI
+var ui_intro : IntroUI
+var ui_splash : CanvasLayer
 var world : Node2D
 var current_level: Node2D
 var current_level_data: Dictionary
 var camera: Camera2D
 var creature : Entity
+var animation_player : AnimationPlayer
 
 # Audio
 var audio_player_sound : AudioStreamPlayer2D
@@ -109,8 +112,14 @@ func _ready() -> void:
     assert(Globals.ui_settings != null, "Globals.ui_settings not initialized correctly.")
     Globals.ui_debug = get_node("/root/Game/%DebugUI")
     assert(Globals.ui_debug != null, "Globals.ui_debug not initialized correctly.")
+    Globals.ui_intro = get_node("/root/Game/%IntroUI")
+    assert(Globals.ui_intro != null, "Globals.ui_intro not initialized correctly.")
+    Globals.ui_splash = get_node("/root/Game/%SplashUI")
+    assert(Globals.ui_splash != null, "Globals.ui_splash not initialized correctly.")
     Globals.camera = get_node("/root/Game/%MainCamera")
     assert(Globals.camera != null, "Globals.camera not initialized correctly.")
+    Globals.animation_player = get_node("/root/Game/%AnimationPlayer")
+    assert(Globals.animation_player != null, "Globals.animation_player not initialized correctly.")
     Globals.audio_player_sound = get_node("/root/Game/%SoundPlayer")
     assert(Globals.audio_player_sound != null, "Globals.audio_player_sound not initialized correctly.")
     Globals.audio_player_music = get_node("/root/Game/%MusicPlayer")

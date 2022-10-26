@@ -84,6 +84,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/behaviours/Hunger.gd"
 }, {
+"base": "CanvasLayer",
+"class": "IntroUI",
+"language": "GDScript",
+"path": "res://src/IntroUI.gd"
+}, {
 "base": "Behaviour",
 "class": "IsCreature",
 "language": "GDScript",
@@ -140,6 +145,7 @@ _global_script_class_icons={
 "Game": "",
 "GameSettings": "",
 "Hunger": "",
+"IntroUI": "",
 "IsCreature": "",
 "LDTK": "",
 "MouseArea2D": "",
@@ -154,6 +160,9 @@ _global_script_class_icons={
 
 config/name="Ai & Games 2022"
 run/main_scene="res://media/scenes/main.tscn"
+boot_splash/show_image=false
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://media/art/icon_godot.png"
 
 [audio]
@@ -345,5 +354,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_clear_color=Color( 0.0941176, 0.0862745, 0.113725, 1 )
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://media/default_env.tres"
