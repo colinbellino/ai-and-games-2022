@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/fft-text.mp3-11ce5f7b9c15b38d414709c12ebe6d8a.mp3str"
+
+[deps]
+
+source_file="res://media/audio/ui/fft-text.mp3"
+dest_files=[ "res://.import/fft-text.mp3-11ce5f7b9c15b38d414709c12ebe6d8a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -52,14 +52,24 @@ func _process(delta: float):
             var entities_node = Globals.current_level.find_node("Entities")
             var entities_node_parent = entities_node.get_parent()
 
-            # if Globals.settings.debug_skip_title == false:
-            #     # Remove all entities for the duration of the intro
-            #     entities_node.get_parent().remove_child(entities_node)
+            if Globals.settings.debug_skip_title == false:
+                # Remove all entities for the duration of the intro
+                entities_node.get_parent().remove_child(entities_node)
 
-            #     Globals.animation_player.play("Intro1")
-            #     yield(Globals.animation_player, "animation_finished")
+                Globals.animation_player.play("Intro1")
+                yield(Globals.animation_player, "animation_finished")
 
-            #     entities_node_parent.add_child(entities_node)
+                Globals.ui_intro.animate_text()
+                yield(Globals.ui_intro, "animate_text_finished")
+
+                yield(Globals.ui_intro, "name_submitted")
+                Globals.ui_intro.container_name.visible = false
+
+                Globals.animation_player.play("Intro2")
+                yield(Globals.animation_player, "animation_finished")
+
+                # Add them back before starting the game
+                entities_node_parent.add_child(entities_node)
 
             LDTK.update_entities(entities_node)
             assert(Globals.creature != null, "No creature found in the level, did we forget to add one?")
@@ -115,7 +125,6 @@ static func button_quit_pressed() -> void:
     quit_game()
 
 static func start_game() -> void:
-    Globals.ui_intro.close()
     Globals.ui_title.close()
     Audio.play_music(Globals.MUSIC.CALM)
 

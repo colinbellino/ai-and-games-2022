@@ -29,6 +29,7 @@ const resolutions : Array = [
 const SPRITE_SIZE : int = 16
 const SCALE : int = 4
 const CELL_CENTER_OFFSET : Vector2 = Vector2(0.5, 0.5)
+const LETTER_APPEAR_DELAY : float = 0.1
 
 # Resources
 onready var textures : Dictionary = {}
@@ -75,7 +76,7 @@ var animation_player : AnimationPlayer
 var audio_player_sound : AudioStreamPlayer2D
 var audio_player_music : AudioStreamPlayer2D
 
-enum SFX { BUTTON_HOVER, BUTTON_CLICK_1, BUTTON_CLICK_2, EAT, SLEEP, LAUGH, CRY, WALK, POOP }
+enum SFX { BUTTON_HOVER, BUTTON_CLICK_1, BUTTON_CLICK_2, EAT, SLEEP, LAUGH, CRY, WALK, POOP, TEXT_TYPE, INTRO_DANGER }
 
 var audio_sounds : Dictionary = {
     SFX.BUTTON_HOVER: preload("res://media/audio/ui/menu-tick.wav"),
@@ -87,6 +88,8 @@ var audio_sounds : Dictionary = {
     SFX.CRY: preload("res://media/audio/creature/crying-1.ogg"),
     SFX.WALK: preload("res://media/audio/creature/step-slow.ogg"),
     SFX.POOP: preload("res://media/audio/creature/small-fart.wav"),
+    SFX.TEXT_TYPE: preload("res://media/audio/ui/fft-text.mp3"),
+    SFX.INTRO_DANGER: preload("res://media/audio/ui/Then, everything changed when the fire nation attacked.mp3"),
 }
 enum MUSIC { MENU, CALM, ACTIVE }
 var audio_musics : Dictionary = {

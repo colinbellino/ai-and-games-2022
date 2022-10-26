@@ -15,59 +15,59 @@ var hunger_timer : Timer
 var emotional_impact_timer : Timer
 
 func _ready() -> void:
-	Globals.hunger = HUNGER_START
-	entity.connect("fed", self, "_entity_fed")
+    Globals.hunger = HUNGER_START
+    entity.connect("fed", self, "_entity_fed")
 
-	hunger_timer = Timer.new()
-	add_child(hunger_timer)
-	hunger_timer.connect("timeout", self, "_hunger_timeout")
-	hunger_timer.start(HUNGER_TICKS_IN_SECONDS)
+    hunger_timer = Timer.new()
+    add_child(hunger_timer)
+    hunger_timer.connect("timeout", self, "_hunger_timeout")
+    hunger_timer.start(HUNGER_TICKS_IN_SECONDS)
 
-	# We might want something more global where we have
-	# a number that changes based on factors that
-	# will hit emotion at specific intervals
-	emotional_impact_timer = Timer.new()
-	add_child(emotional_impact_timer)
-	emotional_impact_timer.connect("timeout", self, "_emotional_impact_timeout")
-	emotional_impact_timer.start(EMOTION_TICKS_IN_SECONDS)
+    # We might want something more global where we have
+    # a number that changes based on factors that
+    # will hit emotion at specific intervals
+    emotional_impact_timer = Timer.new()
+    add_child(emotional_impact_timer)
+    emotional_impact_timer.connect("timeout", self, "_emotional_impact_timeout")
+    emotional_impact_timer.start(EMOTION_TICKS_IN_SECONDS)
 
 func _exit_tree() -> void:
-	entity.disconnect("fed", self, "_entity_fed")
-	remove_child(hunger_timer)
-	remove_child(emotional_impact_timer)
+    entity.disconnect("fed", self, "_entity_fed")
+    remove_child(hunger_timer)
+    remove_child(emotional_impact_timer)
 
 func _hunger_timeout() -> void:
-	Globals.hunger -= 1
+    Globals.hunger -= 1
 
-	# This should probably just be it's own behavoir
-	# Increase poop number to represent bowels fill with waste
-	Globals.poop += 1
+    # This should probably just be it's own behavoir
+    # Increase poop number to represent bowels fill with waste
+    Globals.poop += 1
 
-	if Globals.poop >= POOP_AT:
-		Globals.poop = 0
-		# Poop code goes here
-		var entites = Globals.current_level.find_node("Entities")
-		var fresh_poop = POOP_NODE.instance()
-		fresh_poop.position = get_parent().position
-		entites.add_child(fresh_poop)
-		# TODO: Colin there's an awesome poop png in the art assets.. Spawn a poo entity
+    if Globals.poop >= POOP_AT:
+        Globals.poop = 0
+        # Poop code goes here
+        var entites = Globals.current_level.find_node("Entities")
+        var fresh_poop = POOP_NODE.instance()
+        fresh_poop.position = get_parent().position
+        entites.add_child(fresh_poop)
+        # TODO: Colin there's an awesome poop png in the art assets.. Spawn a poo entity
 
-	# print("[HUNGER] ticked: ", Globals.hunger)
+    # print("[HUNGER] ticked: ", Globals.hunger)
 
 func _emotional_impact_timeout() -> void:
-	if Globals.hunger < HUNGER_EMOTION_DAMAGE_THRESHOLD:
-		Globals.add_emotion(HUNGER_EMOTION, "Pet")
-		# print("[HUNGER] emotional impact: ", Globals.emotion)
+    if Globals.hunger < HUNGER_EMOTION_DAMAGE_THRESHOLD:
+        Globals.add_emotion(HUNGER_EMOTION, "Pet")
+        # print("[HUNGER] emotional impact: ", Globals.emotion)
 
-	if Globals.hunger < HUNGER_DEATH_THRESHOLD:
-		if entity._state == Enums.EntityStates.Idle:
-			entity.set_meta("dead_animation", "dead_hunger")
-			entity.change_state(Enums.EntityStates.Dead)
+    if Globals.hunger < HUNGER_DEATH_THRESHOLD:
+        if entity._state == Enums.EntityStates.Idle:
+            entity.set_meta("dead_animation", "dead_hunger")
+            entity.change_state(Enums.EntityStates.Dead)
 
 func _entity_fed(amount: int) -> void:
-	Globals.hunger += amount
-	Globals.add_emotion(FEED_EMOTION, "Feed")
-	entity.set_meta("bark_animation", "eat_large")
-	entity.change_state(Enums.EntityStates.Bark)
-	Pet.emote(entity, 26)
-	Audio.play_sound(Globals.SFX.EAT)
+    Globals.hunger += amount
+    Globals.add_emotion(FEED_EMOTION, "Feed")
+    entity.set_meta("bark_animation", "eat_large")
+    entity.change_state(Enums.EntityStates.Bark)
+    Pet.emote(entity, 26)
+    Audio.play_sound(Globals.SFX.EAT)

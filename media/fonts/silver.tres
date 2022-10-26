@@ -3,5 +3,6 @@
 [ext_resource path="res://media/fonts/silver.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 38
+size = 57
+extra_spacing_bottom = -18
 font_data = ExtResource( 1 )
