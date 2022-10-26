@@ -71,12 +71,13 @@ var current_level_data: Dictionary
 var camera: Camera2D
 var creature : Entity
 var animation_player : AnimationPlayer
+var screen_shake : ScreenShake
 
 # Audio
 var audio_player_sound : AudioStreamPlayer2D
 var audio_player_music : AudioStreamPlayer2D
 
-enum SFX { BUTTON_HOVER, BUTTON_CLICK_1, BUTTON_CLICK_2, EAT, SLEEP, LAUGH, CRY, WALK, POOP, TEXT_TYPE, INTRO_DANGER }
+enum SFX { BUTTON_HOVER, BUTTON_CLICK_1, BUTTON_CLICK_2, EAT, SLEEP, LAUGH, CRY, WALK, POOP, TEXT_TYPE, INTRO_DANGER, EXPLOSION_1 }
 
 var audio_sounds : Dictionary = {
     SFX.BUTTON_HOVER: preload("res://media/audio/ui/menu-tick.wav"),
@@ -90,6 +91,7 @@ var audio_sounds : Dictionary = {
     SFX.POOP: preload("res://media/audio/creature/small-fart.wav"),
     SFX.TEXT_TYPE: preload("res://media/audio/ui/fft-text.mp3"),
     SFX.INTRO_DANGER: preload("res://media/audio/ui/Then, everything changed when the fire nation attacked.mp3"),
+    SFX.EXPLOSION_1: preload("res://media/audio/not_a_creeper.mp3"),
 }
 enum MUSIC { MENU, CALM, ACTIVE }
 var audio_musics : Dictionary = {
@@ -127,6 +129,8 @@ func _ready() -> void:
     assert(Globals.audio_player_sound != null, "Globals.audio_player_sound not initialized correctly.")
     Globals.audio_player_music = get_node("/root/Game/%MusicPlayer")
     assert(Globals.audio_player_music != null, "Globals.audio_player_music not initialized correctly.")
+    Globals.screen_shake = get_node("/root/Game/%ScreenShake")
+    assert(Globals.screen_shake != null, "Globals.screen_shake not initialized correctly.")
     Globals.version = load_file("res://version.txt", "1111111")
     assert(Globals.version != null, "Globals.version not initialized correctly.")
     Globals.can_fullscreen = OS.get_name() == "Windows"

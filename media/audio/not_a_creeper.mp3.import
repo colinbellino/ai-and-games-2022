@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/not_a_creeper.mp3-b9057f2d4993c58476cc2e12f0a16174.mp3str"
+
+[deps]
+
+source_file="res://media/audio/not_a_creeper.mp3"
+dest_files=[ "res://.import/not_a_creeper.mp3-b9057f2d4993c58476cc2e12f0a16174.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

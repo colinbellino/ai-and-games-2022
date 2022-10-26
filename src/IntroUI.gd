@@ -45,6 +45,9 @@ func animate_text() -> void:
 func play_danger_sound() -> void:
     Audio.play_sound(Globals.SFX.INTRO_DANGER)
 
+func play_explosion_sound() -> void:
+    Audio.play_sound(Globals.SFX.EXPLOSION_1)
+
 func on_button_hover():
     Audio.play_sound_random([Globals.SFX.BUTTON_HOVER])
 

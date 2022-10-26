@@ -50,6 +50,7 @@ func _hunger_timeout() -> void:
 
         if entites:
             var fresh_poop = POOP_NODE.instance()
+            Globals.screen_shake.shake(Globals.random.randi_range(1, 4), 0.1, 2)
             fresh_poop.position = get_parent().position
             entites.add_child(fresh_poop)
             # TODO: Colin there's an awesome poop png in the art assets.. Spawn a poo entity
