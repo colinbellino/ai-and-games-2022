@@ -38,30 +38,34 @@ func _process(delta: float):
         if Globals.game_state_entered == false:
             Globals.game_state_entered = true
 
-        if Input.is_action_just_released("ui_cancel"):
-            if Globals.ui_settings.visible:
+        if Globals.ui_settings.visible:
+            Engine.time_scale = 0
+
+            if Input.is_action_just_released("ui_cancel"):
                 Globals.ui_settings.close()
-            else:
+
+        else:
+
+            if Input.is_action_just_released("ui_cancel"):
                 Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_1, Globals.SFX.BUTTON_CLICK_2])
                 Globals.ui_settings.open(true)
-                return
 
-        if Input.is_key_pressed(KEY_SHIFT):
-            Engine.time_scale = 10
-        else:
-            Engine.time_scale = 1
+            if Input.is_key_pressed(KEY_SHIFT):
+                Engine.time_scale = 10
+            else:
+                Engine.time_scale = 1
 
-        Globals.creature_closest_point = Globals.astar.get_closest_point(Globals.creature.position / Globals.SPRITE_SIZE)
+            Globals.creature_closest_point = Globals.astar.get_closest_point(Globals.creature.position / Globals.SPRITE_SIZE)
 
-        Globals.ui_debug.dump_label.text = JSON.print({
-            "time_scale": "x%s" % [Engine.time_scale],
-            "time_elapsed": Globals.time_elapsed,
-            "creature_name": Globals.creature_name,
-            "creature_state": Enums.EntityStates.keys()[Globals.creature._state],
-            "emotion": Globals.emotion,
-            "hunger": Globals.hunger,
-            "delta": delta,
-        }, "  ")
+            Globals.ui_debug.dump_label.text = JSON.print({
+                "time_scale": "x%s" % [Engine.time_scale],
+                "time_elapsed": Globals.time_elapsed,
+                "creature_name": Globals.creature_name,
+                "creature_state": Enums.EntityStates.keys()[Globals.creature._state],
+                "emotion": Globals.emotion,
+                "hunger": Globals.hunger,
+                "delta": delta,
+            }, "  ")
 
 static func button_start_pressed() -> void:
     start_game(Globals.settings.level)
