@@ -6,7 +6,8 @@ const HUNTER_MAX := 60 # Fullness trying 60 to represent 1 minute
 const HUNTER_EMOTION_DAMAGE_THRESHOLD := 0
 const HUNGER_DEATH_THRESHOLD := -20
 const EMOTION_TICKS_IN_SECONDS := 10
-const HUNGER_EMOTION_MOD = Vector2(-0.2, -0.1)
+const HUNGER_EMOTION = Vector2(-0.2, -0.1)
+const FEED_EMOTION = Vector2(0.2, 0.2)
 
 var hunger_timer : Timer
 var emotional_impact_timer : Timer
@@ -40,7 +41,7 @@ func _hunger_timeout() -> void:
 
 func _emotional_impact_timeout() -> void:
     if Globals.hunger < HUNTER_EMOTION_DAMAGE_THRESHOLD:
-        Globals.add_emotion(HUNGER_EMOTION_MOD, "Pet")
+        Globals.add_emotion(HUNGER_EMOTION, "Pet")
         # print("[HUNGER] emotional impact: ", Globals.emotion)
 
     if Globals.hunger < HUNGER_DEATH_THRESHOLD:
@@ -50,6 +51,7 @@ func _emotional_impact_timeout() -> void:
 
 func _entity_fed(amount: int) -> void:
     Globals.hunger += amount
+    Globals.add_emotion(FEED_EMOTION, "Feed")
     entity.set_meta("bark_animation", "eat_large")
     entity.change_state(Enums.EntityStates.Bark)
     Pet.emote(entity, 26)
