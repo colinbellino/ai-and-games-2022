@@ -38,6 +38,7 @@ func _process(_delta: float) -> void:
                 elif random_number > 10:
                     entity.set_meta("bark_animation", "asleep")
                     entity.change_state(Enums.EntityStates.Bark)
+                    Audio.play_sound(Globals.SFX.SLEEP)
                 else:
                     var points := Globals.astar.get_points()
                     var start_point := Globals.creature_closest_point
