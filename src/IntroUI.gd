@@ -19,7 +19,7 @@ func _ready() -> void:
     # input_name.connect("text_changed", self, "_name_changed")
     input_name.connect("text_entered", self, "_name_entered")
     input_name.text = ""
-    label_name_text = tr("Their name is")
+    label_name_text = tr(label_name.text)
     label_name.text = ""
 
 func animate_text() -> void:

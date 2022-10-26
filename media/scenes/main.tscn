@@ -154,23 +154,25 @@ margin_bottom = 40.0
 
 [node name="NameLabel" type="Label" parent="IntroUI/NameContainer"]
 unique_name_in_owner = true
-margin_left = 274.0
-margin_top = 414.0
-margin_right = 514.0
-margin_bottom = 465.0
+margin_left = 223.0
+margin_top = 396.0
+margin_right = 745.0
+margin_bottom = 447.0
 theme = ExtResource( 5 )
-text = "Their name was"
+text = "The name of this lost child is"
+align = 1
 
 [node name="Name" type="LineEdit" parent="IntroUI/NameContainer"]
 unique_name_in_owner = true
-margin_left = 524.0
-margin_top = 412.0
-margin_right = 835.0
-margin_bottom = 463.0
+margin_left = 328.0
+margin_top = 453.0
+margin_right = 639.0
+margin_bottom = 504.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0.254902, 0.803922, 0.45098, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "WWWWWWWWWWWWWWW"
+align = 1
 max_length = 16
 expand_to_text_length = true
 context_menu_enabled = false
@@ -234,7 +236,7 @@ scale = Vector2( -1, 1 )
 z_index = 99
 frames = ExtResource( 6 )
 animation = "idle"
-frame = 3
+frame = 1
 
 [node name="Parent1Emote" type="Sprite" parent="World"]
 visible = false
@@ -249,3 +251,13 @@ position = Vector2( 120, 72 )
 z_index = 99
 frames = ExtResource( 6 )
 animation = "egg"
+
+[node name="Egg0Emote" type="Sprite" parent="World"]
+visible = false
+position = Vector2( 120, 56 )
+rotation = 3.14159
+scale = Vector2( -1, -1 )
+z_index = 99
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 16, 64, 16, 16 )
