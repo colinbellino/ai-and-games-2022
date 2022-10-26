@@ -20,6 +20,5 @@ func _process(_delta: float) -> void:
         entity.set_meta("moving_speed", speed)
         entity.change_state(Enums.EntityStates.Moving)
 
-func entity_state_entered(state: int) -> void:
-    print("entity_state_entered: ", [state])
+func entity_state_entered(_state: int) -> void:
     Audio.play_sound(Globals.SFX.WALK)

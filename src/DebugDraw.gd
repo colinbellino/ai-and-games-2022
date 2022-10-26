@@ -32,15 +32,18 @@ func _draw() -> void:
                 var connection_position := Globals.astar.get_point_position(connection_index)
                 draw_line((cell_position + Vector2(0.5, 0.5)) * scale, (connection_position + Vector2(0.5, 0.5)) * scale, Color.blue, 0.5)
 
-    var mouse_point_position := Globals.astar.get_point_position(Globals.mouse_closest_point)
-    draw_rect(Rect2((mouse_point_position + Vector2(0.1, 0.1)) * scale, Vector2(0.8, 0.8) * scale),  Color.yellow)
-    draw_rect(Rect2(Globals.mouse_position * scale, Vector2(10, 10)), Color.yellow)
-
-    var creature_point_position := Globals.astar.get_point_position(Globals.creature_closest_point)
-    draw_rect(Rect2((creature_point_position + Vector2(0.1, 0.1)) * scale, Vector2(0.8, 0.8) * scale),  Color.green)
-    draw_rect(Rect2(Globals.creature.position * scale, Vector2(10, 10)), Color.green)
+    if Globals.mouse_closest_point > -1:
+        var mouse_point_position := Globals.astar.get_point_position(Globals.mouse_closest_point)
+        draw_rect(Rect2((mouse_point_position + Vector2(0.1, 0.1)) * scale, Vector2(0.8, 0.8) * scale),  Color.yellow)
+        draw_rect(Rect2(Globals.mouse_position * scale, Vector2(10, 10)), Color.yellow)
 
     if Globals.creature:
+
+        if Globals.creature_closest_point > -1:
+            var creature_point_position := Globals.astar.get_point_position(Globals.creature_closest_point)
+            draw_rect(Rect2((creature_point_position + Vector2(0.1, 0.1)) * scale, Vector2(0.8, 0.8) * scale),  Color.green)
+            draw_rect(Rect2(Globals.creature.position * scale, Vector2(10, 10)), Color.green)
+
         if Globals.creature._state == Enums.EntityStates.Moving && Globals.creature.has_meta("moving_path"):
             var path : PoolVector2Array = Globals.creature.get_meta("moving_path")
             var point_position := path[path.size() - 1]

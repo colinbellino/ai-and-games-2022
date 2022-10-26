@@ -52,8 +52,8 @@ var total_poops: int
 var astar : AStar2D
 var creature_name : String
 var mouse_position : Vector2
-var mouse_closest_point : int
-var creature_closest_point : int
+var mouse_closest_point : int = -1
+var creature_closest_point : int = -1
 var random = RandomNumberGenerator.new()
 var creature_names : Array = []
 var time_elapsed : float
