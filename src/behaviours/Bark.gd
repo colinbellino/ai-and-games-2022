@@ -21,6 +21,7 @@ func _process(_delta: float) -> void:
             if Globals.emotion.y < EMOTION_DEATH_THRESHOLD:
                 entity.set_meta("dead_animation", "dead_leave")
                 entity.change_state(Enums.EntityStates.Dead)
+                Audio.play_sound(Globals.SFX.DEATH)
             elif Globals.emotion.x <= BORED_THRESHOLD.x and Globals.emotion.y <= BORED_THRESHOLD.y: # Sad
                 entity.set_meta("bark_animation", "cry")
                 entity.change_state(Enums.EntityStates.Bark)
@@ -33,6 +34,7 @@ func _process(_delta: float) -> void:
                 if random_number > 20:
                     entity.set_meta("bark_animation", "bored")
                     entity.change_state(Enums.EntityStates.Bark)
+                    Audio.play_sound(Globals.SFX.BORED)
                 elif random_number > 10:
                     entity.set_meta("bark_animation", "asleep")
                     entity.change_state(Enums.EntityStates.Bark)

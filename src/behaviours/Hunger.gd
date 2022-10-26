@@ -68,6 +68,7 @@ func _emotional_impact_timeout() -> void:
         if entity._state == Enums.EntityStates.Idle:
             entity.set_meta("dead_animation", "dead_hunger")
             entity.change_state(Enums.EntityStates.Dead)
+            Audio.play_sound(Globals.SFX.DEATH)
 
 func _entity_fed(amount: int) -> void:
     Globals.hunger += amount
