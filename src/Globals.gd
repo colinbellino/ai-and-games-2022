@@ -169,9 +169,10 @@ func set_linear_db(bus_index: int, linear_db: float) -> void:
     linear_db = clamp(linear_db, 0.0, 1.0)
     AudioServer.set_bus_volume_db(bus_index, linear2db(linear_db))
 
-func add_emotion(amount: Vector2, _source: String = ""):
+func add_emotion(amount: Vector2, source: String = "Unknown"):
     emotion.x = clamp(emotion.x + amount.x, -1, 1)
     emotion.y = clamp(emotion.y + amount.y, -1, 1)
+    print("[Emotion Added %s][Amount %s]" % [source, amount])
 
 
 static func load_file(filepath: String, default_value: String = "") -> String:
