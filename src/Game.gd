@@ -1,6 +1,6 @@
 class_name Game extends Node
 
-enum GameStates { INIT, TITLE, PLAY }
+enum GameStates { INIT, TITLE, INTRO, PLAY }
 
 func _ready():
     # Connect the UI
@@ -29,60 +29,29 @@ func _process(delta: float):
     if Input.is_action_just_released("debug_1"):
         Globals.settings.debug_draw = !Globals.settings.debug_draw
 
-    if Input.is_action_just_released("ui_cancel"):
-        quit_game()
-        return
-
     if Globals.game_state == GameStates.TITLE:
-        pass
-        # if Input.is_action_just_released("debug_1"):
-        #     start_game(0)
-        # if Input.is_action_just_released("debug_2"):
-        #     start_game(1)
-        # if Input.is_action_just_released("debug_3"):
-        #     start_game(2)
-        # if Input.is_action_just_released("debug_4"):
-        #     start_game(3)
-        # if Input.is_action_just_released("debug_5"):
-        #     start_game(4)
-        # if Input.is_action_just_released("debug_6"):
-        #     start_game(5)
-        # if Input.is_action_just_released("debug_7"):
-        #     start_game(6)
-        # if Input.is_action_just_released("debug_8"):
-        #     start_game(7)
-        # if Input.is_action_just_released("debug_9"):
-        #     start_game(8)
-        # if Input.is_action_just_released("debug_10"):
-        #     start_game(10)
-        # if Input.is_action_just_released("debug_11"):
-        #     start_game(11)
-        # if Input.is_action_just_released("debug_12"):
-        #     start_game(12)
+        if Input.is_action_just_released("ui_cancel"):
+            quit_game()
+            return
 
     if Globals.game_state == GameStates.PLAY:
         if Globals.game_state_entered == false:
             Globals.game_state_entered = true
 
-        Globals.creature_closest_point = Globals.astar.get_closest_point(Globals.creature.position / Globals.SPRITE_SIZE)
+        if Input.is_action_just_released("ui_cancel"):
+            if Globals.ui_settings.visible:
+                Globals.ui_settings.close()
+            else:
+                Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_1, Globals.SFX.BUTTON_CLICK_2])
+                Globals.ui_settings.open(true)
+                return
 
         if Input.is_key_pressed(KEY_SHIFT):
             Engine.time_scale = 10
         else:
             Engine.time_scale = 1
 
-        if Input.is_action_pressed("move_up"):
-            Globals.camera.position.y -= 500.0 * delta
-            # Globals.creature.position.y -= 120.0 * delta
-        if Input.is_action_pressed("move_down"):
-            Globals.camera.position.y += 500.0 * delta
-            # Globals.creature.position.y += 120.0 * delta
-        if Input.is_action_pressed("move_right"):
-            Globals.camera.position.x += 500.0 * delta
-            # Globals.creature.position.x += 120.0 * delta
-        if Input.is_action_pressed("move_left"):
-            Globals.camera.position.x -= 500.0 * delta
-            # Globals.creature.position.x -= 120.0 * delta
+        Globals.creature_closest_point = Globals.astar.get_closest_point(Globals.creature.position / Globals.SPRITE_SIZE)
 
         Globals.ui_debug.dump_label.text = JSON.print({
             "time_scale": "x%s" % [Engine.time_scale],

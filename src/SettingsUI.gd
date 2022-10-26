@@ -4,6 +4,7 @@ var button_fullscreen: CheckButton
 var button_resolution: OptionButton
 var button_locale: OptionButton
 var button_close: Button
+var button_quit: Button
 var slider_volume_main : Slider
 var slider_volume_music : Slider
 var slider_volume_sound : Slider
@@ -13,6 +14,7 @@ func _ready() -> void:
     button_resolution = get_node("%Resolution")
     button_locale = get_node("%Locale")
     button_close = get_node("%Close")
+    button_quit = get_node("%Quit")
     slider_volume_main = get_node("%VolumeMain")
     slider_volume_music = get_node("%VolumeMusic")
     slider_volume_sound = get_node("%VolumeSound")
@@ -25,6 +27,8 @@ func _ready() -> void:
     button_locale.connect("item_selected", self, "play_button_sound")
     button_close.connect("pressed", self, "button_close_pressed")
     button_close.connect("pressed", self, "play_button_sound")
+    button_quit.connect("pressed", self, "button_quit_pressed")
+    button_quit.connect("pressed", self, "play_button_sound")
     slider_volume_main.connect("value_changed", self, "slider_volume_main_changed")
     slider_volume_main.connect("value_changed", self, "play_button_sound")
     slider_volume_music.connect("value_changed", self, "slider_volume_music_changed")
@@ -34,7 +38,7 @@ func _ready() -> void:
 
     close()
 
-func open() -> void:
+func open(show_quit_button: bool = false) -> void:
     button_fullscreen.visible = false
     if Globals.can_fullscreen:
         button_fullscreen.visible = true
@@ -60,6 +64,10 @@ func open() -> void:
 
     button_fullscreen.grab_focus()
 
+    button_quit.visible = false
+    if show_quit_button:
+        button_quit.visible = true
+
     visible = true
 
 func close() -> void:
@@ -82,6 +90,10 @@ func button_close_pressed() -> void:
     Save.write_settings(Globals.settings)
     close()
 
+func button_quit_pressed() -> void:
+    Save.write_settings(Globals.settings)
+    Game.quit_game()
+
 func slider_volume_main_changed(value: float) -> void:
     Globals.settings.volume_main = value
     Globals.set_linear_db(Globals.bus_main, Globals.settings.volume_main)
@@ -97,5 +109,5 @@ func slider_volume_sound_changed(value: float) -> void:
     Globals.set_linear_db(Globals.bus_sound, Globals.settings.volume_sound)
     # print("bus_sound: ", [Globals.get_linear_db(Globals.bus_sound), AudioServer.get_bus_volume_db(Globals.bus_sound)])
 
-func play_button_sound() -> void:
+func play_button_sound(_whatever = null) -> void:
     Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_1, Globals.SFX.BUTTON_CLICK_2])
