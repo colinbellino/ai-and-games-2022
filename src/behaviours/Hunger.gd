@@ -46,11 +46,13 @@ func _hunger_timeout() -> void:
     if Globals.poop >= POOP_AT:
         Globals.poop = 0
         # Poop code goes here
-        var entites = Globals.current_level.find_node("Entities")
-        var fresh_poop = POOP_NODE.instance()
-        fresh_poop.position = get_parent().position
-        entites.add_child(fresh_poop)
-        # TODO: Colin there's an awesome poop png in the art assets.. Spawn a poo entity
+        var entites = Globals.current_level.find_node("Entities", true, false)
+
+        if entites:
+            var fresh_poop = POOP_NODE.instance()
+            fresh_poop.position = get_parent().position
+            entites.add_child(fresh_poop)
+            # TODO: Colin there's an awesome poop png in the art assets.. Spawn a poo entity
 
     # print("[HUNGER] ticked: ", Globals.hunger)
 
