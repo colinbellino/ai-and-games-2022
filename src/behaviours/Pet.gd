@@ -1,5 +1,7 @@
 class_name Pet extends Behaviour
 
+const PET_EMOTION_MOD = Vector2(0, 0.1)
+
 var last_interaction : float
 var cooldown_in_ms : int = 1500
 
@@ -17,7 +19,7 @@ func entity_interacted(interaction_type: int) -> void:
         return
 
     if interaction_type == 0:
-        Globals.emotion += 1
+        Globals.add_emotion(PET_EMOTION_MOD, "Pet")
         Audio.play_sound(Globals.SFX.LAUGH)
         emote(entity, 7)
     # elif interaction_type == 1:

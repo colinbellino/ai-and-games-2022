@@ -45,7 +45,7 @@ var bus_sound : int
 var game_state : int
 var game_state_entered : bool
 var game_state_exited : bool
-var emotion : int
+var emotion : Vector2
 var hunger : int
 var astar : AStar2D
 var creature_name : String
@@ -147,6 +147,11 @@ func get_linear_db(bus_index: int) -> float:
 func set_linear_db(bus_index: int, linear_db: float) -> void:
     linear_db = clamp(linear_db, 0.0, 1.0)
     AudioServer.set_bus_volume_db(bus_index, linear2db(linear_db))
+
+func add_emotion(amount: Vector2, source: String):
+    emotion.x = clamp(emotion.x + amount.x, -1, 1)
+    emotion.y = clamp(emotion.y + amount.y, -1, 1)
+
 
 static func load_file(filepath: String, default_value: String = "") -> String:
     var file := File.new()

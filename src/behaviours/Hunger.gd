@@ -6,6 +6,7 @@ const HUNTER_MAX := 60 # Fullness trying 60 to represent 1 minute
 const HUNTER_EMOTION_DAMAGE_THRESHOLD := 0
 const HUNGER_DEATH_THRESHOLD := -20
 const EMOTION_TICKS_IN_SECONDS := 10
+const HUNGER_EMOTION_MOD = Vector2(-0.2, -0.1)
 
 var hunger_timer : Timer
 var emotional_impact_timer : Timer
@@ -39,7 +40,7 @@ func _hunger_timeout() -> void:
 
 func _emotional_impact_timeout() -> void:
     if Globals.hunger < HUNTER_EMOTION_DAMAGE_THRESHOLD:
-        Globals.emotion -= 1
+        Globals.add_emotion(HUNGER_EMOTION_MOD, "Pet")
         # print("[HUNGER] emotional impact: ", Globals.emotion)
 
     if Globals.hunger < HUNGER_DEATH_THRESHOLD:
