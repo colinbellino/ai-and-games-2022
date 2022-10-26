@@ -50,7 +50,12 @@ func _process(_delta: float):
                 var point = path[index]
                 var destination : Vector2 = (point + Globals.CELL_CENTER_OFFSET) * Globals.SPRITE_SIZE
                 var duration := position.distance_to(destination) / speed
+                var direction = 1
+                if destination.x  - position.x < 0:
+                    direction = -1
+
                 var tween := create_tween()
+                tween.tween_property(self, "scale:x", direction * 1.0, 0.1)
                 tween.tween_property(self, "position", destination, duration)
                 yield(tween, "finished")
 

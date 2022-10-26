@@ -23,6 +23,7 @@ func _process(_delta: float) -> void:
             elif Globals.emotion < -5: # Sad
                 entity.set_meta("bark_animation", "cry")
                 entity.change_state(Enums.EntityStates.Bark)
+                Audio.play_sound(Globals.SFX.CRY)
             elif Globals.emotion > 5: # Happy
                 entity.set_meta("bark_animation", "laugh")
                 entity.change_state(Enums.EntityStates.Bark)
