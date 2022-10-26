@@ -176,7 +176,7 @@ static func create_astar() -> AStar2D:
         Vector2(1, -1),
     ])
 
-    var ground : TileMap = Globals.world.find_node("AutoLayer", true, false)
+    var ground : TileMap = Globals.world.find_node("Tiles", true, false)
     var cells : PoolVector2Array = ground.get_used_cells()
     for index in range(0, cells.size()):
         var position = cells[index]

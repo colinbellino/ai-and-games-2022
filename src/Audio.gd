@@ -28,6 +28,7 @@ static func play_music(id: int, loop: bool = true) -> void:
     if Globals.audio_player_music.playing:
         Globals.audio_player_music.stop()
     Globals.audio_player_music.stream = stream
+    Globals.audio_player_music.pitch_scale = Engine.time_scale
     Globals.audio_player_music.play()
 
 static func stop_music() -> void:
@@ -35,6 +36,7 @@ static func stop_music() -> void:
 
 static func spawn_audio_player() -> AudioStreamPlayer:
     var player := AudioStreamPlayer.new()
+    player.pitch_scale = Engine.time_scale
     # Globals.audio_players.append(player)
     Globals.world.add_child(player)
     return player

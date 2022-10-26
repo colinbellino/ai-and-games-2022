@@ -52,31 +52,36 @@ func _process(delta: float):
             var entities_node = Globals.current_level.find_node("Entities")
             var entities_node_parent = entities_node.get_parent()
 
+            # Remove all entities for the duration of the intro
+            entities_node.get_parent().remove_child(entities_node)
+
+            if Globals.settings.debug_skip_title:
+                Engine.time_scale = 20
+
+            Audio.play_music(Globals.MUSIC.MENU)
+
+            Globals.animation_player.play("Intro1")
+            yield(Globals.animation_player, "animation_finished")
+
+            Globals.ui_intro.animate_text()
+            yield(Globals.ui_intro, "animate_text_finished")
+
             if Globals.settings.debug_skip_title == false:
-                # Remove all entities for the duration of the intro
-                entities_node.get_parent().remove_child(entities_node)
-
-                Audio.play_music(Globals.MUSIC.MENU)
-
-                Globals.animation_player.play("Intro1")
-                yield(Globals.animation_player, "animation_finished")
-
-                Globals.ui_intro.animate_text()
-                yield(Globals.ui_intro, "animate_text_finished")
-
                 yield(Globals.ui_intro, "name_submitted")
-                Globals.ui_intro.container_name.visible = false
+            Globals.ui_intro.container_name.visible = false
 
-                Audio.stop_music()
+            Audio.stop_music()
 
-                Globals.animation_player.play("Intro2")
-                yield(Globals.animation_player, "animation_finished")
+            Globals.animation_player.play("Intro2")
+            yield(Globals.animation_player, "animation_finished")
 
-                # Add them back before starting the game
-                entities_node_parent.add_child(entities_node)
+            # Add them back before starting the game
+            entities_node_parent.add_child(entities_node)
 
             LDTK.update_entities(entities_node)
             assert(Globals.creature != null, "No creature found in the level, did we forget to add one?")
+
+            Engine.time_scale = 1
 
             start_game()
 
@@ -91,15 +96,14 @@ func _process(delta: float):
                 Globals.ui_settings.close()
 
         else:
-
-            if Input.is_action_just_released("ui_cancel"):
-                Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_1, Globals.SFX.BUTTON_CLICK_2])
-                Globals.ui_settings.open(true)
-
             if Input.is_key_pressed(KEY_SHIFT):
                 Engine.time_scale = 10
             else:
                 Engine.time_scale = 1
+
+            if Input.is_action_just_released("ui_cancel"):
+                Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_1, Globals.SFX.BUTTON_CLICK_2])
+                Globals.ui_settings.open(true)
 
             Globals.creature_closest_point = Globals.astar.get_closest_point(Globals.creature.position / Globals.SPRITE_SIZE)
 
