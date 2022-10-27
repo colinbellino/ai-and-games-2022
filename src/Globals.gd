@@ -79,7 +79,7 @@ var audio_player_sound : AudioStreamPlayer2D
 var audio_player_music : AudioStreamPlayer2D
 
 enum SFX { BUTTON_HOVER, BUTTON_CLICK_1, BUTTON_CLICK_2, EAT, SLEEP, LAUGH, CRY, WALK, POOP, TEXT_TYPE, INTRO_DANGER, EXPLOSION_1,
-           DEATH, ANGER, BORED }
+           DEATH, ANGER, BORED, SWISH }
 
 var audio_sounds : Dictionary = {
     SFX.BUTTON_HOVER: preload("res://media/audio/ui/menu-tick.wav"),
@@ -99,6 +99,7 @@ var audio_sounds : Dictionary = {
     SFX.DEATH: preload("res://media/audio/creature/dying-1.ogg"),
     SFX.ANGER: preload("res://media/audio/creature/angry.ogg"),
     SFX.BORED: preload("res://media/audio/creature/bored.ogg"),
+    SFX.SWISH: preload("res://media/audio/swish.ogg"),
 }
 enum MUSIC { MENU, CALM, ACTIVE }
 var audio_musics : Dictionary = {
