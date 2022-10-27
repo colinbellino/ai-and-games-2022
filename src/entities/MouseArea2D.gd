@@ -9,8 +9,10 @@ func _ready() -> void:
     connect("mouse_exited", self, "on_mouse_exited")
 
 func _exit_tree() -> void:
-    disconnect("mouse_entered", self, "on_mouse_entered")
-    disconnect("mouse_exited", self, "on_mouse_exited")
+    if is_connected("mouse_entered", self, "on_mouse_entered"):
+        disconnect("mouse_entered", self, "on_mouse_entered")
+    if is_connected("mouse_exited", self, "on_mouse_exited"):
+        disconnect("mouse_exited", self, "on_mouse_exited")
 
 func on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
     if event is InputEventMouseMotion:
@@ -22,11 +24,9 @@ func on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void
         entity.interact(1)
 
 func on_mouse_entered() -> void:
-    print("on_mouse_entered: ", [entity.name])
     Globals.set_cursor(Globals.CURSORS.HAND)
     entity.emit_signal("area_entered", self)
 
 func on_mouse_exited() -> void:
-    print("on_mouse_exited: ", [entity.name])
     Globals.set_cursor(Globals.CURSORS.DEFAULT)
     entity.emit_signal("area_exited", self)
