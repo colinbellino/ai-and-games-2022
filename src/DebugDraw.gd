@@ -21,6 +21,8 @@ func _draw() -> void:
     if Globals.astar != null:
         var points := Globals.astar.get_points()
         for cell_index in points:
+            if Globals.astar.is_point_disabled(cell_index):
+                continue
             var cell_position := Globals.astar.get_point_position(cell_index)
             var color = Color.red
             color.a = 0.5

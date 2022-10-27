@@ -201,9 +201,6 @@ static func create_astar() -> AStar2D:
 
     return astar
 
-static func update_astar() -> void:
-    pass
-
 static func get_behaviour_meta(entity: Entity, behaviour_name: String, meta_identifier: String, default_value = null):
     var key := "%s_%s" % [behaviour_name, meta_identifier]
     if entity.has_meta(key) == false:

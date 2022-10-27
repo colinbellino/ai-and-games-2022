@@ -83,6 +83,9 @@ func _process(delta: float):
             LDTK.update_entities(entities_node)
             assert(Globals.creature != null, "No creature found in the level, did we forget to add one?")
 
+            var point = Globals.astar.get_closest_point(find_node("Egg0", true, false).position / Globals.SPRITE_SIZE)
+            Globals.astar.set_point_disabled(point, true)
+
             Engine.time_scale = 1
 
             start_game()
