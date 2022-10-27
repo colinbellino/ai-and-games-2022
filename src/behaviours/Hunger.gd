@@ -1,6 +1,11 @@
 class_name Hunger extends Behaviour
 
-const POOP_NODE = preload("res://media/scenes/entities/Poop.tscn")
+const POOP_ENTITIES = [
+    preload("res://media/scenes/entities/Poop0.tscn"),
+    preload("res://media/scenes/entities/Poop1.tscn"),
+    preload("res://media/scenes/entities/Poop2.tscn"),
+    preload("res://media/scenes/entities/Poop3.tscn"),
+]
 const HUNGER_TICKS_IN_SECONDS := 3
 const HUNGER_START := 10 # Start the dino a little hungry
 const HUNGER_MAX := 60 # Fullness trying 60 to represent 1 minute
@@ -47,14 +52,18 @@ func _hunger_timeout() -> void:
         if Globals.creature._state == Enums.EntityStates.Idle:
             Globals.poop = 0
             # Poop code goes here
-            var entites = Globals.current_level.find_node("Entities", true, false)
+            var entities_node = Globals.current_level.find_node("Entities", true, false)
 
-            if entites:
-                var fresh_poop = POOP_NODE.instance()
-                Globals.screen_shake.shake(Globals.random.randi_range(1, 4), 0.1, 2)
-                fresh_poop.position = get_parent().position
-                entites.add_child(fresh_poop)
-                entites.move_child(fresh_poop, 0)
+            if entities_node:
+                var index = Globals.random.randi() % POOP_ENTITIES.size()
+                var fresh_poop = POOP_ENTITIES[index].instance()
+                var intensity = Globals.random.randi_range(1, 4)
+                if index == 3:
+                    intensity = 8
+                Globals.screen_shake.shake(intensity, 0.1, 2)
+                fresh_poop.position = entity.position
+                entities_node.add_child(fresh_poop)
+                entities_node.move_child(fresh_poop, 0)
                 # TODO: Colin there's an awesome poop png in the art assets.. Spawn a poo entity
 
     # print("[HUNGER] ticked: ", Globals.hunger)
