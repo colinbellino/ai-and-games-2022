@@ -49,11 +49,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/behaviours/EntityAnimation.gd"
 }, {
-"base": "Area2D",
-"class": "EntityArea2D",
-"language": "GDScript",
-"path": "res://src/entities/EntityArea2D.gd"
-}, {
 "base": "Reference",
 "class": "Enums",
 "language": "GDScript",
@@ -97,7 +92,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "MouseArea2D",
 "language": "GDScript",
-"path": "res://src/MouseArea2D.gd"
+"path": "res://src/entities/MouseArea2D.gd"
 }, {
 "base": "Behaviour",
 "class": "Pet",
@@ -112,7 +107,7 @@ _global_script_classes=[ {
 "base": "Behaviour",
 "class": "Poop",
 "language": "GDScript",
-"path": "res://src/entities/Dirty.gd"
+"path": "res://src/behaviours/Dirty.gd"
 }, {
 "base": "Reference",
 "class": "Save",
@@ -148,7 +143,6 @@ _global_script_class_icons={
 "EmitStimulus": "",
 "Entity": "",
 "EntityAnimation": "",
-"EntityArea2D": "",
 "Enums": "",
 "FoodSource": "",
 "Game": "",

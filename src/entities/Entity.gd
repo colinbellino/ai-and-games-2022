@@ -71,16 +71,16 @@ func interact(_interaction_type: int) -> void:
     # print("[Entity] %s interact" % [name])
     emit_signal("interacted", _interaction_type)
 
-func area_interacted(_area: EntityArea2D) -> void:
+func area_interacted(_area: MouseArea2D) -> void:
     # print("[Entity] %s interacted | source: %s | stimulus: %s" % [name, area.source, area.stimulus])
     pass
 
-func area_entered(area: EntityArea2D) -> void:
-    # print("[Entity] %s entered | source: %s | stimulus: %s" % [name, area.source, area.stimulus])
+func area_entered(area: MouseArea2D) -> void:
+    print("[Entity] %s entered | source: %s" % [name, area])
     emit_signal("area_entered", area)
 
-func area_exited(area: EntityArea2D) -> void:
-    # print("[Entity] %s exited | source: %s | stimulus: %s" % [name, area.source, area.stimulus])
+func area_exited(area: MouseArea2D) -> void:
+    print("[Entity] %s exited | source: %s" % [name, area])
     emit_signal("area_exited", area)
 
 func change_state(state: int) -> void:
@@ -93,10 +93,4 @@ func change_state(state: int) -> void:
 
 # Returns an array of Entity found in the area.
 func get_entities_in_area() -> Array:
-    var areas := area_sound.get_overlapping_areas()
-    var entities := []
-    for area in areas:
-        if area is EntityArea2D:
-            entities.append(area.entity)
-
-    return entities
+    return []
