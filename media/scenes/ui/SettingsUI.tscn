@@ -49,33 +49,34 @@ margin_bottom = 20.0
 
 [node name="Fullscreen" type="CheckButton" parent="Panel/Control/Menu"]
 unique_name_in_owner = true
+margin_top = 218.0
 margin_right = 400.0
-margin_bottom = 53.0
+margin_bottom = 271.0
 theme = ExtResource( 2 )
 text = "Fullscreen"
 
 [node name="Resolution" type="OptionButton" parent="Panel/Control/Menu"]
 unique_name_in_owner = true
-margin_top = 57.0
+margin_top = 161.0
 margin_right = 400.0
-margin_bottom = 108.0
+margin_bottom = 212.0
 theme = ExtResource( 2 )
 text = "Resolution"
 flat = true
 
 [node name="Locale" type="OptionButton" parent="Panel/Control/Menu"]
 unique_name_in_owner = true
-margin_top = 112.0
+margin_top = -39.0
 margin_right = 400.0
-margin_bottom = 163.0
+margin_bottom = 12.0
 theme = ExtResource( 2 )
 text = "Language"
 flat = true
 
 [node name="Control" type="Control" parent="Panel/Control/Menu"]
-margin_top = 167.0
+margin_top = 16.0
 margin_right = 400.0
-margin_bottom = 212.0
+margin_bottom = 61.0
 
 [node name="Label" type="Label" parent="Panel/Control/Menu/Control"]
 margin_right = 260.0
@@ -93,9 +94,9 @@ max_value = 1.0
 step = 0.1
 
 [node name="Control2" type="Control" parent="Panel/Control/Menu"]
-margin_top = 216.0
+margin_top = 65.0
 margin_right = 400.0
-margin_bottom = 261.0
+margin_bottom = 110.0
 
 [node name="Label" type="Label" parent="Panel/Control/Menu/Control2"]
 margin_right = 260.0
@@ -113,9 +114,9 @@ max_value = 1.0
 step = 0.1
 
 [node name="Control3" type="Control" parent="Panel/Control/Menu"]
-margin_top = 265.0
+margin_top = 114.0
 margin_right = 400.0
-margin_bottom = 310.0
+margin_bottom = 159.0
 
 [node name="Label" type="Label" parent="Panel/Control/Menu/Control3"]
 margin_right = 260.0
@@ -134,16 +135,16 @@ step = 0.1
 
 [node name="Close" type="Button" parent="Panel/Control/Menu"]
 unique_name_in_owner = true
-margin_top = 319.0
+margin_top = 347.0
 margin_right = 400.0
-margin_bottom = 370.0
+margin_bottom = 398.0
 theme = ExtResource( 2 )
 text = "Close"
 
 [node name="Quit" type="Button" parent="Panel/Control/Menu"]
 unique_name_in_owner = true
-margin_top = 381.0
+margin_top = 409.0
 margin_right = 400.0
-margin_bottom = 432.0
+margin_bottom = 460.0
 theme = ExtResource( 2 )
 text = "Quit game"
