@@ -69,7 +69,7 @@ func animate_text() -> void:
         yield(get_tree().create_timer(Globals.LETTER_APPEAR_DELAY), "timeout")
     input_name.grab_focus()
 
-    yield(get_tree().create_timer(2), "timeout")
+    yield(get_tree().create_timer(0.5), "timeout")
     button_start.modulate.a = 0.0
     button_start.visible = true
     var tween := create_tween()
@@ -97,10 +97,11 @@ func _name_entered(new_text: String) -> void:
         button_start.disabled = false
         Globals.creature_name = new_text
 
-        var tween := create_tween()
-        tween.tween_property(container_name, "modulate:a", 0.0, 0.2)
-        yield(tween, "finished")
-        container_name.visible = false
-        container_name.modulate.a = 1.0
+        if button_start.visible:
+            var tween := create_tween()
+            tween.tween_property(container_name, "modulate:a", 0.0, 0.2)
+            yield(tween, "finished")
+            container_name.visible = false
+            container_name.modulate.a = 1.0
 
         emit_signal("name_submitted")
