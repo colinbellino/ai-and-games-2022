@@ -3,7 +3,6 @@ class_name Game extends Node
 enum GameStates { INIT, TITLE, INTRO, PLAY }
 
 func _ready():
-
     OS.set_window_title(Globals.game_names[Globals.random.randi() % Globals.game_names.size()])
 
     # Connect the UI
