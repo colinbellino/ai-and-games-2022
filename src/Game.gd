@@ -143,6 +143,15 @@ static func start_game() -> void:
 
     change_state(GameStates.PLAY)
 
+    var entity : Entity = Globals.creature
+    var start_point : int = Globals.astar.get_closest_point(Vector2(7, 2))
+    var destination_point : int = Globals.astar.get_closest_point(Vector2(7, 3))
+    var path = Globals.astar.get_point_path(start_point, destination_point)
+    var speed = LDTK.get_behaviour_meta(entity, "Roaming", "Speed", 16.0)
+    entity.set_meta("moving_path", path)
+    entity.set_meta("moving_speed", speed)
+    entity.change_state(Enums.EntityStates.Moving)
+
 static func change_state(state) -> void:
     print("[Game] Changing state: %s" % [GameStates.keys()[state]])
     Globals.game_state = state
