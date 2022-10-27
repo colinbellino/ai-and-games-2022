@@ -37,7 +37,8 @@ static func stop_music() -> void:
 
 static func spawn_audio_player() -> AudioStreamPlayer:
     var player = Globals.one_shot.instance()
-    player.pitch_scale = Engine.time_scale
+    if Engine.time_scale > 0:
+        player.pitch_scale = Engine.time_scale
     # Globals.audio_players.append(player)
     Globals.world.add_child(player)
     return player
