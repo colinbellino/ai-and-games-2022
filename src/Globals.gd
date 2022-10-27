@@ -29,7 +29,7 @@ const resolutions : Array = [
 const SPRITE_SIZE : int = 16
 const SCALE : int = 4
 const CELL_CENTER_OFFSET : Vector2 = Vector2(0.5, 0.5)
-const LETTER_APPEAR_DELAY : float = 0.1
+const LETTER_APPEAR_DELAY : float = 0.05
 
 # Resources
 onready var textures : Dictionary = {}

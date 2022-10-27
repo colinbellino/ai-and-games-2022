@@ -109,7 +109,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0, 1, 2.4, 13.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -80 ), Vector2( 0, -80 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -100 ), Vector2( 0, -100 ) ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("IntroUI/BorderBottom:rect_position")
@@ -190,9 +190,12 @@ tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 7.1, 10.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 2.4, 7.1, 10.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "animate_message0"
+}, {
 "args": [  ],
 "method": "play_danger_sound"
 }, {
@@ -221,10 +224,10 @@ tracks/17/loop_wrap = true
 tracks/17/imported = false
 tracks/17/enabled = true
 tracks/17/keys = {
-"times": PoolRealArray( 2.9, 10.1, 12.8, 14.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 2.9, 10.1, 12.8, 14.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true, false, true, false ]
+"values": [ false, true, false, true, false ]
 }
 tracks/18/type = "value"
 tracks/18/path = NodePath("World/Container/Egg0Emote:region_rect")

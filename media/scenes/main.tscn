@@ -147,6 +147,16 @@ margin_left = -480.0
 margin_bottom = 540.0
 color = Color( 0, 0, 0, 1 )
 
+[node name="Message0" type="Label" parent="IntroUI"]
+unique_name_in_owner = true
+margin_left = 47.0
+margin_top = 35.0
+margin_right = 931.0
+margin_bottom = 155.0
+theme = ExtResource( 5 )
+text = "intro_0"
+autowrap = true
+
 [node name="NameContainer" type="Control" parent="IntroUI"]
 unique_name_in_owner = true
 margin_right = 40.0
@@ -154,20 +164,20 @@ margin_bottom = 40.0
 
 [node name="NameLabel" type="Label" parent="IntroUI/NameContainer"]
 unique_name_in_owner = true
-margin_left = 223.0
-margin_top = 396.0
-margin_right = 745.0
-margin_bottom = 447.0
+margin_left = 135.0
+margin_top = 410.0
+margin_right = 819.0
+margin_bottom = 461.0
 theme = ExtResource( 5 )
-text = "The name of this lost child is"
+text = "intro_1"
 align = 1
 
 [node name="Name" type="LineEdit" parent="IntroUI/NameContainer"]
 unique_name_in_owner = true
 margin_left = 328.0
-margin_top = 453.0
+margin_top = 465.0
 margin_right = 639.0
-margin_bottom = 504.0
+margin_bottom = 516.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 0.254902, 0.803922, 0.45098, 1 )
 custom_fonts/font = ExtResource( 10 )
@@ -215,7 +225,6 @@ unique_name_in_owner = true
 scale = Vector2( 4, 4 )
 
 [node name="Container" type="Node2D" parent="World"]
-position = Vector2( 0, 5 )
 
 [node name="Parent0" type="AnimatedSprite" parent="World/Container"]
 modulate = Color( 1, 0.533333, 0.533333, 1 )

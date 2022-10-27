@@ -15,4 +15,5 @@ locale_en,English,English
 locale_fr,Français,Français
 Quit game,Quit game,Quitter le jeu
 Their name is,Their name is,Leur nom est
-The name of this lost child is,The name of this lost child is,Le nom de cet enfant perdu est
+intro_0,"As the last remaining dinosaurs admire their egg,\na roaring ball of fire appears in the sky!","Alors que les derniers dinosaures admirent leur œuf,\nune boule de feu hurle à travers le ciel!"
+intro_1,The name of this lost creature will be,Le nom de cette creature perdue sera
