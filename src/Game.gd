@@ -62,6 +62,7 @@ func _process(delta: float):
                 Engine.time_scale = 20
 
             Audio.play_music(Globals.MUSIC.MENU)
+            Globals.ui_intro.visible = true
 
             Globals.animation_player.play("Intro1")
             yield(Globals.animation_player, "animation_finished")
@@ -86,8 +87,11 @@ func _process(delta: float):
 
             var point = Globals.astar.get_closest_point(find_node("Egg0", true, false).position / Globals.SPRITE_SIZE)
             Globals.astar.set_point_disabled(point, true)
+            Globals.ui_intro.visible = false
 
             Engine.time_scale = 1
+
+            yield(get_tree(), "idle_frame")
 
             start_game()
 
@@ -140,6 +144,7 @@ static func button_quit_pressed() -> void:
 
 static func start_game() -> void:
     Globals.ui_title.close()
+    Globals.ui_play.open()
     Audio.play_music(Globals.MUSIC.CALM)
 
     Globals.world.get_node("%IntroStuff").visible = false

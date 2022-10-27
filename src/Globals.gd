@@ -66,6 +66,7 @@ var ui_title : TitleUI
 var ui_settings : SettingsUI
 var ui_debug : DebugUI
 var ui_intro : IntroUI
+var ui_play : PlayUI
 var ui_splash : CanvasLayer
 var world : Node2D
 var current_level: Node2D
@@ -134,6 +135,8 @@ func _ready() -> void:
     assert(Globals.ui_intro != null, "Globals.ui_intro not initialized correctly.")
     Globals.ui_splash = get_node("/root/Game/%SplashUI")
     assert(Globals.ui_splash != null, "Globals.ui_splash not initialized correctly.")
+    Globals.ui_play = get_node("/root/Game/%PlayUI")
+    assert(Globals.ui_play != null, "Globals.ui_play not initialized correctly.")
     Globals.camera = get_node("/root/Game/%MainCamera")
     assert(Globals.camera != null, "Globals.camera not initialized correctly.")
     Globals.animation_player = get_node("/root/Game/%AnimationPlayer")

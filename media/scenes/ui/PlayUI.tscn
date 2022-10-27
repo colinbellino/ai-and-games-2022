@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://media/main.theme" type="Theme" id=1]
+[ext_resource path="res://media/art/entities/dino_anim.png" type="Texture" id=2]
+
+[node name="PlayUI" type="CanvasLayer"]
+unique_name_in_owner = true
+follow_viewport_enable = true
+
+[node name="Container" type="Control" parent="."]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -211.0
+margin_top = -64.0
+margin_right = 110.0
+margin_bottom = -1.0
+
+[node name="Background" type="ColorRect" parent="Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
+
+[node name="NameLabel" type="Label" parent="Container"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -144.0
+margin_top = 7.0
+margin_right = 144.0
+margin_bottom = 52.0
+theme = ExtResource( 1 )
+text = "Lorem Ipsum"
+align = 1
+
+[node name="Avatar" type="Sprite" parent="Container"]
+unique_name_in_owner = true
+visible = false
+position = Vector2( 42, 42 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 6, 8, 16, 16 )

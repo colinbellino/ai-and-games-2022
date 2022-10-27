@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/Game.gd" type="Script" id=1]
 [ext_resource path="res://media/scenes/ui/TitleUI.tscn" type="PackedScene" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://src/IntroUI.gd" type="Script" id=9]
 [ext_resource path="res://media/fonts/silver.tres" type="DynamicFont" id=10]
 [ext_resource path="res://src/ScreenShake.gd" type="Script" id=11]
+[ext_resource path="res://media/scenes/ui/PlayUI.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/PlayUI.gd" type="Script" id=13]
 
 [sub_resource type="Animation" id=3]
 resource_name = "Intro2"
@@ -110,6 +112,9 @@ color = Color( 0, 0, 0, 1 )
 [node name="TitleUI" parent="." instance=ExtResource( 2 )]
 visible = false
 
+[node name="PlayUI" parent="." instance=ExtResource( 12 )]
+script = ExtResource( 13 )
+
 [node name="SettingsUI" parent="." instance=ExtResource( 4 )]
 layer = 2
 visible = false
@@ -119,6 +124,7 @@ layer = 100
 
 [node name="IntroUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+visible = false
 script = ExtResource( 9 )
 
 [node name="BorderTop" type="ColorRect" parent="IntroUI"]
