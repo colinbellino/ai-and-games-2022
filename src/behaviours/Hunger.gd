@@ -7,10 +7,10 @@ const POOP_ENTITIES = [
     preload("res://media/scenes/entities/Poop3.tscn"),
 ]
 const HUNGER_TICKS_IN_SECONDS := 3
-const HUNGER_START := 10 # Start the dino a little hungry
+const HUNGER_START := 30 # Start the dino a little hungry
 const HUNGER_MAX := 60 # Fullness trying 60 to represent 1 minute
 const HUNGER_EMOTION_DAMAGE_THRESHOLD := 0
-const HUNGER_DEATH_THRESHOLD := -20
+const HUNGER_DEATH_THRESHOLD := 0
 const EMOTION_TICKS_IN_SECONDS := 10
 const HUNGER_EMOTION = Vector2(-0.2, -0.1)
 const FEED_EMOTION = Vector2(0.2, 0.2)
@@ -54,6 +54,7 @@ func _hunger_timeout() -> void:
             # Poop code goes here
             var index = Globals.random.randi() % POOP_ENTITIES.size()
             var fresh_poop = Globals.spawn_entity(POOP_ENTITIES[index], entity.position)
+            Audio.play_sound(Globals.SFX.POOP)
             Globals.entities_node.move_child(fresh_poop, 0)
             var intensity = Globals.random.randi_range(1, 4)
             if index == 3:

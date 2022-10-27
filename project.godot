@@ -112,7 +112,7 @@ _global_script_classes=[ {
 "base": "Behaviour",
 "class": "Poop",
 "language": "GDScript",
-"path": "res://src/entities/Poop.gd"
+"path": "res://src/entities/Dirty.gd"
 }, {
 "base": "Reference",
 "class": "Save",

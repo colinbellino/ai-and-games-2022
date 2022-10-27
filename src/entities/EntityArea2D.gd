@@ -13,6 +13,12 @@ func _ready() -> void:
     connect("area_entered", self, "_entity_entered")
     connect("area_exited", self, "_entity_exited")
 
+func _exit_tree() -> void:
+    if is_connected("area_entered", self, "_entity_entered"):
+        disconnect("area_entered", self, "_entity_entered")
+    if is_connected("area_exited", self, "_entity_exited"):
+        disconnect("area_exited", self, "_entity_exited")
+
 func _entity_entered(area: Area2D) -> void:
     if not _entities.has(area):
         entity.area_entered(area)

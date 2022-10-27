@@ -233,6 +233,7 @@ static func load_game_names() -> Array:
     return lines
 
 static func spawn_entity(prefab: PackedScene, position: Vector2) -> Entity:
+    # print("spawn_entity : ", prefab)
     var entity = prefab.instance()
     entity.position = position
     var point = Globals.astar.get_closest_point(entity.position / Globals.SPRITE_SIZE)
@@ -243,6 +244,8 @@ static func spawn_entity(prefab: PackedScene, position: Vector2) -> Entity:
     return entity
 
 static func despawn_entity(entity: Entity) -> void:
+    var point = Globals.astar.get_closest_point(entity.position / Globals.SPRITE_SIZE, true)
+    Globals.astar.set_point_disabled(point, false)
     entity.queue_free()
 
 static func set_cursor(cursor_id: int) -> void:

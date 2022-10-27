@@ -54,7 +54,6 @@ func _process(delta: float):
             Globals.world.add_child(Globals.current_level)
             Globals.astar = LDTK.create_astar()
             Globals.entities_node = Globals.current_level.find_node("YSort_Entities", true, true)
-            print(Globals.entities_node)
             var entities_node_parent = Globals.entities_node.get_parent()
 
             # Remove all entities for the duration of the intro

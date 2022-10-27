@@ -5,7 +5,6 @@ const CLEAN_POOP_MOD = Vector2(0.1, 0.2)
 func _ready() -> void:
     yield(get_tree(), "idle_frame")
     entity.add_to_group("poops")
-    Audio.play_sound(Globals.SFX.POOP)
     entity.connect("interacted", self, "entity_interacted")
 
 func _exit_tree() -> void:
