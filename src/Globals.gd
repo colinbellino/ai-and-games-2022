@@ -74,6 +74,7 @@ var camera: Camera2D
 var creature : Entity
 var animation_player : AnimationPlayer
 var screen_shake : ScreenShake
+var entities_node : YSort
 
 # Audio
 var audio_player_sound : AudioStreamPlayer2D
@@ -223,8 +224,7 @@ static func spawn_entity(prefab: PackedScene, position: Vector2) -> Entity:
     var point = Globals.astar.get_closest_point(entity.position / Globals.SPRITE_SIZE)
     Globals.astar.set_point_disabled(point, true)
 
-    var entities_node = Globals.current_level.find_node("Entities", true, false)
-    entities_node.add_child(entity)
-    # entities_node.move_child(entity, 0)
+    Globals.entities_node.add_child(entity)
+    # Globals.entities_node.move_child(entity, 0)
 
     return entity

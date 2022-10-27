@@ -51,11 +51,12 @@ func _process(delta: float):
             Globals.current_level_data = result[1]
             Globals.world.add_child(Globals.current_level)
             Globals.astar = LDTK.create_astar()
-            var entities_node = Globals.current_level.find_node("Entities")
-            var entities_node_parent = entities_node.get_parent()
+            Globals.entities_node = Globals.current_level.find_node("YSort_Entities", true, true)
+            print(Globals.entities_node)
+            var entities_node_parent = Globals.entities_node.get_parent()
 
             # Remove all entities for the duration of the intro
-            entities_node.get_parent().remove_child(entities_node)
+            Globals.entities_node.get_parent().remove_child(Globals.entities_node)
 
             if Globals.settings.debug_skip_title:
                 Engine.time_scale = 20
@@ -78,9 +79,9 @@ func _process(delta: float):
             yield(Globals.animation_player, "animation_finished")
 
             # Add them back before starting the game
-            entities_node_parent.add_child(entities_node)
+            entities_node_parent.add_child(Globals.entities_node)
 
-            LDTK.update_entities(entities_node)
+            LDTK.update_entities(Globals.entities_node)
             assert(Globals.creature != null, "No creature found in the level, did we forget to add one?")
 
             var point = Globals.astar.get_closest_point(find_node("Egg0", true, false).position / Globals.SPRITE_SIZE)

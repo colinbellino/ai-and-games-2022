@@ -8,7 +8,7 @@ static func load_ldtk(filepath: String) -> Array:
         "Import_Collisions": true,
         "Import_Custom_Entities": true,
         "Import_Metadata": true,
-        "Import_YSort_Entities_Layer": false,
+        "Import_YSort_Entities_Layer": true,
         "Post_Import_Script": {},
     }
 

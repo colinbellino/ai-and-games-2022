@@ -36,7 +36,7 @@
 	"defs": { "layers": [
 		{
 			"__type": "Entities",
-			"identifier": "Entities",
+			"identifier": "YSort_Entities",
 			"type": "Entities",
 			"uid": 7,
 			"gridSize": 16,
@@ -1493,7 +1493,7 @@
 			"fieldInstances": [],
 			"layerInstances": [
 				{
-					"__identifier": "Entities",
+					"__identifier": "YSort_Entities",
 					"__type": "Entities",
 					"__cWid": 15,
 					"__cHei": 9,
