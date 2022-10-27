@@ -53,7 +53,8 @@ func _hunger_timeout() -> void:
             Globals.poop = 0
             # Poop code goes here
             var index = Globals.random.randi() % POOP_ENTITIES.size()
-            var _fresh_poop = Globals.spawn_entity(POOP_ENTITIES[index], entity.position)
+            var fresh_poop = Globals.spawn_entity(POOP_ENTITIES[index], entity.position)
+            Globals.entities_node.move_child(fresh_poop, 0)
             var intensity = Globals.random.randi_range(1, 4)
             if index == 3:
                 intensity = 8

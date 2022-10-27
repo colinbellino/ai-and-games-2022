@@ -225,6 +225,5 @@ static func spawn_entity(prefab: PackedScene, position: Vector2) -> Entity:
     Globals.astar.set_point_disabled(point, true)
 
     Globals.entities_node.add_child(entity)
-    # Globals.entities_node.move_child(entity, 0)
 
     return entity
