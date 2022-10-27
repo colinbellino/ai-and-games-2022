@@ -152,7 +152,6 @@ func _ready() -> void:
     Globals.creature_name = Globals.creature_names[Globals.random.randi() % Globals.creature_names.size()]
     Globals.game_names = load_game_names()
     assert(Globals.game_names.size() > 0, "Globals.game_names not initialized correctly.")
-    Globals.creature_name = Globals.game_names[Globals.random.randi() % Globals.game_names.size()]
     assert(Globals.creature_name != "", "Globals.creature_name not initialized correctly.")
     Globals.astar = AStar2D.new()
     assert(Globals.astar != null, "Globals.astar not initialized correctly.")
