@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/Game.gd" type="Script" id=1]
 [ext_resource path="res://media/scenes/ui/TitleUI.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://src/ScreenShake.gd" type="Script" id=11]
 [ext_resource path="res://media/scenes/ui/PlayUI.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/PlayUI.gd" type="Script" id=13]
+[ext_resource path="res://media/animations/entities/egg.tres" type="SpriteFrames" id=14]
 
 [sub_resource type="Animation" id=3]
 resource_name = "Intro2"
@@ -269,8 +270,8 @@ region_rect = Rect2( 32, 64, 16, 16 )
 [node name="Egg0" type="AnimatedSprite" parent="World/IntroStuff"]
 position = Vector2( 120, 72 )
 z_index = 99
-frames = ExtResource( 6 )
-animation = "egg"
+frames = ExtResource( 14 )
+animation = "idle"
 
 [node name="Egg0Emote" type="Sprite" parent="World/IntroStuff"]
 visible = false
