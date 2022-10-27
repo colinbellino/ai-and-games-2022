@@ -123,8 +123,8 @@ script = ExtResource( 9 )
 
 [node name="BorderTop" type="ColorRect" parent="IntroUI"]
 unique_name_in_owner = true
-margin_top = -270.0
 margin_right = 960.0
+margin_bottom = 270.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="BorderRight" type="ColorRect" parent="IntroUI"]
@@ -218,6 +218,7 @@ scale = Vector2( 4, 4 )
 position = Vector2( 0, 5 )
 
 [node name="Parent0" type="AnimatedSprite" parent="World/Container"]
+modulate = Color( 1, 0.533333, 0.533333, 1 )
 position = Vector2( 50, 64.25 )
 z_index = 99
 frames = ExtResource( 6 )
@@ -234,6 +235,7 @@ region_enabled = true
 region_rect = Rect2( 32, 64, 16, 16 )
 
 [node name="Parent1" type="AnimatedSprite" parent="World/Container"]
+modulate = Color( 0.603922, 0.564706, 1, 1 )
 position = Vector2( 150, 72 )
 scale = Vector2( -1, 1 )
 z_index = 99
