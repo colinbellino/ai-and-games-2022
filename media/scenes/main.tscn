@@ -208,6 +208,7 @@ text = "> OK"
 flat = true
 
 [node name="OutroUI" parent="." instance=ExtResource( 15 )]
+unique_name_in_owner = true
 
 [node name="SoundPlayer" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
