@@ -108,8 +108,6 @@ var audio_sounds : Dictionary = {
     SFX.WALK: preload("res://media/audio/creature/step-slow.ogg"),
     SFX.POOP: preload("res://media/audio/creature/small-fart.wav"),
     SFX.TEXT_TYPE: preload("res://media/audio/ui/fft-text.mp3"),
-    # SFX.INTRO_DANGER: preload("res://media/audio/ui/Then, everything changed when the fire nation attacked.mp3"),
-    # SFX.EXPLOSION_1: preload("res://media/audio/not_a_creeper.mp3"),
     SFX.INTRO_DANGER: preload("res://media/audio/whoosh.ogg"),
     SFX.EXPLOSION_1: preload("res://media/audio/explosion.ogg"),
     SFX.DEATH: preload("res://media/audio/creature/dying-1.ogg"),
@@ -121,7 +119,6 @@ enum MUSIC { MENU, CALM, ACTIVE }
 var audio_musics : Dictionary = {
     MUSIC.MENU: preload("res://media/audio/ui/menu.ogg"),
     MUSIC.CALM: preload("res://media/audio/music/Isolation-calm-1.ogg"),
-    MUSIC.ACTIVE: preload("res://media/audio/music/Isolation-active.ogg"),
 }
 
 var one_shot = preload("res://media/scenes/OneShotAudioStream.tscn")
