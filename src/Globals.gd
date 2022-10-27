@@ -52,6 +52,7 @@ var settings : GameSettings
 var version : String = "0000000"
 var can_fullscreen : bool
 var can_change_resolution : bool
+var is_touchscreen : bool
 var bus_main : int
 var bus_music : int
 var bus_sound : int
@@ -161,6 +162,7 @@ func _ready() -> void:
     Globals.version = load_file("res://version.txt", "1111111")
     assert(Globals.version != null, "Globals.version not initialized correctly.")
     Globals.can_fullscreen = OS.get_name() == "Windows"
+    Globals.is_touchscreen = OS.has_touchscreen_ui_hint()
     Globals.can_change_resolution = OS.get_name() != "HTML5"
     Globals.random.randomize()
     Globals.creature_names = load_creatures()

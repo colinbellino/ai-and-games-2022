@@ -47,6 +47,8 @@ func animate_message0() -> void:
     label_message0.modulate.a = 1.0
 
 func animate_text() -> void:
+    if OS.get_name() == "HTML5" && Globals.is_touchscreen:
+        container_name.rect_position.y = -380
     container_name.visible = true
 
     label_name.text = ""
