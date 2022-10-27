@@ -12,7 +12,7 @@ func _exit_tree() -> void:
     entity.disconnect("interacted", self, "entity_interacted")
 
 func entity_interacted(_interaction_type: int) -> void:
-    print("entity_interacted: ", [_interaction_type])
+    # print("entity_interacted: ", [_interaction_type])
     Globals.add_emotion(CLEAN_POOP_MOD, "Clean poop")
     Audio.play_sound(Globals.SFX.SWISH)
-    queue_free()
+    entity.queue_free()
