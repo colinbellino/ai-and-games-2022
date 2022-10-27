@@ -124,7 +124,6 @@ layer = 100
 
 [node name="IntroUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-visible = false
 script = ExtResource( 9 )
 
 [node name="BorderTop" type="ColorRect" parent="IntroUI"]
@@ -197,13 +196,14 @@ caret_blink_speed = 0.3
 
 [node name="Start" type="Button" parent="IntroUI/NameContainer"]
 unique_name_in_owner = true
-visible = false
-margin_left = 350.0
-margin_top = 485.0
-margin_right = 650.0
-margin_bottom = 533.0
+margin_left = 849.0
+margin_top = 465.0
+margin_right = 939.0
+margin_bottom = 516.0
 theme = ExtResource( 5 )
-text = "Start"
+shortcut_in_tooltip = false
+text = "> OK"
+flat = true
 
 [node name="SoundPlayer" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
@@ -273,6 +273,7 @@ frames = ExtResource( 6 )
 animation = "egg"
 
 [node name="Egg0Emote" type="Sprite" parent="World/IntroStuff"]
+visible = false
 position = Vector2( 120, 56 )
 z_index = 99
 texture = ExtResource( 8 )

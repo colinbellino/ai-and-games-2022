@@ -19,6 +19,7 @@ func _ready() -> void:
     container_name = get_node("%NameContainer")
 
     button_start.connect("mouse_entered", self, "on_button_hover")
+    button_start.connect("pressed", self, "on_start_pressed")
 
     input_name.connect("text_entered", self, "_name_entered")
     input_name.text = ""
@@ -28,6 +29,8 @@ func _ready() -> void:
 
     label_message0_text = tr(label_message0.text)
     label_message0.text = ""
+
+    button_start.visible = false
 
 func animate_message0() -> void:
     label_message0.text = ""
@@ -66,6 +69,13 @@ func animate_text() -> void:
         yield(get_tree().create_timer(Globals.LETTER_APPEAR_DELAY), "timeout")
     input_name.grab_focus()
 
+    yield(get_tree().create_timer(2), "timeout")
+    button_start.modulate.a = 0.0
+    button_start.visible = true
+    var tween := create_tween()
+    tween.tween_property(button_start, "modulate:a", 1.0, 0.3)
+    yield(tween, "finished")
+
     emit_signal("animate_text_finished")
 
 func play_danger_sound() -> void:
@@ -76,6 +86,9 @@ func play_explosion_sound() -> void:
 
 func on_button_hover():
     Audio.play_sound_random([Globals.SFX.BUTTON_HOVER])
+
+func on_start_pressed():
+    _name_entered(input_name.text)
 
 func _name_entered(new_text: String) -> void:
     if new_text.length() == 0 || new_text.length() > 32:
