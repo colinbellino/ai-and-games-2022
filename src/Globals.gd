@@ -215,3 +215,9 @@ static func load_game_names() -> Array:
         lines.pop_back()
 
     return lines
+
+static func spawn_entity(prefab: PackedScene, position: Vector2) -> Entity:
+    var instance = prefab.instance()
+    instance.position = position
+    LDTK.update_astar()
+    return instance
