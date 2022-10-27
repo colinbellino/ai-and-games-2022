@@ -78,6 +78,7 @@ var ui_title : TitleUI
 var ui_settings : SettingsUI
 var ui_debug : DebugUI
 var ui_intro : IntroUI
+var ui_outro : OutroUI
 var ui_play : PlayUI
 var ui_splash : CanvasLayer
 var world : Node2D
