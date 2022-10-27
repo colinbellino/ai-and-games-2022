@@ -107,6 +107,9 @@ var audio_musics : Dictionary = {
     MUSIC.ACTIVE: preload("res://media/audio/music/Isolation-active.ogg"),
 }
 
+var one_shot = preload("res://media/scenes/OneShotAudioStream.tscn")
+
+
 func _ready() -> void:
     # Init stuff here
     Globals.settings = Save.read_settings()

@@ -1,5 +1,6 @@
 class_name Audio
 
+
 static func play_sound(id: int, position: Vector3 = Vector3.ZERO, loop: bool = false) -> void:
     assert(Globals.audio_sounds.has(id), "[Audio] Stream not found (sound): %s" % [id])
     var stream : AudioStream = Globals.audio_sounds[id]
@@ -35,7 +36,7 @@ static func stop_music() -> void:
     Globals.audio_player_music.stop()
 
 static func spawn_audio_player() -> AudioStreamPlayer:
-    var player := AudioStreamPlayer.new()
+    var player = Globals.one_shot.instance()
     player.pitch_scale = Engine.time_scale
     # Globals.audio_players.append(player)
     Globals.world.add_child(player)
