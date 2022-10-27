@@ -31,10 +31,21 @@ const SCALE : int = 4
 const CELL_CENTER_OFFSET : Vector2 = Vector2(0.5, 0.5)
 const LETTER_APPEAR_DELAY : float = 0.05
 
+enum CURSORS { DEFAULT, HIGHLIGHT, GRAB, HAND, HAND_HIGHLIGHT, CLEAN }
+const CURSOR_SCALE : int = 4
+
 # Resources
 onready var textures : Dictionary = {}
 onready var entity_prefab : PackedScene = ResourceLoader.load("res://media/scenes/entities/Entity.tscn")
 onready var egg_prefab : PackedScene = ResourceLoader.load("res://media/scenes/entities/Egg.tscn")
+onready var cursor_textures : Array = [
+    ResourceLoader.load("res://media/art/ui/cursor_0.png"),
+    ResourceLoader.load("res://media/art/ui/cursor_1.png"),
+    ResourceLoader.load("res://media/art/ui/cursor_2.png"),
+    ResourceLoader.load("res://media/art/ui/cursor_3.png"),
+    ResourceLoader.load("res://media/art/ui/cursor_4.png"),
+    ResourceLoader.load("res://media/art/ui/cursor_5.png"),
+]
 
 # State
 var settings : GameSettings
@@ -230,3 +241,10 @@ static func spawn_entity(prefab: PackedScene, position: Vector2) -> Entity:
     Globals.entities_node.add_child(entity)
 
     return entity
+
+static func set_cursor(cursor_id: int) -> void:
+    var cursor_texture : Texture = Globals.cursor_textures[cursor_id]
+    var offset =  Vector2.ZERO
+    if [2, 3, 4].find(cursor_id) > -1:
+        offset = Vector2(3, 0) * CURSOR_SCALE
+    Input.set_custom_mouse_cursor(cursor_texture, Input.CURSOR_ARROW, offset)

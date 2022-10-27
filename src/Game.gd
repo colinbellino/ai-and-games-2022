@@ -5,6 +5,8 @@ enum GameStates { INIT, TITLE, INTRO, PLAY }
 func _ready():
     OS.set_window_title(Globals.game_names[Globals.random.randi() % Globals.game_names.size()])
 
+    Globals.set_cursor(Globals.CURSORS.DEFAULT)
+
     # Connect the UI
     Globals.ui_title.button_start.connect("pressed", self, "button_start_pressed")
     Globals.ui_title.button_continue.connect("pressed", self, "button_continue_pressed")
