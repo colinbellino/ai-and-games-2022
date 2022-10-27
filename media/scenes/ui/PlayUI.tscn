@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://media/main.theme" type="Theme" id=1]
 [ext_resource path="res://media/art/entities/dino_anim.png" type="Texture" id=2]
 [ext_resource path="res://media/art/ui/hunger_bar.png" type="Texture" id=3]
 [ext_resource path="res://media/art/entities/food1.png" type="Texture" id=4]
 [ext_resource path="res://media/art/ui/background_bar.png" type="Texture" id=5]
+[ext_resource path="res://media/art/ui/settings.png" type="Texture" id=6]
+[ext_resource path="res://media/art/ui/settings_highlight.png" type="Texture" id=7]
 
 [node name="PlayUI" type="CanvasLayer"]
 unique_name_in_owner = true
@@ -14,14 +16,28 @@ follow_viewport_enable = true
 unique_name_in_owner = true
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -205.0
+margin_left = -250.0
 margin_top = -64.0
-margin_right = 205.0
+margin_right = 210.0
 
 [node name="Background" type="ColorRect" parent="Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
+
+[node name="SettingsButton" type="TextureButton" parent="Container"]
+unique_name_in_owner = true
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -50.989
+margin_top = -19.0
+margin_right = -10.989
+margin_bottom = 21.0
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
+expand = true
 
 [node name="Avatar" type="Sprite" parent="Container"]
 unique_name_in_owner = true
