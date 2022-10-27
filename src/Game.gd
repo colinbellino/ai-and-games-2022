@@ -141,6 +141,8 @@ static func start_game() -> void:
     Globals.ui_title.close()
     Audio.play_music(Globals.MUSIC.CALM)
 
+    Globals.world.get_node("%IntroStuff").visible = false
+
     change_state(GameStates.PLAY)
 
     var entity : Entity = Globals.creature
@@ -151,6 +153,9 @@ static func start_game() -> void:
     entity.set_meta("moving_path", path)
     entity.set_meta("moving_speed", speed)
     entity.change_state(Enums.EntityStates.Moving)
+
+    # TODO: Hide the creature, play the egg cracking anim, then show the creature
+    var _egg_entity = Globals.spawn_entity(Globals.egg_prefab, entity.position)
 
 static func change_state(state) -> void:
     print("[Game] Changing state: %s" % [GameStates.keys()[state]])

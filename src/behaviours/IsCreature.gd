@@ -21,5 +21,5 @@ func _tick():
     # add poops to emotion
     var total_poops = get_tree().get_nodes_in_group("poops")
 
-    for poop in range(total_poops.size()):
+    for _poop in range(total_poops.size()):
         Globals.add_emotion(POOP_MOD, "Poop")

@@ -33,7 +33,8 @@ const LETTER_APPEAR_DELAY : float = 0.05
 
 # Resources
 onready var textures : Dictionary = {}
-onready var entity_prefab := ResourceLoader.load("res://media/scenes/entities/Entity.tscn") as PackedScene
+onready var entity_prefab : PackedScene = ResourceLoader.load("res://media/scenes/entities/Entity.tscn")
+onready var egg_prefab : PackedScene = ResourceLoader.load("res://media/scenes/entities/Egg.tscn")
 
 # State
 var settings : GameSettings
@@ -221,4 +222,9 @@ static func spawn_entity(prefab: PackedScene, position: Vector2) -> Entity:
     entity.position = position
     var point = Globals.astar.get_closest_point(entity.position / Globals.SPRITE_SIZE)
     Globals.astar.set_point_disabled(point, true)
+
+    var entities_node = Globals.current_level.find_node("Entities", true, false)
+    entities_node.add_child(entity)
+    # entities_node.move_child(entity, 0)
+
     return entity

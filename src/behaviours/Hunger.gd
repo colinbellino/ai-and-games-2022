@@ -52,27 +52,22 @@ func _hunger_timeout() -> void:
         if Globals.creature._state == Enums.EntityStates.Idle:
             Globals.poop = 0
             # Poop code goes here
-            var entities_node = Globals.current_level.find_node("Entities", true, false)
+            var index = Globals.random.randi() % POOP_ENTITIES.size()
+            var _fresh_poop = Globals.spawn_entity(POOP_ENTITIES[index], entity.position)
+            var intensity = Globals.random.randi_range(1, 4)
+            if index == 3:
+                intensity = 8
+            Globals.screen_shake.shake(intensity, 0.1, 2)
 
-            if entities_node:
-                var index = Globals.random.randi() % POOP_ENTITIES.size()
-                var fresh_poop = Globals.spawn_entity(POOP_ENTITIES[index], entity.position)
-                var intensity = Globals.random.randi_range(1, 4)
-                if index == 3:
-                    intensity = 8
-                Globals.screen_shake.shake(intensity, 0.1, 2)
-                entities_node.add_child(fresh_poop)
-                entities_node.move_child(fresh_poop, 0)
+            var points := Globals.astar.get_points()
+            var start_point := Globals.creature_closest_point
+            var destination_point : int = points[Globals.random.randi() % points.size()]
+            var path = Globals.astar.get_point_path(start_point, destination_point)
 
-                var points := Globals.astar.get_points()
-                var start_point := Globals.creature_closest_point
-                var destination_point : int = points[Globals.random.randi() % points.size()]
-                var path = Globals.astar.get_point_path(start_point, destination_point)
-
-                var speed = LDTK.get_behaviour_meta(entity, "Roaming", "Speed", 16.0)
-                entity.set_meta("moving_path", path)
-                entity.set_meta("moving_speed", speed)
-                entity.change_state(Enums.EntityStates.Moving)
+            var speed = LDTK.get_behaviour_meta(entity, "Roaming", "Speed", 16.0)
+            entity.set_meta("moving_path", path)
+            entity.set_meta("moving_speed", speed)
+            entity.change_state(Enums.EntityStates.Moving)
 
 func _emotional_impact_timeout() -> void:
     if Globals.hunger < HUNGER_EMOTION_DAMAGE_THRESHOLD:

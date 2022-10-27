@@ -66,7 +66,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("World/Container/Parent0:position")
+tracks/0/path = NodePath("World/IntroStuff/Parent0:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -224,16 +224,17 @@ anims/RESET = SubResource( 2 )
 unique_name_in_owner = true
 scale = Vector2( 4, 4 )
 
-[node name="Container" type="Node2D" parent="World"]
+[node name="IntroStuff" type="Node2D" parent="World"]
+unique_name_in_owner = true
 
-[node name="Parent0" type="AnimatedSprite" parent="World/Container"]
+[node name="Parent0" type="AnimatedSprite" parent="World/IntroStuff"]
 modulate = Color( 1, 0.533333, 0.533333, 1 )
 position = Vector2( 50, 64.25 )
 z_index = 99
 frames = ExtResource( 6 )
 animation = "idle"
 
-[node name="Parent0Emote" type="Sprite" parent="World/Container"]
+[node name="Parent0Emote" type="Sprite" parent="World/IntroStuff"]
 visible = false
 position = Vector2( 94, 56 )
 rotation = 3.14159
@@ -243,7 +244,7 @@ texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 32, 64, 16, 16 )
 
-[node name="Parent1" type="AnimatedSprite" parent="World/Container"]
+[node name="Parent1" type="AnimatedSprite" parent="World/IntroStuff"]
 modulate = Color( 0.603922, 0.564706, 1, 1 )
 position = Vector2( 150, 72 )
 scale = Vector2( -1, 1 )
@@ -251,7 +252,7 @@ z_index = 99
 frames = ExtResource( 6 )
 animation = "idle"
 
-[node name="Parent1Emote" type="Sprite" parent="World/Container"]
+[node name="Parent1Emote" type="Sprite" parent="World/IntroStuff"]
 visible = false
 position = Vector2( 146, 56 )
 z_index = 99
@@ -259,13 +260,13 @@ texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 32, 64, 16, 16 )
 
-[node name="Egg0" type="AnimatedSprite" parent="World/Container"]
+[node name="Egg0" type="AnimatedSprite" parent="World/IntroStuff"]
 position = Vector2( 120, 72 )
 z_index = 99
 frames = ExtResource( 6 )
 animation = "egg"
 
-[node name="Egg0Emote" type="Sprite" parent="World/Container"]
+[node name="Egg0Emote" type="Sprite" parent="World/IntroStuff"]
 position = Vector2( 120, 56 )
 z_index = 99
 texture = ExtResource( 8 )
