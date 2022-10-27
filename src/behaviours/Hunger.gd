@@ -60,8 +60,8 @@ func _hunger_timeout() -> void:
                 intensity = 8
             Globals.screen_shake.shake(intensity, 0.1, 2)
 
-            var points := Globals.astar.get_points()
-            var start_point := Globals.creature_closest_point
+            var points = Globals.astar.get_points()
+            var start_point = Globals.creature_closest_point
             var destination_point : int = points[Globals.random.randi() % points.size()]
             var path = Globals.astar.get_point_path(start_point, destination_point)
 

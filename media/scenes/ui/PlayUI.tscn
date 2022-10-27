@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://media/main.theme" type="Theme" id=1]
 [ext_resource path="res://media/art/entities/dino_anim.png" type="Texture" id=2]
+[ext_resource path="res://media/art/ui/hunger_bar.png" type="Texture" id=3]
+[ext_resource path="res://media/art/entities/food1.png" type="Texture" id=4]
+[ext_resource path="res://media/art/ui/background_bar.png" type="Texture" id=5]
 
 [node name="PlayUI" type="CanvasLayer"]
 unique_name_in_owner = true
@@ -11,27 +14,14 @@ follow_viewport_enable = true
 unique_name_in_owner = true
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -211.0
+margin_left = -205.0
 margin_top = -64.0
-margin_right = 110.0
-margin_bottom = -1.0
+margin_right = 205.0
 
 [node name="Background" type="ColorRect" parent="Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
-
-[node name="NameLabel" type="Label" parent="Container"]
-unique_name_in_owner = true
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -144.0
-margin_top = 7.0
-margin_right = 144.0
-margin_bottom = 52.0
-theme = ExtResource( 1 )
-text = "Lorem Ipsum"
-align = 1
+color = Color( 0, 0, 0, 1 )
 
 [node name="Avatar" type="Sprite" parent="Container"]
 unique_name_in_owner = true
@@ -41,3 +31,47 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 6, 8, 16, 16 )
+
+[node name="NameLabel" type="Label" parent="Container"]
+unique_name_in_owner = true
+margin_left = 19.0
+margin_top = 9.0
+margin_right = 289.0
+margin_bottom = 54.0
+theme = ExtResource( 1 )
+text = "WWWWWWWWWWWWWWW"
+
+[node name="HungerBar" type="Control" parent="Container"]
+margin_left = 298.0
+margin_top = 17.0
+margin_right = 394.0
+margin_bottom = 49.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HungerProgress" type="TextureProgress" parent="Container/HungerBar"]
+unique_name_in_owner = true
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -56.0
+margin_top = -8.0
+margin_bottom = 8.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+value = 100.0
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 3 )
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+
+[node name="Sprite" type="Sprite" parent="Container/HungerBar"]
+position = Vector2( 16, 17 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 16 )
