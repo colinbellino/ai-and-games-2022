@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://media/animations/entities/fx.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://src/behaviours/EntityAnimation.gd" type="Script" id=2]
+[ext_resource path="res://src/FX.gd" type="Script" id=3]
+
+[node name="FX" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="SpriteBody" type="AnimatedSprite" parent="."]
+frames = ExtResource( 1 )
+animation = "idle"
+
+[node name="EntityAnimation" type="Node" parent="."]
+script = ExtResource( 2 )
+sprite_string = "fx"

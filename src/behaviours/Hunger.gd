@@ -15,6 +15,7 @@ const EMOTION_TICKS_IN_SECONDS := 10
 const HUNGER_EMOTION = Vector2(-0.2, -0.1)
 const FEED_EMOTION = Vector2(0.2, 0.2)
 const POOP_AT = 10
+const DUST = preload("res://media/scenes/entities/Dust.tscn")
 
 var hunger_timer : Timer
 var emotional_impact_timer : Timer
@@ -54,8 +55,14 @@ func _hunger_timeout() -> void:
             # Poop code goes here
             var index = Globals.random.randi() % POOP_ENTITIES.size()
             var fresh_poop = Globals.spawn_entity(POOP_ENTITIES[index], entity.position)
+            Globals.entities_node.add_child(entity)
             Audio.play_sound(Globals.SFX.POOP)
+            var poop_fx = DUST.instance()
+            poop_fx.position = entity.position
+            Globals.entities_node.add_child(poop_fx)
+            Globals.entities_node.move_child(poop_fx, 1)
             Globals.entities_node.move_child(fresh_poop, 0)
+
             var intensity = Globals.random.randi_range(1, 4)
             if index == 3:
                 intensity = 8
