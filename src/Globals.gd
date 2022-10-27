@@ -242,6 +242,9 @@ static func spawn_entity(prefab: PackedScene, position: Vector2) -> Entity:
 
     return entity
 
+static func despawn_entity(entity: Entity) -> void:
+    entity.queue_free()
+
 static func set_cursor(cursor_id: int) -> void:
     var cursor_texture : Texture = Globals.cursor_textures[cursor_id]
     var offset =  Vector2.ZERO
