@@ -146,6 +146,8 @@ func _ready() -> void:
     assert(Globals.ui_debug != null, "Globals.ui_debug not initialized correctly.")
     Globals.ui_intro = get_node("/root/Game/%IntroUI")
     assert(Globals.ui_intro != null, "Globals.ui_intro not initialized correctly.")
+    Globals.ui_outro = get_node("/root/Game/%OutroUI")
+    assert(Globals.ui_outro != null, "Globals.ui_outro not initialized correctly.")
     Globals.ui_splash = get_node("/root/Game/%SplashUI")
     assert(Globals.ui_splash != null, "Globals.ui_splash not initialized correctly.")
     Globals.ui_play = get_node("/root/Game/%PlayUI")

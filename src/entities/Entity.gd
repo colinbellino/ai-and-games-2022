@@ -66,6 +66,7 @@ func _process(_delta: float):
             _state_entered = true
             sprite_body.play(get_meta("dead_animation"))
             yield(sprite_body, "animation_finished")
+            Globals.ui_outro.play()
 
 func interact(_interaction_type: int) -> void:
     # print("[Entity] %s interact" % [name])
