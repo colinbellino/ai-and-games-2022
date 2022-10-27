@@ -57,6 +57,7 @@ var mouse_closest_point : int = -1
 var creature_closest_point : int = -1
 var random = RandomNumberGenerator.new()
 var creature_names : Array = []
+var game_names : Array = []
 var time_elapsed : float
 
 # Nodes
@@ -145,6 +146,9 @@ func _ready() -> void:
     Globals.creature_names = load_creatures()
     assert(Globals.creature_names.size() > 0, "Globals.creature_names not initialized correctly.")
     Globals.creature_name = Globals.creature_names[Globals.random.randi() % Globals.creature_names.size()]
+    Globals.game_names = load_game_names()
+    assert(Globals.game_names.size() > 0, "Globals.game_names not initialized correctly.")
+    Globals.creature_name = Globals.game_names[Globals.random.randi() % Globals.game_names.size()]
     assert(Globals.creature_name != "", "Globals.creature_name not initialized correctly.")
     Globals.astar = AStar2D.new()
     assert(Globals.astar != null, "Globals.astar not initialized correctly.")
@@ -195,6 +199,14 @@ static func load_file(filepath: String, default_value: String = "") -> String:
 
 static func load_creatures() -> Array:
     var text := load_file("res://creatures.txt", "Denver")
+    var lines : Array = text.split("\n")
+    if lines[lines.size() -1] == "":
+        lines.pop_back()
+
+    return lines
+
+static func load_game_names() -> Array:
+    var text := load_file("res://game_names.txt", "Creature")
     var lines : Array = text.split("\n")
     if lines[lines.size() -1] == "":
         lines.pop_back()

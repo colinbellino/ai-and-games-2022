@@ -164,7 +164,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Ai & Games 2022"
+config/name="Creature"
 run/main_scene="res://media/scenes/main.tscn"
 boot_splash/show_image=false
 boot_splash/use_filter=false
