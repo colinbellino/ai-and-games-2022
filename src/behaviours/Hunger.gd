@@ -8,7 +8,7 @@ const POOP_ENTITIES = [
 ]
 const HUNGER_TICKS_IN_SECONDS := 0.5
 const HUNGER_START := 60
-const HUNGER_EMOTION_DAMAGE_THRESHOLD := 0
+const HUNGER_EMOTION_DAMAGE_THRESHOLD := 10
 const HUNGER_DEATH_THRESHOLD := 0
 const EMOTION_TICKS_IN_SECONDS := 10
 const HUNGER_EMOTION = Vector2(-0.2, -0.1)
@@ -81,7 +81,7 @@ func _emotional_impact_timeout() -> void:
         Globals.add_emotion(HUNGER_EMOTION, "Pet")
         # print("[HUNGER] emotional impact: ", Globals.emotion)
 
-    if Globals.hunger < HUNGER_DEATH_THRESHOLD:
+    if Globals.hunger <= HUNGER_DEATH_THRESHOLD:
         if entity._state == Enums.EntityStates.Idle:
             entity.set_meta("dead_animation", "dead_hunger")
             entity.change_state(Enums.EntityStates.Dead)
