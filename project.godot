@@ -359,7 +359,7 @@ debug_12={
 
 [locale]
 
-locale_filter=[ 0, [ "en", "fr" ] ]
+locale_filter=[ 1, [ "en", "fr" ] ]
 translations=PoolStringArray( "res://media/text.en.translation", "res://media/text.fr.translation" )
 
 [mono]
