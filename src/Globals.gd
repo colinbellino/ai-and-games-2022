@@ -207,7 +207,6 @@ func add_emotion(amount: Vector2, source: String = "Unknown"):
     emotion.y = clamp(emotion.y + amount.y, -1, 1)
     # print("[Emotion Added %s][Amount %s]" % [source, amount])
 
-
 static func load_file(filepath: String, default_value: String = "") -> String:
     var file := File.new()
     var result := file.open(filepath, File.READ)
@@ -258,3 +257,12 @@ static func set_cursor(cursor_id: int) -> void:
     if [2, 3, 4].find(cursor_id) > -1:
         offset = Vector2(3, 0) * CURSOR_SCALE
     Input.set_custom_mouse_cursor(cursor_texture, Input.CURSOR_ARROW, offset)
+
+static func restart_game() -> void:
+    print("restart_game")
+    Engine.time_scale = 0.0
+
+    Globals.animation_player.play("Outro1")
+    yield(Globals.animation_player, "animation_finished")
+    Globals.ui_outro.open()
+    pass

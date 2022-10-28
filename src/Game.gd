@@ -102,6 +102,9 @@ func _process(delta: float):
         if Globals.game_state_entered == false:
             Globals.game_state_entered = true
 
+        if Input.is_action_just_released("debug_2"):
+            Globals.restart_game()
+
         if Globals.ui_settings.visible:
             Engine.time_scale = 0
 
@@ -176,4 +179,5 @@ static func change_state(state) -> void:
 
 static func quit_game() -> void:
     print("[Game] Quitting...")
+    Save.write_settings(Globals.settings)
     Globals.get_tree().quit()
