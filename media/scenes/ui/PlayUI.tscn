@@ -58,15 +58,19 @@ texture_normal = ExtResource( 6 )
 texture_hover = ExtResource( 7 )
 expand = true
 
-[node name="NameLabel" type="Label" parent="Container"]
+[node name="NameLabel" type="LineEdit" parent="Container"]
 unique_name_in_owner = true
-margin_left = 5.0
+margin_left = -19.0
 margin_top = 10.0
-margin_right = 293.0
+margin_right = 269.0
 margin_bottom = 55.0
 theme = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "WWWqqqWWWWWWWWWW"
-align = 2
+max_length = 16
+context_menu_enabled = false
+caret_blink = true
+caret_blink_speed = 0.3
 
 [node name="FeedButton" type="Button" parent="Container"]
 unique_name_in_owner = true

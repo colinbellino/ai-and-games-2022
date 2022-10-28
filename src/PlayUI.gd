@@ -1,7 +1,7 @@
 class_name PlayUI extends CanvasLayer
 
 var container_control : Control
-var label_name: Label
+var label_name: LineEdit
 var hunger_progress: TextureProgress
 var settings_button: TextureButton
 var feed_button: Button
@@ -20,6 +20,9 @@ func _ready() -> void:
     mood_progress = get_node("%MoodProgress")
     mood_sprite = get_node("%MoodSprite")
 
+    label_name.connect("text_changed", self, "name_changed")
+    label_name.connect("focus_entered", self, "name_focus_entered")
+    label_name.connect("focus_exited", self, "name_focus_exited")
     settings_button.connect("pressed", self, "settings_button_pressed")
     settings_button.connect("mouse_entered", self, "button_mouse_entered")
     settings_button.connect("mouse_exited", self, "button_mouse_exited")
@@ -71,3 +74,16 @@ func button_mouse_entered() -> void:
 
 func button_mouse_exited() -> void:
     Globals.set_cursor(Globals.CURSORS.DEFAULT)
+
+func name_changed(new_text: String) -> void:
+    if new_text.length() == 0 || new_text.length() > 32:
+        pass
+    else:
+        Globals.creature_name = new_text
+
+func name_focus_entered() -> void:
+    print("name_focus_entered: ", label_name.caret_position)
+    label_name.set_cursor_position(label_name.text.length() - 1)
+
+func name_focus_exited() -> void:
+    pass
