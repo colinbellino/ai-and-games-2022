@@ -89,7 +89,7 @@ func _emotional_impact_timeout() -> void:
             Audio.play_sound(Globals.SFX.DEATH, entity.position)
 
 func _entity_fed(amount: int) -> void:
-    Globals.hunger += amount
+    Globals.hunger = min(Globals.hunger + amount, HUNGER_MAX)
     Globals.add_emotion(FEED_EMOTION, "Feed")
     entity.set_meta("bark_animation", "eat_large")
     entity.change_state(Enums.EntityStates.Bark)
