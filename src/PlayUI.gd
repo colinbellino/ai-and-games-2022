@@ -15,6 +15,8 @@ func _ready() -> void:
 
     settings_button.connect("pressed", self, "settings_button_pressed")
     feed_button.connect("pressed", self, "feed_button_pressed")
+    feed_button.connect("mouse_entered", self, "feed_button_mouse_entered")
+    feed_button.connect("mouse_exited", self, "feed_button_mouse_exited")
 
     close()
 
@@ -44,3 +46,9 @@ func feed_button_pressed() -> void:
     var amount : int = LDTK.get_behaviour_meta(Globals.creature, "FoodSource", "Amount", 10)
     Audio.play_sound(Globals.SFX.BUTTON_CLICK_1, Globals.creature.position)
     Globals.creature.emit_signal("fed", amount)
+
+func feed_button_mouse_entered() -> void:
+    Globals.set_cursor(Globals.CURSORS.HAND)
+
+func feed_button_mouse_exited() -> void:
+    Globals.set_cursor(Globals.CURSORS.DEFAULT)

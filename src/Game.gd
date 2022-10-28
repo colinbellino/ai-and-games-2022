@@ -56,7 +56,7 @@ func _process(delta: float):
             Globals.entities_node = Globals.current_level.find_node("YSort_Entities", true, true)
             var entities_node_parent = Globals.entities_node.get_parent()
             var egg = find_node("Egg0", true, false)
-            egg.modulate = Globals.creature_color
+            # egg.modulate = Globals.creature_color
 
             # Remove all entities for the duration of the intro
             Globals.entities_node.get_parent().remove_child(Globals.entities_node)
@@ -166,8 +166,8 @@ static func start_game() -> void:
     entity.set_meta("EntityAnimation_Color", Globals.creature_color)
 
     # TODO: Hide the creature, play the egg cracking anim, then show the creature
-    var egg_entity = Globals.spawn_entity(Globals.egg_prefab, entity.position)
-    egg_entity.set_meta("EntityAnimation_Color", Globals.creature_color)
+    var _egg_entity = Globals.spawn_entity(Globals.egg_prefab, entity.position)
+    # _egg_entity.set_meta("EntityAnimation_Color", Globals.creature_color)
 
 static func change_state(state) -> void:
     print("[Game] Changing state: %s" % [GameStates.keys()[state]])
