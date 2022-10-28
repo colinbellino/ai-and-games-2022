@@ -54,6 +54,7 @@ func _process(_delta: float):
                 if destination.x  - position.x < 0:
                     direction = -1
 
+                Audio.play_sound(Globals.SFX.WALK, position)
                 var tween := create_tween()
                 tween.tween_property(self, "scale:x", direction * 1.0, 0.1)
                 tween.tween_property(self, "position", destination, duration)

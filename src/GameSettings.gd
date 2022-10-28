@@ -2,9 +2,9 @@ class_name GameSettings extends Resource
 
 export var window_fullscreen : bool
 export var resolution_index : int
-export var volume_main : float = 1.0
-export var volume_music : float = 1.0
-export var volume_sound : float = 1.0
+export var volume_main : float = 0.7
+export var volume_music : float = 0.7
+export var volume_sound : float = 0.7
 export var locale : String = "en"
 export var level : int
 
