@@ -51,10 +51,12 @@ func _draw() -> void:
 
         if Globals.creature._state == Enums.EntityStates.Moving && Globals.creature.has_meta("moving_path"):
             var path : PoolVector2Array = Globals.creature.get_meta("moving_path")
-            var point_position := path[path.size() - 1]
-            draw_rect(Rect2((point_position + Vector2(0.1, 0.1)) * scale, Vector2(0.8, 0.8) * scale),  Color.blue)
 
-            for index in range(1, path.size()):
-                var point = path[index]
-                var start = path[index-1]
-                draw_line((start + Vector2(0.5, 0.5)) * scale, (point + Vector2(0.5, 0.5)) * scale, Color.blue, 5)
+            if path.size() > 0:
+                var point_position := path[path.size() - 1]
+                draw_rect(Rect2((point_position + Vector2(0.1, 0.1)) * scale, Vector2(0.8, 0.8) * scale),  Color.blue)
+
+                for index in range(1, path.size()):
+                    var point = path[index]
+                    var start = path[index-1]
+                    draw_line((start + Vector2(0.5, 0.5)) * scale, (point + Vector2(0.5, 0.5)) * scale, Color.blue, 5)
