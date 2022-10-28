@@ -7,11 +7,15 @@ var cooldown_in_ms : int = 2500
 
 func _ready() -> void:
     entity.connect("interacted", self, "entity_interacted")
+    entity.connect("area_entered", self, "entity_area_entered")
+    entity.connect("area_exited", self, "entity_area_exited")
     entity.sprite_emote.visible = true
     entity.sprite_emote.modulate.a8 = 0
 
 func _exit_tree() -> void:
     entity.disconnect("interacted", self, "entity_interacted")
+    entity.disconnect("area_entered", self, "entity_area_entered")
+    entity.disconnect("area_exited", self, "entity_area_exited")
 
 func _process(_delta: float) -> void:
     if entity._state == Enums.EntityStates.Idle:
@@ -32,6 +36,12 @@ func entity_interacted(interaction_type: int) -> void:
     #     emote(entity, 2)
 
     last_interaction = Globals.time_elapsed
+
+func entity_area_entered(_area: Area2D) -> void:
+    Globals.set_cursor(Globals.CURSORS.PET)
+
+func entity_area_exited(_area: Area2D) -> void:
+    Globals.set_cursor(Globals.CURSORS.DEFAULT)
 
 static func emote(entity: Entity, index: int) -> void:
     var sprite_size := 16
