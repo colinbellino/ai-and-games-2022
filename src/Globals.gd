@@ -305,6 +305,9 @@ static func ending(cause: int) -> void:
     Globals.ui_outro.open(cause)
 
 static func restart_game() -> void:
+    Globals.settings.debug_skip_title = true
+    Save.write_settings(Globals.settings)
+
     var game = Globals.get_node("/root/Game")
     Globals.get_tree().root.remove_child(game)
     game.call_deferred("free")

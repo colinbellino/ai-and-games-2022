@@ -27,8 +27,6 @@ func _ready() -> void:
     feed_button.connect("mouse_entered", self, "button_mouse_entered")
     feed_button.connect("mouse_exited", self, "button_mouse_exited")
 
-    close()
-
 func _process(_delta: float) -> void:
     feed_button.disabled = Globals.time_elapsed < next_feed
     feed_sprite.modulate.a = 0.3 if Globals.time_elapsed < next_feed else 1.0

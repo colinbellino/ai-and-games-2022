@@ -15,6 +15,7 @@ func init():
     OS.set_window_title(Globals.game_names[Globals.random.randi() % Globals.game_names.size()])
 
     Globals.set_cursor(Globals.CURSORS.DEFAULT)
+    Globals.ui_play.visible = false
 
     # Connect the UI
     Globals.ui_title.button_start.connect("pressed", self, "button_start_pressed")
@@ -76,7 +77,20 @@ func _process(delta: float):
             Globals.entities_node.get_parent().remove_child(Globals.entities_node)
 
             if Globals.settings.debug_skip_title:
-                Engine.time_scale = 40
+                Globals.ui_play.open()
+
+                # Add them back before starting the game
+                entities_node_parent.add_child(Globals.entities_node)
+
+                LDTK.update_entities(Globals.entities_node)
+                assert(Globals.creature != null, "No creature found in the level, did we forget to add one?")
+
+                var point = Globals.astar.get_closest_point(egg.position / Globals.SPRITE_SIZE)
+                Globals.astar.set_point_disabled(point, true)
+                Globals.ui_intro.visible = false
+
+                start_game()
+                return
 
             Audio.play_music(Globals.MUSIC.MENU)
             Globals.ui_intro.visible = true
