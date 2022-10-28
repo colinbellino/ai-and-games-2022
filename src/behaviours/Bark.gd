@@ -5,6 +5,7 @@ const BARK_DELAY_MAX_IN_MS : int = 8000
 const EMOTION_DEATH_THRESHOLD : int = -1
 const BORED_THRESHOLD := Vector2(-0.5,-0.5)
 const HAPPY_THRESHOLD := Vector2(0.5,0.5)
+const ANGRY_THRESHOLD := Vector2(-0.5,0.5) # low mood high energy
 
 var next_bark : int
 
@@ -29,6 +30,10 @@ func _process(_delta: float) -> void:
             elif Globals.emotion.x >= HAPPY_THRESHOLD.x and Globals.emotion.y >= HAPPY_THRESHOLD.y: # Happy
                 entity.set_meta("bark_animation", "laugh")
                 entity.change_state(Enums.EntityStates.Bark)
+            elif Globals.emotion.x <= ANGRY_THRESHOLD.x and Globals.emotion.y >= ANGRY_THRESHOLD.y: # Angry
+                entity.set_meta("bark_animation", "cry")
+                entity.change_state(Enums.EntityStates.Bark)
+                Audio.play_sound(Globals.SFX.ANGER)
             else: # Neutral
                 var random_number = Globals.random.randi_range(0, 30)
                 if random_number > 20:
