@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://media/main.theme" type="Theme" id=1]
 [ext_resource path="res://media/art/ui/UI_bg.png" type="Texture" id=2]
@@ -13,6 +13,8 @@
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.54902, 0.235294, 0.196078, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -58,9 +60,9 @@ expand = true
 
 [node name="NameLabel" type="Label" parent="Container"]
 unique_name_in_owner = true
-margin_left = 4.0
+margin_left = 5.0
 margin_top = 10.0
-margin_right = 292.0
+margin_right = 293.0
 margin_bottom = 55.0
 theme = ExtResource( 1 )
 text = "WWWqqqWWWWWWWWWW"
@@ -74,6 +76,7 @@ margin_bottom = 68.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_styles/hover = SubResource( 1 )
+custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 

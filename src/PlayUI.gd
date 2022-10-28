@@ -21,9 +21,11 @@ func _ready() -> void:
     mood_sprite = get_node("%MoodSprite")
 
     settings_button.connect("pressed", self, "settings_button_pressed")
+    settings_button.connect("mouse_entered", self, "button_mouse_entered")
+    settings_button.connect("mouse_exited", self, "button_mouse_exited")
     feed_button.connect("pressed", self, "feed_button_pressed")
-    feed_button.connect("mouse_entered", self, "feed_button_mouse_entered")
-    feed_button.connect("mouse_exited", self, "feed_button_mouse_exited")
+    feed_button.connect("mouse_entered", self, "button_mouse_entered")
+    feed_button.connect("mouse_exited", self, "button_mouse_exited")
 
     close()
 
@@ -66,8 +68,8 @@ func feed_button_pressed() -> void:
         next_feed = Globals.time_elapsed + 5000.0
         Globals.set_cursor(Globals.CURSORS.DEFAULT)
 
-func feed_button_mouse_entered() -> void:
+func button_mouse_entered() -> void:
     Globals.set_cursor(Globals.CURSORS.HAND)
 
-func feed_button_mouse_exited() -> void:
+func button_mouse_exited() -> void:
     Globals.set_cursor(Globals.CURSORS.DEFAULT)
