@@ -1,6 +1,6 @@
 class_name Audio
 
-static func play_sound(id: int, position: Vector2 = Vector2(120, 72), loop: bool = false) -> void:
+static func play_sound(id: int, position: Vector2 = Vector2(120, 72), loop: bool = false, pitch_scale : float = 1.0) -> void:
     assert(Globals.audio_sounds.has(id), "[Audio] Stream not found (sound): %s" % [id])
     var stream : AudioStream = Globals.audio_sounds[id]
     if stream is AudioStreamOGGVorbis or stream is AudioStreamMP3:
@@ -8,6 +8,7 @@ static func play_sound(id: int, position: Vector2 = Vector2(120, 72), loop: bool
 
     var player := spawn_audio_player()
     player.position = position
+    player.pitch_scale = pitch_scale
     player.stream = stream
     player.play()
 

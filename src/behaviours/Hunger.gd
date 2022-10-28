@@ -55,7 +55,7 @@ func _hunger_timeout() -> void:
             # Poop code goes here
             var index = Globals.random.randi() % POOP_ENTITIES.size()
             var fresh_poop = Globals.spawn_entity(POOP_ENTITIES[index], entity.position)
-            Audio.play_sound(Globals.SFX.POOP, entity.position)
+            Audio.play_sound(Globals.SFX.POOP, entity.position, false, Globals.random.randf_range(0.3, 2.0))
             var poop_fx = DUST.instance()
             poop_fx.position = entity.position
             Globals.entities_node.add_child(poop_fx)
