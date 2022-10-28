@@ -119,7 +119,7 @@ func _process(delta: float):
 
             if Input.is_action_just_released("ui_cancel"):
                 Globals.ui_settings.open(true)
-                Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_1, Globals.SFX.BUTTON_CLICK_2])
+                Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_2])
 
             Globals.creature_closest_point = Globals.astar.get_closest_point(Globals.creature.position / Globals.SPRITE_SIZE)
 
@@ -138,11 +138,11 @@ static func button_start_pressed() -> void:
     pass
 
 static func button_continue_pressed() -> void:
-    Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_1, Globals.SFX.BUTTON_CLICK_2])
+    Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_2])
     Globals.ui_title.close()
 
 static func button_settings_pressed() -> void:
-    Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_1, Globals.SFX.BUTTON_CLICK_2])
+    Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_2])
     Globals.ui_settings.open()
 
 static func button_quit_pressed() -> void:

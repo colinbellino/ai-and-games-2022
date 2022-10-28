@@ -110,4 +110,4 @@ func slider_volume_sound_changed(value: float) -> void:
     # print("bus_sound: ", [Globals.get_linear_db(Globals.bus_sound), AudioServer.get_bus_volume_db(Globals.bus_sound)])
 
 func play_button_sound(_whatever = null) -> void:
-    Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_1, Globals.SFX.BUTTON_CLICK_2])
+    Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_2])

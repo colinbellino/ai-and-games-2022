@@ -40,7 +40,7 @@ func _process(_delta: float) -> void:
 
 func settings_button_pressed() -> void:
     Globals.ui_settings.open(true)
-    Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_1, Globals.SFX.BUTTON_CLICK_2])
+    Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_2])
 
 func feed_button_pressed() -> void:
     var amount : int = LDTK.get_behaviour_meta(Globals.creature, "FoodSource", "Amount", 10)
