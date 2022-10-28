@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=133 format=2]
+[gd_resource type="SpriteFrames" load_steps=136 format=2]
 
 [ext_resource path="res://media/art/entities/dino_anim.png" type="Texture" id=1]
 [ext_resource path="res://media/art/entities/egg_scaled_down.png" type="Texture" id=2]
@@ -495,6 +495,18 @@ region = Rect2( 192, 128, 32, 32 )
 atlas = ExtResource( 1 )
 region = Rect2( 224, 128, 32, 32 )
 
+[sub_resource type="AtlasTexture" id=137]
+atlas = ExtResource( 1 )
+region = Rect2( 320, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=138]
+atlas = ExtResource( 1 )
+region = Rect2( 352, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=139]
+atlas = ExtResource( 1 )
+region = Rect2( 384, 0, 32, 32 )
+
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 32, 32, 32 )
@@ -573,6 +585,11 @@ animations = [ {
 "frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ) ],
 "loop": false,
 "name": "laugh",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 137 ), SubResource( 138 ), SubResource( 139 ), SubResource( 138 ), SubResource( 139 ), SubResource( 137 ) ],
+"loop": false,
+"name": "pet",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 22 ) ],
