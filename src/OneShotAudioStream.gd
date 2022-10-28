@@ -8,4 +8,4 @@ func _ready():
 
 
 func _on_OneShotAudioStreamPlayer_finished():
-	self.queue_free()
+    self.queue_free()
