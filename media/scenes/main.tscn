@@ -1,15 +1,13 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/Game.gd" type="Script" id=1]
 [ext_resource path="res://media/scenes/ui/TitleUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://media/scenes/ui/DebugUI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://media/scenes/ui/SettingsUI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://media/main.theme" type="Theme" id=5]
+[ext_resource path="res://media/scenes/ui/IntroUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://media/animations/entities/creature.tres" type="SpriteFrames" id=6]
 [ext_resource path="res://media/animations/Intro1.tres" type="Animation" id=7]
 [ext_resource path="res://media/art/entities/emotions.png" type="Texture" id=8]
-[ext_resource path="res://src/IntroUI.gd" type="Script" id=9]
-[ext_resource path="res://media/fonts/silver.tres" type="DynamicFont" id=10]
 [ext_resource path="res://src/ScreenShake.gd" type="Script" id=11]
 [ext_resource path="res://media/scenes/ui/PlayUI.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/PlayUI.gd" type="Script" id=13]
@@ -126,92 +124,11 @@ visible = false
 layer = 100
 visible = false
 
-[node name="IntroUI" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
-visible = false
-script = ExtResource( 9 )
-
-[node name="BorderTop" type="ColorRect" parent="IntroUI"]
-unique_name_in_owner = true
-margin_right = 960.0
-margin_bottom = 270.0
-color = Color( 0, 0, 0, 1 )
-
-[node name="BorderRight" type="ColorRect" parent="IntroUI"]
-unique_name_in_owner = true
-margin_left = 960.0
-margin_right = 1440.0
-margin_bottom = 540.0
-color = Color( 0, 0, 0, 1 )
-
-[node name="BorderBottom" type="ColorRect" parent="IntroUI"]
-unique_name_in_owner = true
-margin_top = 541.0
-margin_right = 960.0
-margin_bottom = 811.0
-color = Color( 0, 0, 0, 1 )
-
-[node name="BorderLeft" type="ColorRect" parent="IntroUI"]
-unique_name_in_owner = true
-margin_left = -480.0
-margin_bottom = 540.0
-color = Color( 0, 0, 0, 1 )
-
-[node name="Message0" type="Label" parent="IntroUI"]
-unique_name_in_owner = true
-margin_left = 47.0
-margin_top = 35.0
-margin_right = 931.0
-margin_bottom = 155.0
-theme = ExtResource( 5 )
-text = "intro_0"
-autowrap = true
-
-[node name="NameContainer" type="Control" parent="IntroUI"]
-unique_name_in_owner = true
-margin_right = 40.0
-margin_bottom = 40.0
-
-[node name="NameLabel" type="Label" parent="IntroUI/NameContainer"]
-unique_name_in_owner = true
-margin_left = 135.0
-margin_top = 410.0
-margin_right = 819.0
-margin_bottom = 461.0
-theme = ExtResource( 5 )
-text = "intro_1"
-align = 1
-
-[node name="Name" type="LineEdit" parent="IntroUI/NameContainer"]
-unique_name_in_owner = true
-margin_left = 328.0
-margin_top = 465.0
-margin_right = 639.0
-margin_bottom = 516.0
-theme = ExtResource( 5 )
-custom_colors/font_color = Color( 0.254902, 0.803922, 0.45098, 1 )
-custom_fonts/font = ExtResource( 10 )
-text = "WWWWWWWWWWWWWWW"
-align = 1
-max_length = 16
-expand_to_text_length = true
-context_menu_enabled = false
-caret_blink = true
-caret_blink_speed = 0.3
-
-[node name="Start" type="Button" parent="IntroUI/NameContainer"]
-unique_name_in_owner = true
-margin_left = 849.0
-margin_top = 465.0
-margin_right = 939.0
-margin_bottom = 516.0
-theme = ExtResource( 5 )
-shortcut_in_tooltip = false
-text = "> OK"
-flat = true
+[node name="IntroUI" parent="." instance=ExtResource( 5 )]
 
 [node name="OutroUI" parent="." instance=ExtResource( 15 )]
 unique_name_in_owner = true
+visible = false
 
 [node name="SoundPlayer" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
@@ -244,6 +161,7 @@ unique_name_in_owner = true
 [node name="Parent0" type="AnimatedSprite" parent="World/IntroStuff"]
 modulate = Color( 1, 0.533333, 0.533333, 1 )
 position = Vector2( 50, 64.25 )
+rotation = 0.013449
 z_index = 99
 frames = ExtResource( 6 )
 animation = "idle"
@@ -266,7 +184,7 @@ region_rect = Rect2( 32, 64, 16, 16 )
 [node name="Parent1" type="AnimatedSprite" parent="World/IntroStuff"]
 modulate = Color( 0.603922, 0.564706, 1, 1 )
 position = Vector2( 150, 72 )
-rotation = -0.174533
+rotation = 0.0134485
 scale = Vector2( -1, 1 )
 z_index = 99
 frames = ExtResource( 6 )

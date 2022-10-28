@@ -16,7 +16,6 @@ script = ExtResource( 1 )
 unique_name_in_owner = true
 margin_top = -540.0
 margin_right = 960.0
-rect_pivot_offset = Vector2( 1446, 606 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="BorderLeft" type="ColorRect" parent="."]
@@ -65,7 +64,6 @@ text = "Quit game"
 
 [node name="Restart" type="Button" parent="Menu/HBoxContainer"]
 unique_name_in_owner = true
-visible = false
 margin_left = 402.0
 margin_right = 800.0
 margin_bottom = 61.0
