@@ -18,7 +18,7 @@ func entity_interacted(interaction_type: int) -> void:
     if Globals.settings.debug_skip_cooldowns == false && Globals.time_elapsed < last_interaction + cooldown_in_ms:
         return
 
-    if interaction_type == 0:
+    if interaction_type == 0 && entity._state == Enums.EntityStates.Idle:
         Globals.add_emotion(PET_EMOTION_MOD, "Pet")
         Audio.play_sound(Globals.SFX.LAUGH, entity.position)
         emote(entity, 7)

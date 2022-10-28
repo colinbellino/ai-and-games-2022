@@ -76,7 +76,7 @@ func _process(delta: float):
             Globals.entities_node.get_parent().remove_child(Globals.entities_node)
 
             if Globals.settings.debug_skip_title:
-                Engine.time_scale = 20
+                Engine.time_scale = 40
 
             Audio.play_music(Globals.MUSIC.MENU)
             Globals.ui_intro.visible = true
@@ -118,6 +118,7 @@ func _process(delta: float):
 
         if Input.is_action_just_released("debug_2"):
             Globals.ending()
+            return
 
         if Globals.ui_settings.visible:
             Engine.time_scale = 0

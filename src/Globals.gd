@@ -299,8 +299,6 @@ static func ending() -> void:
     yield(Globals.animation_player, "animation_finished")
     Globals.ui_outro.open()
 
-    restart_game()
-
 static func restart_game() -> void:
     var game = Globals.get_node("/root/Game")
     Globals.get_tree().root.remove_child(game)
