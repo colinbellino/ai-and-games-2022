@@ -12,7 +12,7 @@ const HUNGER_EMOTION_DAMAGE_THRESHOLD := 0
 const HUNGER_DEATH_THRESHOLD := 0
 const EMOTION_TICKS_IN_SECONDS := 10
 const HUNGER_EMOTION = Vector2(-0.2, -0.1)
-const FEED_EMOTION = Vector2(0.2, 0.2)
+const FEED_EMOTION = Vector2(0.1, 0.2)
 const POOP_AT = 10
 const DUST = preload("res://media/scenes/entities/Dust.tscn")
 

@@ -61,6 +61,41 @@ func _process(_delta: float):
 
             change_state(Enums.EntityStates.Idle)
 
+    if _state == Enums.EntityStates.Leave:
+        if _state_entered == false:
+            _state_entered = true
+            sprite_body.play("walk")
+
+            var destination_point = Globals.astar.get_closest_point(Vector2(13, 4))
+            var path : PoolVector2Array = Globals.astar.get_point_path(Globals.creature_closest_point, destination_point)
+            Audio.play_sound(Globals.SFX.CRY, position)
+            var speed : float = get_meta("moving_speed")
+            for index in range(1, path.size()):
+                var point = path[index]
+                var destination : Vector2 = (point + Globals.CELL_CENTER_OFFSET) * Globals.SPRITE_SIZE
+                var duration := position.distance_to(destination) / speed
+                var direction = 1
+                if destination.x  - position.x < 0:
+                    direction = -1
+
+                var tween := create_tween()
+                tween.tween_property(self, "scale:x", direction * 1.0, 0.1)
+                tween.tween_property(self, "position", destination, duration)
+                yield(tween, "finished")
+
+            var offscreen_destination : Vector2 = (Vector2(16, 4) + Globals.CELL_CENTER_OFFSET) * Globals.SPRITE_SIZE
+            var offscreen_duration := position.distance_to(offscreen_destination) / speed
+            var direction = 1
+            if offscreen_destination.x  - position.x < 0:
+                direction = -1
+
+            var tween := create_tween()
+            tween.tween_property(self, "scale:x", direction * 1.0, 0.1)
+            tween.tween_property(self, "position", offscreen_destination, offscreen_duration)
+            yield(tween, "finished")
+
+            Globals.ending(1)
+
     if _state == Enums.EntityStates.Dead:
         if _state_entered == false:
             _state_entered = true

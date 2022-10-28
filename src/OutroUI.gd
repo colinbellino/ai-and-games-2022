@@ -35,7 +35,6 @@ func play_button_sound(_whatever = null) -> void:
 func open(cause: int) -> void:
     var message_label_text = tr("outro_%s" % [cause]) % [Globals.creature_name]
     message_label_text = message_label_text.strip_edges(true, true)
-    print("message_label_text: ", [message_label_text])
     message_label.text = ""
     for letter in message_label_text:
         message_label.text += letter

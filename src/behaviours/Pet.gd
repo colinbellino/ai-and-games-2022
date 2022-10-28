@@ -13,6 +13,11 @@ func _ready() -> void:
 func _exit_tree() -> void:
     entity.disconnect("interacted", self, "entity_interacted")
 
+func _process(_delta: float) -> void:
+    if entity._state == Enums.EntityStates.Idle:
+        if Globals.emotion.x <= -1.0:
+            entity.change_state(Enums.EntityStates.Leave)
+
 func entity_interacted(interaction_type: int) -> void:
     # Maybe later we want to queue the emotion changes, but for now a cooldown will suffice
     if Globals.settings.debug_skip_cooldowns == false && Globals.time_elapsed < last_interaction + cooldown_in_ms:
