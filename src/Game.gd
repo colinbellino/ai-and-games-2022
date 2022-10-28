@@ -1,8 +1,17 @@
 class_name Game extends Node
 
+var initialized : bool
+
 enum GameStates { INIT, TITLE, INTRO, PLAY }
 
-func _ready():
+func _ready() -> void:
+    print("[Game] ready: ", Globals.initialized)
+    if Globals.initialized == false:
+        return
+
+    init()
+
+func init():
     OS.set_window_title(Globals.game_names[Globals.random.randi() % Globals.game_names.size()])
 
     Globals.set_cursor(Globals.CURSORS.DEFAULT)
@@ -20,7 +29,12 @@ func _ready():
 
     change_state(GameStates.INTRO)
 
+    initialized = true
+
 func _process(delta: float):
+    if initialized == false:
+        return
+
     Globals.mouse_position = Globals.camera.get_local_mouse_position() / Globals.SPRITE_SIZE / Globals.SCALE
     Globals.mouse_closest_point = Globals.astar.get_closest_point(Globals.mouse_position - Globals.CELL_CENTER_OFFSET)
     Globals.time_elapsed += delta * 1000
@@ -103,7 +117,7 @@ func _process(delta: float):
             Globals.game_state_entered = true
 
         if Input.is_action_just_released("debug_2"):
-            Globals.restart_game()
+            Globals.ending()
 
         if Globals.ui_settings.visible:
             Engine.time_scale = 0
@@ -153,7 +167,7 @@ static func start_game() -> void:
     Globals.ui_play.open()
     Audio.play_music(Globals.MUSIC.CALM)
 
-    Globals.world.get_node("%IntroStuff").visible = false
+    Globals.world.find_node("IntroStuff").visible = false
 
     change_state(GameStates.PLAY)
 

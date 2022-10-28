@@ -114,16 +114,20 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="TitleUI" parent="." instance=ExtResource( 2 )]
+unique_name_in_owner = false
 visible = false
 
 [node name="PlayUI" parent="." instance=ExtResource( 12 )]
+unique_name_in_owner = false
 script = ExtResource( 13 )
 
 [node name="SettingsUI" parent="." instance=ExtResource( 4 )]
+unique_name_in_owner = false
 layer = 2
 visible = false
 
 [node name="DebugUI" parent="." instance=ExtResource( 3 )]
+unique_name_in_owner = false
 layer = 100
 visible = false
 
@@ -134,15 +138,14 @@ script = ExtResource( 9 )
 
 [node name="BorderTop" type="ColorRect" parent="IntroUI"]
 unique_name_in_owner = true
-margin_top = -98.5938
 margin_right = 960.0
-margin_bottom = 171.406
+margin_bottom = 270.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="BorderRight" type="ColorRect" parent="IntroUI"]
 unique_name_in_owner = true
-margin_left = 617.194
-margin_right = 1097.19
+margin_left = 960.0
+margin_right = 1440.0
 margin_bottom = 540.0
 color = Color( 0, 0, 0, 1 )
 
@@ -155,8 +158,7 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="BorderLeft" type="ColorRect" parent="IntroUI"]
 unique_name_in_owner = true
-margin_left = -137.186
-margin_right = 342.814
+margin_left = -480.0
 margin_bottom = 540.0
 color = Color( 0, 0, 0, 1 )
 
@@ -214,32 +216,16 @@ text = "> OK"
 flat = true
 
 [node name="OutroUI" parent="." instance=ExtResource( 15 )]
-unique_name_in_owner = true
-
-[node name="BorderTop" parent="OutroUI" index="1"]
-color = Color( 0.141176, 0.141176, 0.141176, 1 )
-
-[node name="BorderLeft" parent="OutroUI" index="2"]
-color = Color( 0.141176, 0.141176, 0.141176, 1 )
-
-[node name="BorderRight" parent="OutroUI" index="3"]
-color = Color( 0.141176, 0.141176, 0.141176, 1 )
-
-[node name="BorderBottom" parent="OutroUI" index="4"]
-color = Color( 0.141176, 0.141176, 0.141176, 1 )
 
 [node name="SoundPlayer" type="AudioStreamPlayer2D" parent="."]
-unique_name_in_owner = true
 position = Vector2( 480, 270 )
 bus = "Sound"
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
-unique_name_in_owner = true
 position = Vector2( 480, 270 )
 bus = "Music"
 
 [node name="MainCamera" type="Camera2D" parent="."]
-unique_name_in_owner = true
 anchor_mode = 0
 current = true
 
@@ -251,11 +237,9 @@ anims/Outro1 = ExtResource( 17 )
 anims/RESET = SubResource( 2 )
 
 [node name="World" type="Node2D" parent="."]
-unique_name_in_owner = true
 scale = Vector2( 4, 4 )
 
 [node name="IntroStuff" type="Node2D" parent="World"]
-unique_name_in_owner = true
 
 [node name="Parent0" type="AnimatedSprite" parent="World/IntroStuff"]
 modulate = Color( 1, 0.533333, 0.533333, 1 )

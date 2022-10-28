@@ -26,6 +26,7 @@ const resolutions : Array = [
     ["3840 x 2160", Vector2(3840, 2160)],
     ["7680 x 4320", Vector2(7680, 4320)],
 ]
+const HUNGER_MAX := 60 # Fullness trying 60 to represent 1 minute
 const SPRITE_SIZE : int = 16
 const SCALE : int = 4
 const CELL_CENTER_OFFSET : Vector2 = Vector2(0.5, 0.5)
@@ -35,7 +36,6 @@ enum CURSORS { DEFAULT, HIGHLIGHT, HAND, HAND_HIGHLIGHT, GRAB, CLEAN }
 const CURSOR_SCALE : int = 4
 
 # Resources
-onready var textures : Dictionary = {}
 onready var entity_prefab : PackedScene = ResourceLoader.load("res://media/scenes/entities/Entity.tscn")
 onready var egg_prefab : PackedScene = ResourceLoader.load("res://media/scenes/entities/Egg.tscn")
 onready var cursor_textures : Array = [
@@ -48,6 +48,7 @@ onready var cursor_textures : Array = [
 ]
 
 # State
+var initialized : bool
 var settings : GameSettings
 var version : String = "0000000"
 var can_fullscreen : bool
@@ -90,8 +91,6 @@ var creature : Entity
 var animation_player : AnimationPlayer
 var screen_shake : ScreenShake
 var entities_node : YSort
-
-# Audio
 var audio_player_sound : AudioStreamPlayer2D
 var audio_player_music : AudioStreamPlayer2D
 
@@ -124,8 +123,28 @@ var audio_musics : Dictionary = {
 
 var one_shot = preload("res://media/scenes/OneShotAudioStream.tscn")
 
-
 func _ready() -> void:
+    print("[Globals] _ready")
+    init()
+
+func init() -> void:
+    print("[Globals] init")
+
+    # Reset state (mainly for restarts)
+    initialized = false
+    game_state = 0
+    game_state_entered = false
+    game_state_exited = false
+    emotion = Vector2.ZERO
+    hunger = 0
+    poop = 0
+    total_poops = 0
+    mouse_position = Vector2.ZERO
+    mouse_closest_point = -1
+    creature_closest_point = -1
+    time_elapsed = 0.0
+    creature = null
+
     # Init stuff here
     Globals.settings = Save.read_settings()
     Globals.bus_main = AudioServer.get_bus_index("Master")
@@ -134,31 +153,44 @@ func _ready() -> void:
     assert(Globals.bus_music != null, "Globals.bus_music not initialized correctly.")
     Globals.bus_sound = AudioServer.get_bus_index("Sound")
     assert(Globals.bus_sound != null, "Globals.bus_sound not initialized correctly.")
-    Globals.world = get_node("/root/Game/%World")
+    Globals.world = null
+    Globals.world = get_node("/root/Game/World")
     assert(Globals.world != null, "Globals.world not initialized correctly.")
-    Globals.ui_title = get_node("/root/Game/%TitleUI")
+    Globals.ui_title = null
+    Globals.ui_title = get_node("/root/Game/TitleUI")
     assert(Globals.ui_title != null, "Globals.ui_title not initialized correctly.")
-    Globals.ui_settings = get_node("/root/Game/%SettingsUI")
+    Globals.ui_settings = null
+    Globals.ui_settings = get_node("/root/Game/SettingsUI")
     assert(Globals.ui_settings != null, "Globals.ui_settings not initialized correctly.")
-    Globals.ui_debug = get_node("/root/Game/%DebugUI")
+    Globals.ui_debug = null
+    Globals.ui_debug = get_node("/root/Game/DebugUI")
     assert(Globals.ui_debug != null, "Globals.ui_debug not initialized correctly.")
-    Globals.ui_intro = get_node("/root/Game/%IntroUI")
+    Globals.ui_intro = null
+    Globals.ui_intro = get_node("/root/Game/IntroUI")
     assert(Globals.ui_intro != null, "Globals.ui_intro not initialized correctly.")
-    Globals.ui_outro = get_node("/root/Game/%OutroUI")
+    Globals.ui_outro = null
+    Globals.ui_outro = get_node("/root/Game/OutroUI")
     assert(Globals.ui_outro != null, "Globals.ui_outro not initialized correctly.")
-    Globals.ui_splash = get_node("/root/Game/%SplashUI")
+    Globals.ui_splash = null
+    Globals.ui_splash = get_node("/root/Game/SplashUI")
     assert(Globals.ui_splash != null, "Globals.ui_splash not initialized correctly.")
-    Globals.ui_play = get_node("/root/Game/%PlayUI")
+    Globals.ui_play = null
+    Globals.ui_play = get_node("/root/Game/PlayUI")
     assert(Globals.ui_play != null, "Globals.ui_play not initialized correctly.")
-    Globals.camera = get_node("/root/Game/%MainCamera")
+    Globals.camera = null
+    Globals.camera = get_node("/root/Game/MainCamera")
     assert(Globals.camera != null, "Globals.camera not initialized correctly.")
-    Globals.animation_player = get_node("/root/Game/%AnimationPlayer")
+    Globals.animation_player = null
+    Globals.animation_player = get_node("/root/Game/AnimationPlayer")
     assert(Globals.animation_player != null, "Globals.animation_player not initialized correctly.")
-    Globals.audio_player_sound = get_node("/root/Game/%SoundPlayer")
+    Globals.audio_player_sound = null
+    Globals.audio_player_sound = get_node("/root/Game/SoundPlayer")
     assert(Globals.audio_player_sound != null, "Globals.audio_player_sound not initialized correctly.")
-    Globals.audio_player_music = get_node("/root/Game/%MusicPlayer")
+    Globals.audio_player_music = null
+    Globals.audio_player_music = get_node("/root/Game/MusicPlayer")
     assert(Globals.audio_player_music != null, "Globals.audio_player_music not initialized correctly.")
-    Globals.screen_shake = get_node("/root/Game/%ScreenShake")
+    Globals.screen_shake = null
+    Globals.screen_shake = get_node("/root/Game/ScreenShake")
     assert(Globals.screen_shake != null, "Globals.screen_shake not initialized correctly.")
     Globals.version = load_file("res://version.txt", "1111111")
     assert(Globals.version != null, "Globals.version not initialized correctly.")
@@ -184,6 +216,8 @@ func _ready() -> void:
     Globals.set_linear_db(Globals.bus_sound, Globals.settings.volume_sound)
     TranslationServer.set_locale(Globals.settings.locale)
 
+    Globals.initialized = true
+
 # Utils
 
 # FIXME: looks like this doesn't work on MacOS
@@ -202,7 +236,7 @@ func set_linear_db(bus_index: int, linear_db: float) -> void:
     linear_db = clamp(linear_db, 0.0, 1.0)
     AudioServer.set_bus_volume_db(bus_index, linear2db(linear_db))
 
-func add_emotion(amount: Vector2, source: String = "Unknown"):
+func add_emotion(amount: Vector2, _source: String = "Unknown"):
     emotion.x = clamp(emotion.x + amount.x, -1, 1)
     emotion.y = clamp(emotion.y + amount.y, -1, 1)
     # print("[Emotion Added %s][Amount %s]" % [source, amount])
@@ -258,11 +292,27 @@ static func set_cursor(cursor_id: int) -> void:
         offset = Vector2(3, 0) * CURSOR_SCALE
     Input.set_custom_mouse_cursor(cursor_texture, Input.CURSOR_ARROW, offset)
 
-static func restart_game() -> void:
-    print("restart_game")
+static func ending() -> void:
     Engine.time_scale = 0.0
 
     Globals.animation_player.play("Outro1")
     yield(Globals.animation_player, "animation_finished")
     Globals.ui_outro.open()
-    pass
+
+    restart_game()
+
+static func restart_game() -> void:
+    var game = Globals.get_node("/root/Game")
+    Globals.get_tree().root.remove_child(game)
+    game.call_deferred("free")
+    yield(Globals.get_tree(), "idle_frame")
+
+    Globals.initialized = false
+
+    var new_game = ResourceLoader.load("res://media/scenes/main.tscn").instance()
+    Globals.get_tree().root.add_child(new_game)
+    yield(Globals.get_tree(), "idle_frame")
+
+    Globals.init()
+
+    new_game.init()

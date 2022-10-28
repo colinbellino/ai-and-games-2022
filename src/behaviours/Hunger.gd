@@ -8,7 +8,6 @@ const POOP_ENTITIES = [
 ]
 const HUNGER_TICKS_IN_SECONDS := 3
 const HUNGER_START := 30 # Start the dino a little hungry
-const HUNGER_MAX := 60 # Fullness trying 60 to represent 1 minute
 const HUNGER_EMOTION_DAMAGE_THRESHOLD := 0
 const HUNGER_DEATH_THRESHOLD := 0
 const EMOTION_TICKS_IN_SECONDS := 10
@@ -89,7 +88,7 @@ func _emotional_impact_timeout() -> void:
             Audio.play_sound(Globals.SFX.DEATH, entity.position)
 
 func _entity_fed(amount: int) -> void:
-    Globals.hunger = min(Globals.hunger + amount, HUNGER_MAX)
+    Globals.hunger = int(min(Globals.hunger + amount, Globals.HUNGER_MAX))
     Globals.add_emotion(FEED_EMOTION, "Feed")
     entity.set_meta("bark_animation", "eat_large")
     entity.change_state(Enums.EntityStates.Bark)

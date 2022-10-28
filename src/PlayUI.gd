@@ -36,7 +36,7 @@ func close() -> void:
     visible = false
 
 func _process(_delta: float) -> void:
-    hunger_progress.value = Globals.hunger / float(Hunger.HUNGER_MAX) * 100.0
+    hunger_progress.value = Globals.hunger / float(Globals.HUNGER_MAX) * 100.0
 
 func settings_button_pressed() -> void:
     Globals.ui_settings.open(true)
