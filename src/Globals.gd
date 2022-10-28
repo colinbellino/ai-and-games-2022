@@ -292,12 +292,12 @@ static func set_cursor(cursor_id: int) -> void:
         offset = Vector2(3, 0) * CURSOR_SCALE
     Input.set_custom_mouse_cursor(cursor_texture, Input.CURSOR_ARROW, offset)
 
-static func ending() -> void:
+static func ending(cause: int) -> void:
     Engine.time_scale = 0.0
 
     Globals.animation_player.play("Outro1")
     yield(Globals.animation_player, "animation_finished")
-    Globals.ui_outro.open()
+    Globals.ui_outro.open(cause)
 
 static func restart_game() -> void:
     var game = Globals.get_node("/root/Game")

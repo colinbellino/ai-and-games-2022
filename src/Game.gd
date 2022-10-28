@@ -117,7 +117,7 @@ func _process(delta: float):
             Globals.game_state_entered = true
 
         if Input.is_action_just_released("debug_2"):
-            Globals.ending()
+            Globals.ending(0)
             return
 
         if Globals.ui_settings.visible:

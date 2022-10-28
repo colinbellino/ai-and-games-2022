@@ -39,6 +39,16 @@ margin_right = 960.0
 margin_bottom = 1080.0
 color = Color( 0, 0, 0, 1 )
 
+[node name="Message0" type="Label" parent="."]
+unique_name_in_owner = true
+margin_left = 47.0
+margin_top = 35.0
+margin_right = 931.0
+margin_bottom = 155.0
+theme = ExtResource( 2 )
+text = "Some message here"
+autowrap = true
+
 [node name="Menu" type="Control" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -58,8 +68,9 @@ margin_bottom = 98.0
 color = Color( 1, 1, 1, 0 )
 
 [node name="HBoxContainer" type="Control" parent="Menu"]
+margin_top = -72.0
 margin_right = 460.0
-margin_bottom = 98.0
+margin_bottom = 26.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

@@ -70,6 +70,7 @@ func animate_text() -> void:
     input_name.grab_focus()
 
     yield(get_tree().create_timer(0.5), "timeout")
+
     button_start.modulate.a = 0.0
     button_start.visible = true
     var tween := create_tween()
