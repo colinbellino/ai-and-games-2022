@@ -43,7 +43,7 @@ func settings_button_pressed() -> void:
     Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_2])
 
 func feed_button_pressed() -> void:
-    var amount : int = LDTK.get_behaviour_meta(Globals.creature, "FoodSource", "Amount", 10)
+    var amount : int = LDTK.get_behaviour_meta(Globals.creature, "FoodSource", "Amount", 20)
     Audio.play_sound(Globals.SFX.BUTTON_CLICK_1, Globals.creature.position)
     Globals.creature.emit_signal("fed", amount)
 

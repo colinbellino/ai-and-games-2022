@@ -6,8 +6,8 @@ const POOP_ENTITIES = [
     preload("res://media/scenes/entities/Poop2.tscn"),
     preload("res://media/scenes/entities/Poop3.tscn"),
 ]
-const HUNGER_TICKS_IN_SECONDS := 3
-const HUNGER_START := 30 # Start the dino a little hungry
+const HUNGER_TICKS_IN_SECONDS := 0.5
+const HUNGER_START := 60
 const HUNGER_EMOTION_DAMAGE_THRESHOLD := 0
 const HUNGER_DEATH_THRESHOLD := 0
 const EMOTION_TICKS_IN_SECONDS := 10
@@ -46,7 +46,7 @@ func _hunger_timeout() -> void:
 
     # This should probably just be it's own behavoir
     # Increase poop number to represent bowels fill with waste
-    Globals.poop += 1
+    # Globals.poop += 1
 
     if Globals.poop >= POOP_AT:
         if Globals.creature._state == Enums.EntityStates.Idle:
@@ -88,6 +88,7 @@ func _emotional_impact_timeout() -> void:
             Audio.play_sound(Globals.SFX.DEATH, entity.position)
 
 func _entity_fed(amount: int) -> void:
+    Globals.poop += 5
     Globals.hunger = int(min(Globals.hunger + amount, Globals.HUNGER_MAX))
     Globals.add_emotion(FEED_EMOTION, "Feed")
     entity.set_meta("bark_animation", "eat_large")
