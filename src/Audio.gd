@@ -1,17 +1,17 @@
 class_name Audio
 
-
-static func play_sound(id: int, position: Vector3 = Vector3.ZERO, loop: bool = false) -> void:
+static func play_sound(id: int, position: Vector2 = Vector2.ZERO, loop: bool = false) -> void:
     assert(Globals.audio_sounds.has(id), "[Audio] Stream not found (sound): %s" % [id])
     var stream : AudioStream = Globals.audio_sounds[id]
     if stream is AudioStreamOGGVorbis or stream is AudioStreamMP3:
         stream.loop = loop
 
     var player := spawn_audio_player()
+    player.position = position
     player.stream = stream
     player.play()
 
-static func play_sound_random(ids: PoolIntArray, position: Vector3 = Vector3.ZERO, loop: bool = false) -> void:
+static func play_sound_random(ids: PoolIntArray, position: Vector2 = Vector2.ZERO, loop: bool = false) -> void:
     var id := randi() % ids.size()
     assert(Globals.audio_sounds.has(id), "[Audio] Stream not found (sound_random): %s" % [id])
     play_sound(id, position, loop)

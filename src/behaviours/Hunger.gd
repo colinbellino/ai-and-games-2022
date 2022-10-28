@@ -55,7 +55,7 @@ func _hunger_timeout() -> void:
             # Poop code goes here
             var index = Globals.random.randi() % POOP_ENTITIES.size()
             var fresh_poop = Globals.spawn_entity(POOP_ENTITIES[index], entity.position)
-            Audio.play_sound(Globals.SFX.POOP)
+            Audio.play_sound(Globals.SFX.POOP, entity.position)
             var poop_fx = DUST.instance()
             poop_fx.position = entity.position
             Globals.entities_node.add_child(poop_fx)
@@ -86,7 +86,7 @@ func _emotional_impact_timeout() -> void:
         if entity._state == Enums.EntityStates.Idle:
             entity.set_meta("dead_animation", "dead_hunger")
             entity.change_state(Enums.EntityStates.Dead)
-            Audio.play_sound(Globals.SFX.DEATH)
+            Audio.play_sound(Globals.SFX.DEATH, entity.position)
 
 func _entity_fed(amount: int) -> void:
     Globals.hunger += amount
@@ -94,4 +94,4 @@ func _entity_fed(amount: int) -> void:
     entity.set_meta("bark_animation", "eat_large")
     entity.change_state(Enums.EntityStates.Bark)
     Pet.emote(entity, 26)
-    Audio.play_sound(Globals.SFX.EAT)
+    Audio.play_sound(Globals.SFX.EAT, entity.position)

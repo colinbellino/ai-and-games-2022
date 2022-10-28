@@ -22,28 +22,28 @@ func _process(_delta: float) -> void:
             if Globals.emotion.y < EMOTION_DEATH_THRESHOLD:
                 entity.set_meta("dead_animation", "dead_leave")
                 entity.change_state(Enums.EntityStates.Dead)
-                Audio.play_sound(Globals.SFX.DEATH)
+                Audio.play_sound(Globals.SFX.DEATH, entity.position)
             elif Globals.emotion.x <= BORED_THRESHOLD.x and Globals.emotion.y <= BORED_THRESHOLD.y: # Sad
                 entity.set_meta("bark_animation", "cry")
                 entity.change_state(Enums.EntityStates.Bark)
-                Audio.play_sound(Globals.SFX.CRY)
+                Audio.play_sound(Globals.SFX.CRY, entity.position)
             elif Globals.emotion.x >= HAPPY_THRESHOLD.x and Globals.emotion.y >= HAPPY_THRESHOLD.y: # Happy
                 entity.set_meta("bark_animation", "laugh")
                 entity.change_state(Enums.EntityStates.Bark)
             elif Globals.emotion.x <= ANGRY_THRESHOLD.x and Globals.emotion.y >= ANGRY_THRESHOLD.y: # Angry
                 entity.set_meta("bark_animation", "cry")
                 entity.change_state(Enums.EntityStates.Bark)
-                Audio.play_sound(Globals.SFX.ANGER)
+                Audio.play_sound(Globals.SFX.ANGER, entity.position)
             else: # Neutral
                 var random_number = Globals.random.randi_range(0, 30)
                 if random_number > 20:
                     entity.set_meta("bark_animation", "bored")
                     entity.change_state(Enums.EntityStates.Bark)
-                    Audio.play_sound(Globals.SFX.BORED)
+                    Audio.play_sound(Globals.SFX.BORED, entity.position)
                 elif random_number > 10:
                     entity.set_meta("bark_animation", "asleep")
                     entity.change_state(Enums.EntityStates.Bark)
-                    Audio.play_sound(Globals.SFX.SLEEP)
+                    Audio.play_sound(Globals.SFX.SLEEP, entity.position)
                 else:
                     var points := Globals.astar.get_points()
                     var start_point := Globals.creature_closest_point

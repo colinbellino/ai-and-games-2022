@@ -20,7 +20,7 @@ func entity_interacted(interaction_type: int) -> void:
 
     if interaction_type == 0:
         Globals.add_emotion(PET_EMOTION_MOD, "Pet")
-        Audio.play_sound(Globals.SFX.LAUGH)
+        Audio.play_sound(Globals.SFX.LAUGH, entity.position)
         emote(entity, 7)
     # elif interaction_type == 1:
     #     Globals.emotion -= 1
