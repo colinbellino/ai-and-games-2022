@@ -12,6 +12,12 @@ margin_right = 960.0
 rect_pivot_offset = Vector2( 1446, 606 )
 color = Color( 0, 0, 0, 1 )
 
+[node name="BorderLeft" type="ColorRect" parent="."]
+unique_name_in_owner = true
+margin_left = -960.0
+margin_bottom = 540.0
+color = Color( 0, 0, 0, 1 )
+
 [node name="BorderRight" type="ColorRect" parent="."]
 unique_name_in_owner = true
 margin_left = 960.0
@@ -24,10 +30,4 @@ unique_name_in_owner = true
 margin_top = 540.0
 margin_right = 960.0
 margin_bottom = 1080.0
-color = Color( 0, 0, 0, 1 )
-
-[node name="BorderLeft" type="ColorRect" parent="."]
-unique_name_in_owner = true
-margin_left = -960.0
-margin_bottom = 540.0
 color = Color( 0, 0, 0, 1 )
