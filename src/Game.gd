@@ -116,7 +116,7 @@ func _process(delta: float):
         if Globals.game_state_entered == false:
             Globals.game_state_entered = true
 
-        if Input.is_action_just_released("debug_2"):
+        if OS.is_debug_build() && Input.is_action_just_released("debug_2"):
             Globals.ending(0)
             return
 
