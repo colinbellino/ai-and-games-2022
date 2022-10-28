@@ -7,6 +7,8 @@ var settings_button: TextureButton
 var feed_button: Button
 var feed_sprite: Sprite
 var next_feed : float
+var mood_progress : TextureProgress
+var mood_sprite : Sprite
 
 func _ready() -> void:
     container_control = get_node("%Container")
@@ -15,6 +17,8 @@ func _ready() -> void:
     settings_button = get_node("%SettingsButton")
     feed_button = get_node("%FeedButton")
     feed_sprite = get_node("%FeedSprite")
+    mood_progress = get_node("%MoodProgress")
+    mood_sprite = get_node("%MoodSprite")
 
     settings_button.connect("pressed", self, "settings_button_pressed")
     feed_button.connect("pressed", self, "feed_button_pressed")
@@ -27,6 +31,13 @@ func _process(_delta: float) -> void:
     feed_button.disabled = Globals.time_elapsed < next_feed
     feed_sprite.modulate.a = 0.3 if Globals.time_elapsed < next_feed else 1.0
     hunger_progress.value = Globals.hunger / float(Globals.HUNGER_MAX) * 100.0
+    mood_progress.value = (Globals.emotion.x + 1.0) * 50.0
+    if Globals.emotion.x <= -0.5:
+        mood_sprite.region_rect.position.x = 0
+    if Globals.emotion.x >= 0.5:
+        mood_sprite.region_rect.position.x = 32
+    if Globals.emotion.x > -0.5 && Globals.emotion.x < 0.5:
+        mood_sprite.region_rect.position.x = 16
 
 func open() -> void:
     label_name.text = Globals.creature_name

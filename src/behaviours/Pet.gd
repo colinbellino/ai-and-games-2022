@@ -1,9 +1,9 @@
 class_name Pet extends Behaviour
 
-const PET_EMOTION_MOD = Vector2(0.1, 0.1)
+const PET_EMOTION_MOD = Vector2(0.5, 0.1)
 
 var last_interaction : float
-var cooldown_in_ms : int = 1500
+var cooldown_in_ms : int = 2500
 
 func _ready() -> void:
     entity.connect("interacted", self, "entity_interacted")

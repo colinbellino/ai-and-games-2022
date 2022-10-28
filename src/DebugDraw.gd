@@ -12,6 +12,9 @@ func _process(_delta: float) -> void:
     update()
 
 func _draw() -> void:
+    if Globals.initialized == false:
+        return
+
     if Globals.settings.debug_draw == false:
         return
 
