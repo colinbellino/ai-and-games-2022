@@ -74,6 +74,7 @@ var creature_color : Color
 var random = RandomNumberGenerator.new()
 var game_names : Array = []
 var time_elapsed : float
+var restarting : bool
 
 # Nodes
 var ui_title : TitleUI
@@ -210,6 +211,7 @@ func init() -> void:
 
     if Globals.can_fullscreen:
         Globals.set_fullscreen(Globals.settings.window_fullscreen)
+    print("Globals.settings.resolution_index: ", [Globals.settings.resolution_index])
     Globals.set_resolution(Globals.settings.resolution_index)
     Globals.set_linear_db(Globals.bus_main, Globals.settings.volume_main)
     Globals.set_linear_db(Globals.bus_music, Globals.settings.volume_music)
@@ -225,6 +227,9 @@ func set_fullscreen(value: bool) -> void:
     OS.window_fullscreen = value
 
 func set_resolution(resolution_index: float) -> void:
+    if Globals.restarting:
+        return
+
     OS.window_size = resolutions[resolution_index][1]
     get_viewport().set_size_override(true, resolutions[resolution_index][1])
     get_viewport().set_size_override_stretch(true)
@@ -311,6 +316,8 @@ static func restart_game() -> void:
     Globals.get_tree().root.add_child(new_game)
     yield(Globals.get_tree(), "idle_frame")
 
+    Globals.restarting = true
     Globals.init()
+    Globals.restarting = false
 
     new_game.init()
