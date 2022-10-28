@@ -55,6 +55,8 @@ func _process(delta: float):
             Globals.astar = LDTK.create_astar()
             Globals.entities_node = Globals.current_level.find_node("YSort_Entities", true, true)
             var entities_node_parent = Globals.entities_node.get_parent()
+            var egg = find_node("Egg0", true, false)
+            egg.modulate = Globals.creature_color
 
             # Remove all entities for the duration of the intro
             Globals.entities_node.get_parent().remove_child(Globals.entities_node)
@@ -86,7 +88,7 @@ func _process(delta: float):
             LDTK.update_entities(Globals.entities_node)
             assert(Globals.creature != null, "No creature found in the level, did we forget to add one?")
 
-            var point = Globals.astar.get_closest_point(find_node("Egg0", true, false).position / Globals.SPRITE_SIZE)
+            var point = Globals.astar.get_closest_point(egg.position / Globals.SPRITE_SIZE)
             Globals.astar.set_point_disabled(point, true)
             Globals.ui_intro.visible = false
 
@@ -161,8 +163,11 @@ static func start_game() -> void:
     entity.set_meta("moving_speed", speed)
     entity.change_state(Enums.EntityStates.Moving)
 
+    entity.set_meta("EntityAnimation_Color", Globals.creature_color)
+
     # TODO: Hide the creature, play the egg cracking anim, then show the creature
-    var _egg_entity = Globals.spawn_entity(Globals.egg_prefab, entity.position)
+    var egg_entity = Globals.spawn_entity(Globals.egg_prefab, entity.position)
+    egg_entity.set_meta("EntityAnimation_Color", Globals.creature_color)
 
 static func change_state(state) -> void:
     print("[Game] Changing state: %s" % [GameStates.keys()[state]])

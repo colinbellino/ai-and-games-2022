@@ -12,3 +12,6 @@ func _ready() -> void:
 
     var sprite_frames : SpriteFrames = ResourceLoader.load(anim_path)
     entity.sprite_body.frames = sprite_frames
+
+func _process(_delta: float) -> void:
+    entity.sprite_body.modulate = LDTK.get_behaviour_meta(entity, "EntityAnimation", "Color", Color.white)

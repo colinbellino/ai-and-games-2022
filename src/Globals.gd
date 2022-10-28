@@ -68,8 +68,9 @@ var creature_name : String
 var mouse_position : Vector2
 var mouse_closest_point : int = -1
 var creature_closest_point : int = -1
-var random = RandomNumberGenerator.new()
 var creature_names : Array = []
+var creature_color : Color
+var random = RandomNumberGenerator.new()
 var game_names : Array = []
 var time_elapsed : float
 
@@ -166,6 +167,7 @@ func _ready() -> void:
     Globals.can_change_resolution = OS.get_name() != "HTML5"
     Globals.random.randomize()
     Globals.creature_names = load_creatures()
+    Globals.creature_color = Color(1.0, 1.0 - Globals.random.randf_range(0.3, 0.0), 1.0 - Globals.random.randf_range(0.3, 0.0), 1.0)
     assert(Globals.creature_names.size() > 0, "Globals.creature_names not initialized correctly.")
     Globals.creature_name = Globals.creature_names[Globals.random.randi() % Globals.creature_names.size()]
     Globals.game_names = load_game_names()
