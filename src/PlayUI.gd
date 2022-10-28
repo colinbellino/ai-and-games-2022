@@ -4,14 +4,17 @@ var container_control : Control
 var label_name: Label
 var hunger_progress: TextureProgress
 var settings_button: TextureButton
+var feed_button: Button
 
 func _ready() -> void:
     container_control = get_node("%Container")
     label_name = get_node("%NameLabel")
     hunger_progress = get_node("%HungerProgress")
     settings_button = get_node("%SettingsButton")
+    feed_button = get_node("%FeedButton")
 
     settings_button.connect("pressed", self, "settings_button_pressed")
+    feed_button.connect("pressed", self, "feed_button_pressed")
 
     close()
 
@@ -36,3 +39,8 @@ func _process(_delta: float) -> void:
 func settings_button_pressed() -> void:
     Globals.ui_settings.open(true)
     Audio.play_sound_random([Globals.SFX.BUTTON_CLICK_1, Globals.SFX.BUTTON_CLICK_2])
+
+func feed_button_pressed() -> void:
+    var amount : int = LDTK.get_behaviour_meta(Globals.creature, "FoodSource", "Amount", 10)
+    Audio.play_sound(Globals.SFX.BUTTON_CLICK_1, Globals.creature.position)
+    Globals.creature.emit_signal("fed", amount)

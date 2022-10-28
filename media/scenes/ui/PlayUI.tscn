@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://media/main.theme" type="Theme" id=1]
 [ext_resource path="res://media/art/ui/hunger_bar.png" type="Texture" id=3]
@@ -6,6 +6,11 @@
 [ext_resource path="res://media/art/ui/background_bar.png" type="Texture" id=5]
 [ext_resource path="res://media/art/ui/settings.png" type="Texture" id=6]
 [ext_resource path="res://media/art/ui/settings_highlight.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.133333, 0.12549, 0.203922, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
 
 [node name="PlayUI" type="CanvasLayer"]
 unique_name_in_owner = true
@@ -48,19 +53,17 @@ margin_bottom = 61.0
 theme = ExtResource( 1 )
 text = "WWWWWWWWWWWWWWW"
 
-[node name="HungerBar" type="Control" parent="Container"]
+[node name="FeedButton" type="Button" parent="Container"]
+unique_name_in_owner = true
 margin_left = 410.0
 margin_right = 466.0
 margin_bottom = 72.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+custom_styles/hover = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
 
-[node name="ColorRect" type="ColorRect" parent="Container/HungerBar"]
-margin_right = 56.0
-margin_bottom = 72.0
-color = Color( 0.14902, 0.0431373, 0.0431373, 1 )
-
-[node name="HungerProgress" type="TextureProgress" parent="Container/HungerBar"]
+[node name="HungerProgress" type="TextureProgress" parent="Container/FeedButton"]
 unique_name_in_owner = true
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -68,7 +71,7 @@ margin_top = -8.0
 margin_right = 56.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-value = 100.0
+value = 50.0
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 3 )
 nine_patch_stretch = true
@@ -77,7 +80,7 @@ stretch_margin_top = 1
 stretch_margin_right = 1
 stretch_margin_bottom = 1
 
-[node name="Sprite" type="Sprite" parent="Container/HungerBar"]
+[node name="Sprite" type="Sprite" parent="Container/FeedButton"]
 position = Vector2( 26, 35 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )
