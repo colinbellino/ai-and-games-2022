@@ -63,6 +63,18 @@
             "command": "butler push ./builds/Web/${input:folder} colinbellino/untitled-dinosaur-game:web",
             "problemMatcher": []
         },
+        {
+            "label": "Linux: build (release)",
+            "type": "shell",
+            "command": "date_time=$(date +%Y-%m-%d_%H-%M) && echo $date_time && ./build_version.sh && mkdir -p ./builds/Linux/$date_time && godot --no-window --export 'Linux' ./builds/Linux/$date_time/UntitledDinosaurGame && ./builds/Linux/$date_time/UntitledDinosaurGame",
+            "problemMatcher": []
+        },
+        {
+            "label": "Linux: deploy",
+            "type": "shell",
+            "command": "butler push ./builds/Linux/${input:folder} colinbellino/untitled-dinosaur-game:linux",
+            "problemMatcher": []
+        },
     ],
     "inputs": [
         {
