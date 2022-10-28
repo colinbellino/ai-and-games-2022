@@ -4,7 +4,7 @@
         {
             "label": "Windows: build (debug)",
             "type": "shell",
-            "command": "date_time=$(date +%Y-%m-%d_%H-%M) && echo $date_time && ./build_version.sh && mkdir -p ./builds/Windows/$date_time && godot --no-window --export-debug 'Windows' ./builds/Windows/$date_time/AI2022.exe && ./builds/Windows/$date_time/AI2022.exe",
+            "command": "date_time=$(date +%Y-%m-%d_%H-%M) && echo $date_time && ./build_version.sh && mkdir -p ./builds/Windows/$date_time && godot --no-window --export-debug 'Windows' ./builds/Windows/$date_time/UntitledDinosaurGame.exe && ./builds/Windows/$date_time/UntitledDinosaurGame.exe",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
@@ -14,7 +14,7 @@
         {
             "label": "Windows: build (release)",
             "type": "shell",
-            "command": "date_time=$(date +%Y-%m-%d_%H-%M) && echo $date_time && ./build_version.sh && mkdir -p ./builds/Windows/$date_time && godot --no-window --export 'Windows' ./builds/Windows/$date_time/AI2022.exe && ./builds/Windows/$date_time/AI2022.exe",
+            "command": "date_time=$(date +%Y-%m-%d_%H-%M) && echo $date_time && ./build_version.sh && mkdir -p ./builds/Windows/$date_time && godot --no-window --export 'Windows' ./builds/Windows/$date_time/UntitledDinosaurGame.exe && ./builds/Windows/$date_time/UntitledDinosaurGame.exe",
             "problemMatcher": []
         },
         {
@@ -26,7 +26,7 @@
         {
             "label": "Mac: build (debug)",
             "type": "shell",
-            "command": "date_time=$(date +%Y-%m-%d_%H-%M) && echo $date_time && ./build_version.sh && mkdir -p ./builds/Mac/$date_time && godot --no-window --export-debug 'Mac' ./builds/Mac/$date_time/AI2022.app && open ./builds/Mac/$date_time/AI2022.app",
+            "command": "date_time=$(date +%Y-%m-%d_%H-%M) && echo $date_time && ./build_version.sh && mkdir -p ./builds/Mac/$date_time && godot --no-window --export-debug 'Mac' ./builds/Mac/$date_time/UntitledDinosaurGame.app && open ./builds/Mac/$date_time/UntitledDinosaurGame.app",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
@@ -36,7 +36,7 @@
         {
             "label": "Mac: build (release)",
             "type": "shell",
-            "command": "date_time=$(date +%Y-%m-%d_%H-%M) && echo $date_time && ./build_version.sh && mkdir -p ./builds/Mac/$date_time && godot --no-window --export 'Mac' ./builds/Mac/$date_time/AI2022.app && open ./builds/Mac/$date_time/AI2022.app",
+            "command": "date_time=$(date +%Y-%m-%d_%H-%M) && echo $date_time && ./build_version.sh && mkdir -p ./builds/Mac/$date_time && godot --no-window --export 'Mac' ./builds/Mac/$date_time/UntitledDinosaurGame.app && open ./builds/Mac/$date_time/UntitledDinosaurGame.app",
             "problemMatcher": []
         },
         {

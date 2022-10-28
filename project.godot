@@ -176,7 +176,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Creature"
+config/name="Untitled Dinosaur Game"
 run/main_scene="res://media/scenes/main.tscn"
 boot_splash/show_image=false
 boot_splash/use_filter=false
