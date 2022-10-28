@@ -18,6 +18,7 @@ func _exit_tree() -> void:
 func entity_interacted(_interaction_type: int) -> void:
     Globals.add_emotion(CLEAN_POOP_MOD, "Clean poop")
     Audio.play_sound(Globals.SFX.SWISH)
+    Globals.set_cursor(Globals.CURSORS.DEFAULT)
     Globals.despawn_entity(entity)
 
 func entity_area_entered(_area: Area2D) -> void:
