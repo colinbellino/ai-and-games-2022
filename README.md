@@ -10,7 +10,7 @@
 </td></tr><tr><td>Debug view</td><td>F1</td><td>not supported
 </td></tr></tbody></table>
 <h2>Credits:</h2>
-<ul><li>Art:&nbsp;<a href="https://twitter.com/PronomicalArt" target="_blank">Michael "Calart" Pearson</a></li><li>Audio: <span></span><a href="https://twitter.com/bitbionic" target="_blank">Brandon "Bit Bionic" Forrester</a></li><li>Code:&nbsp;<span></span><a href="https://twitter.com/Krikit" target="_blank">Matthew "Krikit" Schultz</a></li><li>Code:&nbsp;<a href="https://twitter.com/colinbellino" rel="nofollow">Colin Bellino</a>
+<ul><li>Art:&nbsp;<a href="https://twitter.com/PronomicalArt" target="_blank">Michael "Calart" Pearson</a></li><li>Audio: <span></span><a href="https://twitter.com/bitbionic" target="_blank">"Bit Bionic"</a></li><li>Code:&nbsp;<span></span><a href="https://twitter.com/Krikit" target="_blank">Matthew "Krikit" Schultz</a></li><li>Code:&nbsp;<a href="https://twitter.com/colinbellino" rel="nofollow">Colin Bellino</a>
 </li><li>Design:&nbsp;<a href="https://twitter.com/ondrej_markus" target="_blank">Ondrej Markus</a>and the rest of team.
 </li><li>Paid assets:&nbsp;No
 </li><li>Softwares:&nbsp;Godot,&nbsp;Aseprite,&nbsp;Audacity</li></ul>
